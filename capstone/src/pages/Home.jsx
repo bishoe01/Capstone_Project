@@ -2,24 +2,31 @@ import React from 'react';
 import { Process } from '../components/styled/process';
 import '../App.css';
 import StepBar from '../components/StepBar';
+import Slide from 'react-reveal/Slide';
 function Home(props) {
+    const SECTION_STYLE = 'w-full bg-gradient-to-r from-primary to-black text-center text-white p-16 rounded-xl hover:text-white hover:bg-gradient-to-r hover:from-primary hover:to-emphasize cursor-pointer'
     return (
         <>
-        <div className='flex flex-col justify-center items-center'>
-        <StepBar/>
-        <h1 className='text-3xl text-primary tracking-widest'>"어떤 유형을 선택하시겠어요?</h1>
-        </div>
-        
-        <section className='bg-gray-500 grid grid-cols-2 w-full h-full p-12'>
-            <div className='w-full flex flex-col items-center justify-center'>
-                <h1 className='text-center whitespace-pre-wrap'>Lorem ipsum dolor sit, 
-                amet consectetur adipisicing elit. Delectus, autem.</h1>
-                <button className='bg-primary text-white w-1/3'>스터디룸</button>
+            <div className='flex flex-col justify-center items-center'>
+                <StepBar step={0} />
+                <h1 className='text-2xl text-primary tracking-widest'>"어떤 유형을 선택하시겠어요?</h1>
             </div>
-            <div className='w-full bg-green-200'>
-                <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, autem.</h1>
-            </div>
-        </section>
+
+            <section className='mt-10 flex flex-col w-full py-12 gap-10'>
+                <Slide left>
+                <div className={SECTION_STYLE}>
+                    <h1 className='text-3xl'>
+                        스터디/멘토링 등 소규모 모임</h1>
+                </div>
+                </Slide>
+                
+                <Slide right>
+                <div className={SECTION_STYLE}>
+                    <h1 className='text-3xl'>
+                        스터디/멘토링 등 소규모 모임</h1>
+                </div>
+                </Slide>
+            </section>
         </>
     );
 }
