@@ -13,7 +13,7 @@ function StepBar({step}) {
             {Object.keys(steps).map((key,index) => {
                 return (
                     <li key={index} className='flex flex-col items-center'>
-                        <div className={`w-8 h-8 rounded-full border-2 border-${index === step ? 'emphasize' : 'sub'} flex justify-center items-center ${step > key ? 'bg-primary' : ''}`}>
+                        <div className={`w-8 h-8 rounded-full border-2 ${index === step ? 'border-emphasize' : 'border-sub'} flex justify-center items-center ${step > key ? 'bg-primary' : ''}`}>
                             <p className='text-xs'>{key}</p>
                         </div>
                         <p className={`text-s ${index === step ? 'text-emphasize' : 'text-primary'}`} >{steps[key]}</p>

@@ -8,6 +8,7 @@ import About from './pages/About';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Layout from './layout/Layout';
+import Reserve from './pages/Reserve';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
+      {path:'study', element:<Reserve/>},
     ]
   }
 ])
