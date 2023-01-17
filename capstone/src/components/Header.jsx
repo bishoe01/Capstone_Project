@@ -5,10 +5,10 @@ function Header(props) {
     const [links, setLinks] = useState(['Home','About','Contact']);
     return (
         <header className='flex justify-between items-center p-6 border-b-2 mb-4 border-sub text-2xl text-primary'>
-            <div className='flex items-center'>
+            <Link to={'/'} className='flex items-center' >
             <BsBook/>
             <p className='ml-4'>HY-TOGETHER</p>
-            </div>
+            </Link>
             <ul className='flex gap-5 text-xl'>
                 {links.map((link,index) => {
                     return (

@@ -8,7 +8,7 @@ function SectionCard({ text, direction }) {
         <>
             {direction === 'left' ?
                 <Slide left>
-                    <div className={SECTION_STYLE} onClick={() => navigate('/study')}>
+                    <div className={SECTION_STYLE} onClick={() => navigate('/reserve')}>
                         <h1 className='text-3xl'>
                             {text}</h1>
                     </div>
