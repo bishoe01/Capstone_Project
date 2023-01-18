@@ -10,6 +10,7 @@ import Contact from './pages/Contact';
 import Layout from './layout/Layout';
 import Reserve from './pages/Reserve';
 import TimeSelect from './pages/TimeSelect';
+import Login from './pages/Login';
 
 const router = createBrowserRouter([
   {
@@ -18,12 +19,18 @@ const router = createBrowserRouter([
     children: [
       {
         index: true, path: '/', element:
-            <Home />
+          <Home />
       },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
-      {path:'reserve', element:<Reserve/>},
-      {path : 'reserve/:department', element: <TimeSelect/>},
+      {
+        path: 'login', element:
+          <Layout>
+            <Login />
+          </Layout>
+      },
+      { path: 'reserve', element: <Reserve /> },
+      { path: 'reserve/:department', element: <TimeSelect /> },
     ]
   }
 ])

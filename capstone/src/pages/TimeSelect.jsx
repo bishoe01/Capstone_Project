@@ -2,6 +2,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import StepBar from '../components/StepBar';
 import Fade from 'react-reveal/Fade';
+import TimeBtn from '../components/TimeBtn';
+import TimeTable from '../components/TimeTable';
 function TimeSelect(props) {
     const { depart } = useParams();
     return (
@@ -13,8 +15,7 @@ function TimeSelect(props) {
             </div>
             <div className='basis-6/12 p-4 '>
                 <StepBar step={2} />
-
-
+                <TimeTable/>
             </div>
         </div>
         </Fade>
