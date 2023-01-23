@@ -4,7 +4,7 @@ import '../App.css';
 import StepBar from '../components/StepBar';
 import Slide from 'react-reveal/Slide';
 import SectionCard from '../components/SectionCard';
-function Home(props) {
+function Home({props}) {
     return (
         <>
             <div className='flex flex-col justify-center items-center'>
