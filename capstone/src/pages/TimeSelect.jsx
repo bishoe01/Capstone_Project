@@ -14,9 +14,10 @@ function TimeSelect(props) {
     const [time, setTime] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]);
     const { roomData } = useRoomContext();
     const [deparment, setDepartment] = useState(roomData[location.pathname.split('/')[2]]);
-    const [onSection, setOnSection] = useState(false);
+    const [onSection, setOnSection] = useState(Array.from({length:deparment.length}, () => false));
     const [y,m,d] = new Date().toLocaleDateString().split('.');
     const today = m.concat('월 ', d, '일');
+    
     return (
         <Fade>
             <StepBar step={2} />
@@ -28,7 +29,14 @@ function TimeSelect(props) {
                 <div className='flex flex-col basis-5/12 p-4 gap-5'>
                     {deparment.map((depart, index) => {
                         return (
-                            <div key={index} className={`flex flex-col gap-1 p-4 items-start ${onSection[index] ? 'border-emphasize' : 'border-primary'} border-emphasize border-2 rounded-xl`}>
+                            <div key={index} 
+                            onClick={() => {
+                                const newOnSection = [...onSection];
+                                newOnSection.fill(false);
+                                newOnSection[index] = true;
+                                setOnSection(newOnSection);
+                            }}
+                            className={`flex flex-col gap-1 p-4 items-start ${onSection[index] ? 'border-emphasize' : 'border-primary'} border-emphasize border-2 rounded-xl`}>
                                 <span className='text-xl border-sub border-b-2 p-1 drop-shadow-lg'>{depart}호</span>
                                 <TimeTable />
                             </div>
