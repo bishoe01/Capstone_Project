@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import StepBar from '../components/StepBar';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
-import Coverflow from 'react-coverflow';
 import { Fade } from 'react-reveal';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

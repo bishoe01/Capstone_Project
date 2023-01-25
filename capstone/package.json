@@ -9,6 +9,7 @@
     "axios": "^1.2.3",
     "http-proxy-middleware": "^2.0.6",
     "react": "^18.2.0",
+    "react-coverflow": "^0.2.20",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-id-swiper": "^4.0.0",
@@ -39,6 +40,12 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
     ]
   },
   "devDependencies": {
