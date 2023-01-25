@@ -15,10 +15,8 @@ export function RoomContextProvider({ children }) {
     const [selectData, setSelectData] = useState({
         "room": '',
         "date": '',
-        "time": {
-            "start": '',
-            "end": '',
-        },
+        "start": '',
+        "end": '',
         "people": '',
     });
     return (

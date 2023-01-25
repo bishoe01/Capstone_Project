@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import StepBar from '../components/StepBar';
 import Fade from 'react-reveal/Fade';
-import TimeBtn from '../components/TimeBtn';
 import TimeTable from '../components/TimeTable';
-import { MdLocationOn } from 'react-icons/md';
 import { MdOutlineEditCalendar } from 'react-icons/md';
 import ReserveInput from '../Reservepage/ReserveInput';
 import { useRoomContext } from '../context/Roomdata';
-import TimePickerExample from '../components/TimePickerExapmple';
+import TimeInput from '../Reservepage/TimeInput';
+import { useNavigate } from 'react-router-dom';
+import DatePicker from '../Reservepage/DatePicker';
+import PersonInput from '../Reservepage/PersonInput';
 
 function TimeSelect(props) {
     const location = useLocation();
@@ -18,6 +19,14 @@ function TimeSelect(props) {
     const [onSection, setOnSection] = useState(Array.from({length:deparment.length}, () => false));
     const [y,m,d] = new Date().toLocaleDateString().split('.');
     const today = m.concat('월 ', d, '일');
+    const navigate = useNavigate();
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(selectData);
+        setSelectData({}); // 초기화
+        navigate('/');
+        
+    }
     return (
         <Fade>
             <StepBar step={2} />
@@ -46,19 +55,19 @@ function TimeSelect(props) {
                 </div>
                 <div className='flex flex-col gap-6 p-4 absolute text-3xl -right-1/4 fixed w-2/6 h-auto rounded-xl border-primary border-[3px] shadow-md shadow-sub text-primary'>
                     <h1 className='flex items-center gap-4'><MdOutlineEditCalendar />예약 정보</h1>
-                    <form className='flex flex-col gap-4'>
+                    <form className='flex flex-col gap-4' onSubmit={handleSubmit} >
                         <label htmlFor="room" className="block text-2xl text-primary font-medium text-gray-900 dark:text-primary">팀플실 번호</label>
                         <ReserveInput options={deparment} type={'호'} placeholder={"예약하실 팀플실을 선택하세요"} selected={selectData["room"]}/>
                         <label htmlFor="room" className="block text-2xl text-primary font-medium text-gray-900 dark:text-primary">날짜</label>
-                        <ReserveInput options={Array.from({length:7} ,(v,index) => `${m}월 ${Number(d) + index}일`)} placeholder={"예약일을 선택해주세요"} />
+                        <DatePicker options={Array.from({length:7} ,(v,index) => `${m}월 ${Number(d) + index}일`)} placeholder={"예약일을 선택해주세요"} selected={selectData["date"]} selectData={selectData} setSelectData={setSelectData} />
                         <label htmlFor="room" className="block text-2xl text-primary font-medium text-gray-900 dark:text-primary">이용시간</label>
                         <div className='flex flex-col w-1/2 gap-2'>
-                        <ReserveInput options={time} type={':00'} placeholder='00:00' /> 
-                        <ReserveInput options={time} type={':00'} placeholder='00:00' /> 
+                        <TimeInput options={time} type={':00'} placeholder='00:00' isStart={true} selected={selectData["start"]} selectData={selectData} setSelectData={setSelectData}/> 
+                        <TimeInput options={time} type={':00'} placeholder='00:00' isStart={false} selected={selectData["end"]}selectData={selectData} setSelectData={setSelectData}/> 
                         </div>
                         
                         <label htmlFor="room" className="block text-2xl text-primary font-medium text-gray-900 dark:text-primary">인원</label>
-                        <ReserveInput options={Array.from({length:5} ,(v,i) => `${i+2}인`)} placeholder={"인원 선택 (최소 2명이상)"} />
+                        <PersonInput options={Array.from({length:5} ,(v,i) => `${i+2}인`)} placeholder={"인원 선택 (최소 2명이상)"} selected={selectData["people"]} selectData={selectData} setSelectData={setSelectData}/>
                         <button className='mt-4 bg-primary text-white text-2xl rounded-lg p-2'>예약하기</button>
                     </form>
                 </div>
