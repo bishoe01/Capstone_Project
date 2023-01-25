@@ -31,6 +31,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:13.5.0"],\
+            ["autoprefixer", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:10.4.13"],\
             ["axios", "npm:1.2.3"],\
             ["eslint-config-react-app", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:7.0.1"],\
             ["http-proxy-middleware", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:2.0.6"],\
@@ -5673,6 +5674,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
+        ["virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:10.4.13", {\
+          "packageLocation": "./.yarn/__virtual__/autoprefixer-virtual-9865e1c7bf/0/cache/autoprefixer-npm-10.4.13-261edbcee5-dcb1cb7ae9.zip/node_modules/autoprefixer/",\
+          "packageDependencies": [\
+            ["autoprefixer", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:10.4.13"],\
+            ["@types/postcss", null],\
+            ["browserslist", "npm:4.21.4"],\
+            ["caniuse-lite", "npm:1.0.30001445"],\
+            ["fraction.js", "npm:4.2.0"],\
+            ["normalize-range", "npm:0.1.2"],\
+            ["picocolors", "npm:1.0.0"],\
+            ["postcss", null],\
+            ["postcss-value-parser", "npm:4.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/postcss",\
+            "postcss"\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["virtual:c53dded48dde9e350f2ac7a2cfd61a75c3a872ce855b24da0ed6411b395368cd494343c342dd9d42467ba9578665fb7c256976ebb9705de947c7a25bd19cbf1e#npm:10.4.13", {\
           "packageLocation": "./.yarn/__virtual__/autoprefixer-virtual-8ded48bd19/0/cache/autoprefixer-npm-10.4.13-261edbcee5-dcb1cb7ae9.zip/node_modules/autoprefixer/",\
           "packageDependencies": [\
@@ -6405,6 +6425,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:13.4.0"],\
             ["@testing-library/user-event", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:13.5.0"],\
+            ["autoprefixer", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:10.4.13"],\
             ["axios", "npm:1.2.3"],\
             ["eslint-config-react-app", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:7.0.1"],\
             ["http-proxy-middleware", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:2.0.6"],\

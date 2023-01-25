@@ -12,9 +12,17 @@ export function RoomContextProvider({ children }) {
             "culture" : [101,102,103]
         }
     );
-    
+    const [selectData, setSelectData] = useState({
+        "room": '',
+        "date": '',
+        "time": {
+            "start": '',
+            "end": '',
+        },
+        "people": '',
+    });
     return (
-        <RoomContext.Provider value={{roomData}}>
+        <RoomContext.Provider value={{roomData,selectData,setSelectData}}>
             {children}
         </RoomContext.Provider>)
 }
