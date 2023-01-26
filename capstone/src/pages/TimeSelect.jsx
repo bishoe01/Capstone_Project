@@ -20,13 +20,15 @@ function TimeSelect(props) {
     const [y,m,d] = new Date().toLocaleDateString().split('.');
     const today = m.concat('월 ', d, '일');
     const navigate = useNavigate();
+    
+    const [tmpData,setTmpData] = useState({
+        "room": '', "date": '', "start": '', "end": '', "people": '',});
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(selectData);
-        setSelectData({}); // 초기화
-        navigate('/');
-        
-    }
+        setSelectData([{...selectData}, {...tmpData}]);
+        console.log(tmpData);
+        navigate('/about');
+    };
     return (
         <Fade>
             <StepBar step={2} />
@@ -43,7 +45,7 @@ function TimeSelect(props) {
                                 const newOnSection = [...onSection];
                                 newOnSection.fill(false);
                                 newOnSection[index] = true;
-                                setSelectData({...selectData , room: deparment[index]});
+                                setTmpData( {...tmpData, room: depart});
                                 setOnSection(newOnSection);
                             }}
                             className={`flex flex-col gap-1 p-4 items-start ${onSection[index] ? 'border-emphasize' : 'border-primary'} border-emphasize border-2 rounded-xl`}>
@@ -57,17 +59,16 @@ function TimeSelect(props) {
                     <h1 className='flex items-center gap-4'><MdOutlineEditCalendar />예약 정보</h1>
                     <form className='flex flex-col gap-4' onSubmit={handleSubmit} >
                         <label htmlFor="room" className="block text-2xl text-primary font-medium text-gray-900 dark:text-primary">팀플실 번호</label>
-                        <ReserveInput options={deparment} type={'호'} placeholder={"예약하실 팀플실을 선택하세요"} selected={selectData["room"]}/>
+                        <ReserveInput options={deparment} type={'호'} placeholder={"예약하실 팀플실을 선택하세요"} selected={tmpData["room"]}/>
                         <label htmlFor="room" className="block text-2xl text-primary font-medium text-gray-900 dark:text-primary">날짜</label>
-                        <DatePicker options={Array.from({length:7} ,(v,index) => `${m}월 ${Number(d) + index}일`)} placeholder={"예약일을 선택해주세요"} selected={selectData["date"]} selectData={selectData} setSelectData={setSelectData} />
+                        <DatePicker options={Array.from({length:7} ,(v,index) => `${m}월 ${Number(d) + index}일`)} placeholder={"예약일을 선택해주세요"} selected={tmpData["date"]} selectData={tmpData} setSelectData={setTmpData} />
                         <label htmlFor="room" className="block text-2xl text-primary font-medium text-gray-900 dark:text-primary">이용시간</label>
                         <div className='flex flex-col w-1/2 gap-2'>
-                        <TimeInput options={time} type={':00'} placeholder='00:00' isStart={true} selected={selectData["start"]} selectData={selectData} setSelectData={setSelectData}/> 
-                        <TimeInput options={time} type={':00'} placeholder='00:00' isStart={false} selected={selectData["end"]}selectData={selectData} setSelectData={setSelectData}/> 
+                        <TimeInput options={time} type={':00'} placeholder='00:00' isStart={true} selected={selectData["start"]} selectData={tmpData} setSelectData={setTmpData}/> 
+                        <TimeInput options={time} type={':00'} placeholder='00:00' isStart={false} selected={selectData["end"]} selectData={tmpData} setSelectData={setTmpData}/> 
                         </div>
-                        
                         <label htmlFor="room" className="block text-2xl text-primary font-medium text-gray-900 dark:text-primary">인원</label>
-                        <PersonInput options={Array.from({length:5} ,(v,i) => `${i+2}인`)} placeholder={"인원 선택 (최소 2명이상)"} selected={selectData["people"]} selectData={selectData} setSelectData={setSelectData}/>
+                        <PersonInput options={Array.from({length:5} ,(v,i) => `${i+2}인`)} placeholder={"인원 선택 (최소 2명이상)"} selected={tmpData["people"]} selectData={tmpData} setSelectData={setTmpData}/> 
                         <button className='mt-4 bg-primary text-white text-2xl rounded-lg p-2'>예약하기</button>
                     </form>
                 </div>

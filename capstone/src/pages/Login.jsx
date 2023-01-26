@@ -6,9 +6,12 @@ function Login(props) {
     const [pw, setPw] = useState();
     const [jwt, setJwt] = useState();
     async function getJWT() {
-        const body = { username: "test", password: "test" };
-        const response = await fetch('http://d8ed-218-37-109-50.ngrok.io/api/login', {
+        const body = { username: "test1", password: "test" };
+        const response = await fetch("http://c4ec-218-37-109-50.jp.ngrok.io/api/user/login", {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify(body),
         }).catch((error) => {
             console.error('Error:', error);
@@ -18,7 +21,7 @@ function Login(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         getJWT();
-        
+
     }
     useEffect(() => {
         console.log(jwt);
