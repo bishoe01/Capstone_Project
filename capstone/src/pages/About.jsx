@@ -1,9 +1,9 @@
 import React from 'react';
+import RoomData from '../api/room';
 import { useRoomContext } from '../context/Roomdata';
 
 function About(props) {
     const {selectData} = useRoomContext();
-    console.log(selectData);
     return (
         <div>
             {selectData.map((data,index) => {
@@ -18,6 +18,7 @@ function About(props) {
                 )
             }
             )}
+        <RoomData/>
         </div>
     );
 }

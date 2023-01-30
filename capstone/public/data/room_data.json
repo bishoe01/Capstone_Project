@@ -1,0 +1,35 @@
+{
+    "info": {
+        "name": "큐브0",
+        "university": "소프트웨어융합대학",
+        "department": "소프트웨어학부",
+        "location": "제5공학관",
+        "capacity": 10,
+        "descriptions": [
+            "투명한 벽으로 구분된 팀플실"
+        ],
+        "cautions": [
+            "음식물 반입금지",
+            "시끄럽게 떠드는 행위 금지"
+        ],
+        "drinks": [
+            "커피",
+            "물"
+        ],
+        "tags": [
+            "태그1",
+            "태그2"
+        ]
+    },
+    "reservation": [
+        {
+            "orderId": 1,
+            "year": 2023,
+            "month": 1,
+            "date": 18,
+            "name": "홍길동",
+            "startTime": 19,
+            "endTime": 21
+        }
+    ]
+}

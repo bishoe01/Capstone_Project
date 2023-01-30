@@ -9,8 +9,7 @@ function StartBtn({ text, time, setTime, isStart ,setIsStart}) {
         <div className='flex flex-col gap-1'>
             <h2 className='text-xl text-primary'>{text}</h2>
             <button onClick={() => {
-                {start=="" ? setTime({start:text, end:""}) : setTime({start:text-3, end:text})};
-                console.log(time);
+                {start=="" ? setTime({start:text, end:""}) : setTime({...time, end:text})};
             }} className={`${TIME_STYLE} ${(start && end) ? (start <= text && text<=end) ? 'bg-emphasize' : '' : ""}`}></button>
         </div>);
 }
