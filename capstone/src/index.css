@@ -11,10 +11,10 @@
 }
 
 h1{
-  @apply text-3xl;
+  @apply text-2xl;
 }
 h2{
-  @apply text-2xl;
+  @apply text-xl;
 }
 
 body {
@@ -28,7 +28,7 @@ body {
 }
 
 #root{
-  @apply w-full max-w-screen-2xl;
+  @apply w-full max-w-screen-xl;
 }
 
 code {
