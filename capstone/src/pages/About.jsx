@@ -6,7 +6,7 @@ function About(props) {
     const {selectData} = useRoomContext();
     return (
         <div>
-            {selectData.map((data,index) => {
+            {/* {selectData.map((data,index) => {
                 return (
                     <div key={index}>
                         <p>room{data.room}</p>
@@ -17,7 +17,7 @@ function About(props) {
                     </div>
                 )
             }
-            )}
+            )} */}
         <RoomData/>
         </div>
     );

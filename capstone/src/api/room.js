@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const RoomData = () => {
+function RoomData() {
     const [data, setData] = useState([]);
-
-    useEffect(() => {
+    function getData(){
         axios.get('/data/room_data.json')
             .then(response => setData(response.data))
             .catch(error => console.error(error));
-    }, []);
-    const reservation = data.reservation;
-    console.log(reservation);
+    }
+    
     return (
+        
         <ul>
-            <li>{`${reservation[0].month}월 ${reservation[0].date}일`}</li>
+            <button onClick={getData}>
+                데이터 불러오기
+            </button>
+            {data ? console.log(data.reservation) : ""}
+            {/* {data && data.reservation.map((item, index) => (
+                <li key={index}>
+                    {item.month}월
+                    {item.date}일
+                </li>
+            ))} */}
+            {/* <li>{`${month}월 ${date}일`}</li> */}
         </ul>
     );
 };
