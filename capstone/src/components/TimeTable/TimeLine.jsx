@@ -1,29 +1,35 @@
-import React from 'react';
-
-function TimeLine(props) {
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+function TimeLine({ room, current, nowData, reserveCurrent }) {
     const hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+    const [timeRange, setTimeRange] = useState();
+    useEffect(() => {
+        axios.get('/data/currentdata.json')
+        .then((res) => {
+            setTimeRange(res.data[room]);
+        }).then(console.log(timeRange))
+    },[])
     return (
-        <div className='flex w-full items-center gap-4 border-b-[1px] border-sub p-3'>
-            <div className='flex basis-3/12 text-center px-2'>
-                <span className='p-4'>101호</span>
-                <span className='p-4'>1층</span>
-                <span className='p-4'>2-6</span>
-            </div>
-            <div className='flex basis-8/12'>
-            {hours.map((hour, index) => {
-                return (
-                    <div className='flex flex-col' key={hour}>
-                        <h1 className='text-sm text-gray-500'>{hour}</h1>
-                        <div className='flex gap-0.5 mx-0.5'>
-                        <button className='p-3  bg-gray-300 rounded-sm '></button>
-                        <button className='p-3  bg-gray-300 rounded-sm '></button>
-                        </div>
+        <div className="grid grid-cols-12 gap-4 text-center w-full border-b-[1px] border-sub items-center py-4 my-2">
+            <div className="col-span-1">{room}호</div>
+            <div className="col-span-1">1층</div>
+            <div className="col-span-1">2~4인</div>
+            <div className="col-span-8 flex">
+                {hours.map((hour, index) => (
+                    <div className="flex flex-col" key={hour}>
+                        <h1 className="text-sm text-left text-gray-500">{hour}</h1>
+                        {timeRange&&<div className="flex gap-0.5 mx-0.5">
+                            <button
+                                className={`p-3 rounded-sm ${timeRange.indexOf(hour)== -1 ? 'bg-gray-300' : 'bg-emphasize'}`}>
+                            </button>
+                            <button className={`p-3 rounded-sm ${timeRange.indexOf(hour+.5)== -1 ? 'bg-gray-300' : 'bg-emphasize'}`}></button>
+                        </div>}
                     </div>
-                );
-            }
-            )}
+                ))}
             </div>
-            <button className='border-2 p-2 rounded-md border-sub basis-1/12'>예약하기</button>
+            <div className="col-span-1">
+                <button className="border-2 p-2 rounded-md border-sub">예약하기</button>
+            </div>
         </div>
     );
 }

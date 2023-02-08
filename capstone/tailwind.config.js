@@ -9,7 +9,8 @@ module.exports = {
         emphasize: '#FFA500',
         text: '#FFFFFF',
         border : '#BBBBBB',
-        textgray : '#9D9D9D'
+        textgray : '#9D9D9D',
+        accent : '#F07B3F',
       },
     },
   },
