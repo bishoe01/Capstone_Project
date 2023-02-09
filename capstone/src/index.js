@@ -11,6 +11,8 @@ import Layout from './layout/Layout';
 import Reserve from './pages/Reserve';
 import TimeSelect from './pages/TimeSelect';
 import Login from './pages/Login';
+import ReservationDetail from './pages/ReservationDetail';
+import ReserveList from './components/ReserveList';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +32,8 @@ const router = createBrowserRouter([
           </Layout>
       },
       { path: 'reserve', element: <Reserve /> },
-      { path: 'reserve/:department', element: <TimeSelect /> },
+      { path: 'reserve/:department', element: <TimeSelect/>},
+      { path: 'reserve/:department/:room', element: <ReservationDetail/> },
     ]
   }
 ])

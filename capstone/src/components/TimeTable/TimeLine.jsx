@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-function TimeLine({ room, current, nowData, reserveCurrent }) {
+import { useNavigate } from 'react-router-dom';
+function TimeLine({ room, current,department ,nowData, reserveCurrent }) {
     const hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
     const [timeRange, setTimeRange] = useState();
+    const navigate = useNavigate();
     useEffect(() => {
         axios.get('/data/currentdata.json')
         .then((res) => {
@@ -28,7 +30,7 @@ function TimeLine({ room, current, nowData, reserveCurrent }) {
                 ))}
             </div>
             <div className="col-span-1">
-                <button className="border-2 p-2 rounded-md border-sub">예약하기</button>
+                <button onClick={() => navigate(`/reserve/${department}/${room}` )} className="border-2 p-2 rounded-md border-sub">예약하기</button>
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Children, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 import { useRoomContext } from '../context/Roomdata';
@@ -7,7 +7,8 @@ import TimeLine from '../components/TimeTable/TimeLine';
 import { IoChevronDown } from 'react-icons/io5';
 import RoomData from '../api/room';
 import axios from 'axios';
-function TimeSelect(props) {
+import Board from '../components/Board';
+function TimeSelect({children}) {
     const location = useLocation();
     const navigate = useNavigate();
     const { roomData, selectData, setSelectData } = useRoomContext();
@@ -36,8 +37,6 @@ function TimeSelect(props) {
                 setNowData(res.data.info);
                 setReserveCurrent(res.data.reservation);
                 // console.log(nowData);
-                console.log(reserveCurrent);
-                console.log(reactionArray);
             })
             .catch((err) => {
                 console.log(err);
@@ -49,15 +48,7 @@ function TimeSelect(props) {
     return (
         <Fade>
             <div className='flex flex-col p-4 my-12'>
-                <h2 className='w-full text-primary border-l-4 px-2 border-sub text-xl'>경상대학</h2>
-                <p className='flex flex-col p-4 text-gray-700 text-lg'>
-                    <li>위치 : 경상대학 도서실 도담 앞</li>
-                    <li>인원 : 2~4</li>
-                    <li>특징 :{nowData && nowData.tags}</li>
-                    <li className='flex gap-2'>주의사항 : {nowData && nowData.cautions.map((caution, index) => {
-                        return <span key={index}>{caution}</span>
-                    })}</li>
-                </p>
+                <Board nowData={nowData}/>
             </div>
             <div className='flex justify-between'>
                 <h1 className='border-l-4 px-2 m-4 border-primary'>예약현황</h1>
@@ -88,7 +79,7 @@ function TimeSelect(props) {
                     <div className="col-span-1">예약</div>
                 </div>
                 {deparment.map((item, index) => (
-                    <TimeLine key={item} room={item} nowData={nowData} reserveCurrent={reserveCurrent && reserveCurrent} />
+                    <TimeLine key={item} department={location.pathname.split('/')[2]} room={item} nowData={nowData} reserveCurrent={reserveCurrent && reserveCurrent} />
                 ))}
             </section>
 
