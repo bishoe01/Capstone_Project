@@ -20,6 +20,8 @@ export function RoomContextProvider({ children }) {
         "end": '',
         "people": '',
     }]);
+    useEffect(()=> {
+    })
     return (
         <RoomContext.Provider value={{ roomData, selectData, setSelectData }}>
             {children}

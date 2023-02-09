@@ -9,9 +9,9 @@ function Board({nowData}) {
                 <li>인원 : 2~6인 ( 각 실별 수용인원 참고 )</li>
                 <li>특징 :{nowData && nowData.tags}</li>
                 <li>예약가능일자 : 사용 7일전부터 당일 예약가능</li>
-                <li className='flex gap-2'>주의사항 : {nowData && nowData.cautions.map((caution, index) => {
+                {/* <li className='flex gap-2'>주의사항 : {nowData && nowData.cautions.map((caution, index) => {
                     return <span key={index}>{caution}</span>
-                })}</li>
+                })}</li> */}
                 <li className='flex gap-4'>
                     문의:
                     <a href="" className='underline'>카카오톡 오픈채팅방</a>

@@ -12,7 +12,6 @@ import Reserve from './pages/Reserve';
 import TimeSelect from './pages/TimeSelect';
 import Login from './pages/Login';
 import ReservationDetail from './pages/ReservationDetail';
-import ReserveList from './components/ReserveList';
 
 const router = createBrowserRouter([
   {
