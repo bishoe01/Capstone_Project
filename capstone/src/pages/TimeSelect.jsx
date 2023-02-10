@@ -1,21 +1,18 @@
-import React, { Children, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 import { useRoomContext } from '../context/Roomdata';
-import { useNavigate } from 'react-router-dom';
 import TimeLine from '../components/TimeTable/TimeLine';
 import { IoChevronDown } from 'react-icons/io5';
-import RoomData from '../api/room';
 import axios from 'axios';
 import Board from '../components/Board';
-function TimeSelect({ children }) {
+function TimeSelect() {
     const location = useLocation();
-    const navigate = useNavigate();
-    const { roomData, selectData, setSelectData } = useRoomContext();
-    const [deparment, setDepartment] = useState(roomData[location.pathname.split('/')[2]]);
+    const { roomData } = useRoomContext();
+    const deparment = roomData[location.pathname.split('/')[2]];
     const [reactionArray, setReactionArray] = useState([]);
     const [nowData, setNowData] = useState();
-    const [reserveCurrent, setReserveCurrent] = useState();
+    const [reserveCurrent, setReserveCurrent] = useState([]);
     const [targetDate, setTargetDate] = useState(new Date().toLocaleDateString().replace(/\./g, ''));
     // 
     const HandleDateChange = (e) => {
@@ -30,8 +27,7 @@ function TimeSelect({ children }) {
             day.setMonth(currentDate.getMonth() + (Math.floor(day.getDate() / 31)));
             newReactionArray.push({ date: day.toLocaleDateString().replace(/\./g, '') });
         }
-        setReactionArray(newReactionArray)
-        
+        setReactionArray(newReactionArray);
     }, [])
     // 
     useEffect(() => {
@@ -44,8 +40,6 @@ function TimeSelect({ children }) {
                 console.log(err);
             })
     }, []);
-
-
 
     return (
         <Fade>

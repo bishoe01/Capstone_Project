@@ -48,6 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["styled-components", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:5.3.6"],\
             ["swiper", "npm:8.4.5"],\
             ["tailwindcss", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:3.2.4"],\
+            ["uuidv4", "npm:6.2.13"],\
             ["web-vitals", "npm:2.1.4"]\
           ],\
           "linkType": "SOFT"\
@@ -4699,6 +4700,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@types/uuid", [\
+        ["npm:8.3.4", {\
+          "packageLocation": "./.yarn/cache/@types-uuid-npm-8.3.4-7547f4402c-6f11f3ff70.zip/node_modules/@types/uuid/",\
+          "packageDependencies": [\
+            ["@types/uuid", "npm:8.3.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@types/ws", [\
         ["npm:8.5.4", {\
           "packageLocation": "./.yarn/cache/@types-ws-npm-8.5.4-c0237574ef-fefbad20d2.zip/node_modules/@types/ws/",\
@@ -6422,6 +6432,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["styled-components", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:5.3.6"],\
             ["swiper", "npm:8.4.5"],\
             ["tailwindcss", "virtual:7e10c5021e23066635dbbacd63c6e217073a422620ea2e825178d56d462589cb86c20d9ad498200445763815eebb80a067b217135b2e52d692160ac063084a02#npm:3.2.4"],\
+            ["uuidv4", "npm:6.2.13"],\
             ["web-vitals", "npm:2.1.4"]\
           ],\
           "linkType": "SOFT"\
@@ -17227,6 +17238,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["npm:8.3.2", {\
           "packageLocation": "./.yarn/cache/uuid-npm-8.3.2-eca0baba53-5575a8a75c.zip/node_modules/uuid/",\
           "packageDependencies": [\
+            ["uuid", "npm:8.3.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["uuidv4", [\
+        ["npm:6.2.13", {\
+          "packageLocation": "./.yarn/cache/uuidv4-npm-6.2.13-fb8632083a-25b3ce1d58.zip/node_modules/uuidv4/",\
+          "packageDependencies": [\
+            ["uuidv4", "npm:6.2.13"],\
+            ["@types/uuid", "npm:8.3.4"],\
             ["uuid", "npm:8.3.2"]\
           ],\
           "linkType": "HARD"\

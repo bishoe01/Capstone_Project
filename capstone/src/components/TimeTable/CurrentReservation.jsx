@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
-function CurrentReservation({ room }) {
-    const {
-        state: {
-            hours,
-            timeRange
-        }} = useLocation();
-
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+function CurrentReservation({ room  , timeRange, hours}) {
+    
+    
     return (
         <div className='flex'>
             {hours.map((hour, index) => (

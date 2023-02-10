@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import StepBar from '../components/StepBar';
-import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { Fade } from 'react-reveal';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import DepartmentCard from '../components/DepartmentCard';
 function Reserve(props) {
-    const [department, setdepartment] = useState([
+    const department = [
         '경상대학',
         '공학대학',
         '소프트웨어융합대학',
@@ -17,8 +16,7 @@ function Reserve(props) {
         '디자인대학',
         '예체능대학',
         '약학대학'
-    ]);
-    const [carousel, setCarousel] = useState(0);
+    ];
     const settings = {
         className: "center",
         centerMode: true,
