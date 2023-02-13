@@ -5,13 +5,16 @@ module.exports = {
     extend: {
       colors: {
         primary: '#004C86',
-        sub : '#B3CFE9',
+        sub: '#B3CFE9',
         emphasize: '#FFA500',
         text: '#FFFFFF',
-        border : '#BBBBBB',
-        textgray : '#9D9D9D'
+        border: '#BBBBBB',
+        textgray: '#9D9D9D',
+      },
+      backgroundImage: {
+        room: "url('/public/images/room.jpg')",
       },
     },
   },
   plugins: [],
-}
+};
