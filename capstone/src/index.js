@@ -13,6 +13,7 @@ import TimeSelect from './pages/TimeSelect';
 import Login from './pages/Login';
 import Profile from './pages/profile/Profile';
 import PlaceRental from './pages/reservation/PlaceRental';
+import ReservationDetail from './pages/ReservationDetail';
 
 const router = createBrowserRouter([
   {
@@ -37,10 +38,12 @@ const router = createBrowserRouter([
         ),
       },
       { path: 'reserve', element: <Reserve /> },
-      { path: 'reserve/:department', element: <TimeSelect /> },
-    ],
-  },
-]);
+
+      { path: 'reserve/:department', element: <TimeSelect/>},
+      { path: 'reserve/:department/:room', element: <ReservationDetail/> },
+    ]
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RouterProvider router={router} />);
