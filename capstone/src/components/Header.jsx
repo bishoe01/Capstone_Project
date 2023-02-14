@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BsBook } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 function Header(props) {
+
     const [links, setLinks] = useState(['Home','About','Contact']);
     return (
         <header className='flex justify-between items-center p-6 border-b-2 mb-4 border-sub text-2xl text-primary'>
