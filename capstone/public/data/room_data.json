@@ -1,0 +1,41 @@
+{
+  "info": {
+    "name": "101",
+    "university": "경상대학",
+    "location": "제5공학관",
+    "capacity": 10,
+    "descriptions": ["투명한 벽으로 구분된 팀플실"],
+    "cautions": ["음식물 반입금지", "시끄럽게 떠드는 행위 금지"],
+    "drinks": ["커피", "물"],
+    "tags": ["멀티탭"]
+  },
+  "reservation": [
+    {
+      "orderId": 1,
+      "year": 2023,
+      "month": 2,
+      "date": 8,
+      "name": "홍길동",
+      "startTime": 9,
+      "endTime": 11
+    },
+    {
+      "orderId": 2,
+      "year": 2023,
+      "month": 2,
+      "date": 8,
+      "name": "홍길동",
+      "startTime": 19,
+      "endTime": 21
+    },
+    {
+      "orderId": 3,
+      "year": 2023,
+      "month": 2,
+      "date": 8,
+      "name": "홍길동",
+      "startTime": 11,
+      "endTime": 13
+    }
+  ]
+}
