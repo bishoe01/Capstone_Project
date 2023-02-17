@@ -6,9 +6,6 @@ function TimeLine({ room, current,department ,targetDate,nowData, reserveCurrent
     const [timeRange, setTimeRange] = useState();
     const navigate = useNavigate();
     useEffect(() => {
-        console.log(targetDate);
-    })        
-    useEffect(() => {
         axios.get('/data/currentdata.json')
         .then((res) => {
             setTimeRange(res.data[targetDate][room]);

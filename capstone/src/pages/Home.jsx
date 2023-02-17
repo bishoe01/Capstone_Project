@@ -13,8 +13,10 @@ function Home({props}) {
             </div> */}
 
             <section className='mt-10 flex flex-col w-full py-12 gap-10'>
-                <SectionCard text={'스터디/멘토링 등 소규모 모임'} direction='left'/>
-                <SectionCard text={'개강총회, 학부행사 등 대규모 행사'} direction='right'/>
+                
+
+                {/* <SectionCard text={'스터디/멘토링 등 소규모 모임'} direction='left'/>
+                <SectionCard text={'개강총회, 학부행사 등 대규모 행사'} direction='right'/> */}
             </section>
         </>
     );

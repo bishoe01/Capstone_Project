@@ -32,7 +32,7 @@ const SideMenuContent = (props) => {
 
 function SideMenu(props) {
   return (
-    <div className='w-52 h-[calc(100vh-12em)] border-y border-r border-primary rounded-r-lg'>
+    <div className='w-52 h-[calc(100vh-12em)] border-y border-r border-l border-primary rounded-r-lg'>
       <div className='flex flex-col justify-center items-center pt-10'>
         <img src={`/images/하냥이_소프트웨어융합대학.png`} className='border rounded-full w-[78px] h-[78px]' />
         <span>Hanyang Kim</span>

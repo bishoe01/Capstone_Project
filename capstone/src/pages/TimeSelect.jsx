@@ -6,6 +6,7 @@ import TimeLine from '../components/TimeTable/TimeLine';
 import { IoChevronDown } from 'react-icons/io5';
 import axios from 'axios';
 import Board from '../components/Board';
+import { Slide } from 'react-reveal';
 function TimeSelect() {
     const location = useLocation();
     const { roomData } = useRoomContext();
