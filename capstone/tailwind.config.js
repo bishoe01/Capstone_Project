@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const withMT = require('@material-tailwind/html/utils/withMT');
+
+module.exports = withMT({
   content: ['./src/**/*.jsx', './src/**/*.js'],
   theme: {
     extend: {
@@ -10,12 +12,9 @@ module.exports = {
         text: '#FFFFFF',
         border: '#BBBBBB',
         textgray: '#9D9D9D',
-        accent : '#F07B3F',
-      },
-      backgroundImage: {
-        room: "url('/public/images/room.jpg')",
+        accent: '#F07B3F',
       },
     },
   },
   plugins: [],
-};
+});

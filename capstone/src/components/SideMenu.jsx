@@ -1,4 +1,5 @@
 import React from 'react';
+import Slide from 'react-reveal/Slide';
 
 const SubMenu = (props) => {
   return (
@@ -8,8 +9,10 @@ const SubMenu = (props) => {
         <div className='pl-3'>
           <h3 className='text-primary text-sm'>{props.name}</h3>
           <ul className='pb-6'>
-            {props.submenu.map((item) => (
-              <li className='text-sub text-xs'>{item}</li>
+            {props.submenu.map((item, i) => (
+              <li className='text-sub text-xs' key={i}>
+                {item}
+              </li>
             ))}
           </ul>
         </div>
@@ -21,8 +24,8 @@ const SubMenu = (props) => {
 const SideMenuContent = (props) => {
   return (
     <ul className=''>
-      {props.menuItem.map((item, key) => (
-        <li>
+      {props.menuItem.map((item, i) => (
+        <li key={i}>
           <SubMenu name={item.name} submenu={item.submenu} />
         </li>
       ))}
@@ -30,16 +33,32 @@ const SideMenuContent = (props) => {
   );
 };
 
-function SideMenu(props) {
+const MenuItem = [
+  { name: '커뮤니티', submenu: ['내가 쓴 글', '내가 쓴 댓글'] },
+  {
+    name: '신청자 리스트 확인',
+    submenu: ['신청자 리스트', '승인 및 거절'],
+  },
+  {
+    name: '장소 대여',
+    submenu: ['예약 내역', '취소 내역'],
+  },
+  {
+    name: '공지사항',
+    submenu: [],
+  },
+];
+
+function SideMenu() {
   return (
-    <div className='w-52 h-[calc(100vh-12em)] border-y border-r border-primary rounded-r-lg'>
+    <div className='w-52 min-w-[13rem] h-[calc(100vh-36em)] min-h-[500px] border-y border-r border-primary rounded-r-lg'>
       <div className='flex flex-col justify-center items-center pt-10'>
         <img src={`/images/하냥이_소프트웨어융합대학.png`} className='border rounded-full w-[78px] h-[78px]' />
         <span>Hanyang Kim</span>
         <button className='bg-primary text-text text-xs rounded-lg px-[6px] py-[2px]'>프로필 설정</button>
       </div>
       <div className='w-[120px] border-border border-t mx-auto my-5'></div>
-      <SideMenuContent menuItem={props.menuItem} />
+      <SideMenuContent menuItem={MenuItem} />
     </div>
   );
 }
