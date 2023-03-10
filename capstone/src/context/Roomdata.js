@@ -10,7 +10,7 @@ export function RoomContextProvider({ children }) {
         {
             "bea": [101, 102, 103, 104, 105, 106],
             "culture": [101, 102, 103],
-            'software' : [1,2,3,4,5,6,7,8]
+            'software': [1, 2, 3, 4, 5, 6]
         }
     );
     const [selectData, setSelectData] = useState([{
@@ -20,7 +20,7 @@ export function RoomContextProvider({ children }) {
         "end": '',
         "people": '',
     }]);
-    useEffect(()=> {
+    useEffect(() => {
     })
     return (
         <RoomContext.Provider value={{ roomData, selectData, setSelectData }}>

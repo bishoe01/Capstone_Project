@@ -1,14 +1,20 @@
-import React from 'react';
-
-function Board({nowData}) {
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+function Board({ nowData, department }) {
+    const [info, setInfo] = useState({});
+    useEffect(() => {
+        axios.get(`/data/departmentinfo.json`)
+            .then((res) => {
+                setInfo(res.data[department]);
+            })
+    }, [])
     return (
         <div>
-            <h2 className='w-full text-primary border-l-4 px-2 border-sub text-2xl'>경상대학</h2>
+            <h2 className='w-full text-primary border-l-4 px-2 border-sub text-2xl'>{info.name}</h2>
             <p className='flex flex-col p-4 text-gray-800 text-lg gap-4'>
-                <li>위치 : 경상대학 도서실(도담) 앞</li>
+                <li>위치 : {info.location}</li>
                 <li>인원 : 2~6인 ( 각 실별 수용인원 참고 )</li>
-                <li>특징 :{nowData && nowData.tags}</li>
-                <li>예약가능일자 : 사용 7일전부터 당일 예약가능</li>
+                <li>예약가능일자 : {info.caution}</li>
                 {/* <li className='flex gap-2'>주의사항 : {nowData && nowData.cautions.map((caution, index) => {
                     return <span key={index}>{caution}</span>
                 })}</li> */}

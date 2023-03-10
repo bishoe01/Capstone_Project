@@ -1,0 +1,22 @@
+{
+  "bea": {
+    "name": "경상대학",
+    "location": "경상대학 도서실(도담) 앞",
+    "tags": "멀티탭, 투명벽",
+    "caution": "사용 7일전부터 당일 예약이 가능",
+    "complain": {
+      "카카오톡": "www.naver.com",
+      "인스타그램": "www.naver.com"
+    }
+  },
+  "software": {
+    "name": "소프트웨어대학",
+    "location": "소프트웨어융합대학 5층",
+    "tags": "멀티탭, 투명벽",
+    "caution": "사용 7일전부터 당일 예약이 가능",
+    "complain": {
+      "카카오톡": "www.naver.com",
+      "인스타그램": "www.naver.com"
+    }
+  }
+}
