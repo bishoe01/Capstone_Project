@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from '../../components/Container';
 import Fade from 'react-reveal/Fade';
 import SideMenu from '../../components/SideMenu';
 import ReserveState from './ReserveState';
 import HistoryList from './HistoryList';
 
+import axios from 'axios';
+
+//axios로 받아올 데이터, 현재는 임시
 const histories = [
   {
     category: '스터디룸',
@@ -65,6 +68,16 @@ const histories = [
 ];
 
 function PlaceRental() {
+  const [history, setHistory] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     await axios.get('/api/user/order').then((res) => {});
+  //   };
+
+  //   fetchData();
+  // }, []);
+
   return (
     <Fade>
       <Container>

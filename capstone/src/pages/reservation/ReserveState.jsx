@@ -1,7 +1,7 @@
 import React from 'react';
+import CommonBtn from '../../components/CommonBtn';
 
-const TAG_STYLE = 'rounded-xl bg-primary text-primary text-xs text-text py-0.5 px-1 mx-0.5 before:align-middle';
-const STATE_BTN_STYLE = 'px-3 py-0.5 w-20 text-text rounded-lg before:align-middle';
+const TAG_STYLE = 'rounded-xl bg-primary text-primary text-sm text-text py-0.5 px-1.5 mx-1 before:align-middle tracking-wider';
 
 function ReserveState({ state, location, startTime, endTime, name, headCount, date }) {
   return (
@@ -48,9 +48,9 @@ function ReserveState({ state, location, startTime, endTime, name, headCount, da
               </div>
             </div>
             <div className='flex flex-col justify-around items-center basis-1/4'>
-              <button className={'bg-primary ' + STATE_BTN_STYLE}>입실</button>
-              <button className={'bg-sub ' + STATE_BTN_STYLE}>연장</button>
-              <button className={'bg-textgray ' + STATE_BTN_STYLE}>퇴실</button>
+              <CommonBtn width={20} height={7} color={'text'} bgColor={'primary'} text={'입실'} />
+              <CommonBtn width={20} height={7} color={'text'} bgColor={'sub'} text={'연장'} />
+              <CommonBtn width={20} height={7} color={'text'} bgColor={'textgray'} text={'퇴실'} />
             </div>
           </div>
         </div>
