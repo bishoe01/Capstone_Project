@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import Board from '../components/Board';
 import CurrentReservation from '../components/TimeTable/CurrentReservation';
 import Fade from 'react-reveal/Fade';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 function ReservationDetail(props) {
     const hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
