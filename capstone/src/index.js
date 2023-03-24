@@ -32,6 +32,7 @@ const router = createBrowserRouter([
           </Layout>
         ),
       },
+      { path: 'about', element: <h1>about</h1> },
       { path: 'reserve/:department', element: <TimeSelect /> },
       { path: 'reserve/:department/:room', element: <ReservationDetail /> },
     ]

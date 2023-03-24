@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import styles from '../../styles';
 function TimeLine({ room, current, department, targetDate, nowData, reserveCurrent }) {
     const hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
     const [timeRange, setTimeRange] = useState();
@@ -8,11 +9,11 @@ function TimeLine({ room, current, department, targetDate, nowData, reserveCurre
     useEffect(() => {
         axios.get(`/data/currentdata${department}.json`)
             .then((res) => {
-                setTimeRange(res.data[targetDate][room]);
+                setTimeRange(res?.data[targetDate][room]);
             })
     }, [targetDate]);
     return (
-        <div className="grid grid-cols-12 gap-4 text-center w-full border-b-[1px] border-sub items-center py-4 my-2">
+        <div className={`grid grid-cols-12 text-center w-full border-b-[1px] border-sub items-center py-6 my-2`}>
             <div className="col-span-1">{room}호</div>
             <div className="col-span-1">1층</div>
             <div className="col-span-1">2~4인</div>

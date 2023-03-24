@@ -4,8 +4,8 @@ import Fade from 'react-reveal/Fade';
 import { useRoomContext } from '../context/Roomdata';
 import TimeLine from '../components/TimeTable/TimeLine';
 import { IoChevronDown } from 'react-icons/io5';
-import axios from 'axios';
 import Board from '../components/Board';
+import styles from '../styles';
 function TimeSelect() {
     const location = useLocation();
     const { roomData } = useRoomContext();
@@ -31,8 +31,8 @@ function TimeSelect() {
     }, [])
 
     return (
-        <Fade>
-            <div className='flex flex-col p-4 my-12'>
+        <Fade className={`${styles.innerWidth}`}>
+            <div className={`flex flex-col ${styles.yPaddings}`}>
                 <Board nowData={nowData} department={location.pathname.split('/')[2]} />
             </div>
             <div className='flex justify-between'>
