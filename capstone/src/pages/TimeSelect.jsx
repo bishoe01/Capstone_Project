@@ -8,27 +8,26 @@ import Board from '../components/Board';
 import styles from '../styles';
 function TimeSelect() {
     const location = useLocation();
-    const { roomData } = useRoomContext();
+    const { roomData, reservelist } = useRoomContext();
     const department = roomData[location.pathname.split('/')[2]];
     const [reactionArray, setReactionArray] = useState([]);
     const [nowData, setNowData] = useState();
-    const [reserveCurrent, setReserveCurrent] = useState([]);
     const [targetDate, setTargetDate] = useState(new Date().toLocaleDateString().replace(/\./g, ''));
     // 
     const HandleDateChange = (e) => {
         setTargetDate(e.target.value);
     }
+    const currentDate = new Date();
+    const newReactionArray = [];
     useEffect(() => {
-        const currentDate = new Date();
-        const newReactionArray = [];
         for (let i = 0; i < 6; i++) {
             const day = new Date(currentDate);
-            day.setDate(currentDate.getDate() + i);
-            day.setMonth(currentDate.getMonth() + (Math.floor(day.getDate() / 31)));
-            newReactionArray.push({ date: day.toLocaleDateString().replace(/\./g, '') });
+            day.setDate(day.getDate() + i);
+            day.setMonth(day.getMonth() + Math.floor(day.getDate() / 31));
+            newReactionArray.push({ date: day.toISOString().slice(0, 10) });
         }
         setReactionArray(newReactionArray);
-    }, [])
+    }, []);
 
     return (
         <Fade className={`${styles.innerWidth}`}>
@@ -64,7 +63,11 @@ function TimeSelect() {
                     <div className="col-span-1">예약</div>
                 </div>
                 {department.map((item, index) => (
-                    <TimeLine key={item} department={location.pathname.split('/')[2]} targetDate={targetDate} room={item} nowData={nowData} reserveCurrent={reserveCurrent && reserveCurrent} />
+                    <TimeLine key={item}
+                        department={location.pathname.split('/')[2]}
+                        targetDate={targetDate}
+                        room={item}
+                    />
                 ))}
             </section>
 

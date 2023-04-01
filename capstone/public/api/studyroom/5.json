@@ -1,0 +1,31 @@
+{
+  "info": {
+    "name": "큐브0",
+    "university": "소프트웨어융합대학",
+    "building": "학연산클러스터지원센터",
+    "location": "5층",
+    "capacity": 4,
+    "descriptions": ["투명한 벽으로 구분된 팀플실"],
+    "cautions": ["음식물 반입금지", "시끄럽게 떠드는 행위 금지"],
+    "drinks": ["커피", "물"],
+    "tags": ["태그1", "태그2"]
+  },
+  "reservation": [
+    {
+      "orderId": 1,
+      "date": "2023-04-01",
+      "state": "정상",
+      "name": "홍길동동",
+      "startTime": 10.5,
+      "endTime": 12.5
+    },
+    {
+      "orderId": 2,
+      "date": "2023-04-01",
+      "state": "정상",
+      "name": "홍길동동",
+      "startTime": 13.5,
+      "endTime": 15.5
+    }
+  ]
+}

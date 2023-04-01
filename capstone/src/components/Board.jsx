@@ -8,6 +8,9 @@ function Board({ nowData, department }) {
             .then((res) => {
                 setInfo(res.data[department]);
             })
+            .then(() => {
+                console.log(info);
+            })
     }, [])
     return (
         <div className={`${styles.innerWidth} mx-auto`}>
@@ -21,8 +24,8 @@ function Board({ nowData, department }) {
                 })}</li> */}
                 <li className='flex gap-4'>
                     문의:
-                    <a href="#" className='underline hover:text-sky-400'>카카오톡 오픈채팅방</a>
-                    <a href="#" className='underline hover:text-sky-400'>공식 인스타그램</a>
+                    <a href="#soso" className='underline hover:text-sky-400'>카카오톡 오픈채팅방</a>
+                    <a href="#wowo" className='underline hover:text-sky-400'>공식 인스타그램</a>
                 </li>
             </p>
         </div>
