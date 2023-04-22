@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import './scrollBar.css';
-import CommonBtn from '../../components/CommonBtn';
+import CommonBtn from './CommonBtn';
 
-const TITLE_STYLE = 'w-full text-left text-sm text-textgray';
+const TITLE_STYLE = 'w-full text-left text-base text-textgray';
 const CONTENT_STYLE = 'text-base text-primary text-center';
 const VERTICAL_LINE = 'border border-r border-sub h-6 m-auto';
 
 const StateDiv = ({ color, bgColor, text }) => {
-  return <div className={`w-20 h-7 text-${color} text-base text-center bg-${bgColor} rounded-md p-1 mx-2 tracking-wide`}>{text}</div>;
+  return <div className={`w-24 h-7 text-${color} text-base text-center bg-${bgColor} rounded-md py-1 mx-2 tracking-wide`}>{text}</div>;
 };
 
 const List = ({ history }) => {
@@ -38,15 +38,15 @@ const List = ({ history }) => {
         <div className={VERTICAL_LINE} />
         <div className='flex flex-col px-3 w-10%'>
           <h3 className={TITLE_STYLE}>인원</h3>
-          <span className={CONTENT_STYLE}>4명</span>
+          <span className={CONTENT_STYLE}>{history.bookingCapacity}</span>
         </div>
         <div className={VERTICAL_LINE} />
-        <div className='flex flex-col justify-center align-center w-15% px-3'>
+        <div className='flex flex-col justify-center items-center w-15%'>
           {
             {
-              정상: <StateDiv color={'text'} bgColor={'primary'} text={'이용 완료'} />,
-              반납: <StateDiv color={'text'} bgColor={'sub'} text={'사용 완료'} />,
-              취소: <StateDiv color={'text'} bgColor={'gray-500'} text={'예약 취소'} />,
+              정상: <StateDiv color={'text'} bgColor={'primary'} text={'예약 완료'} />,
+              반납: <StateDiv color={'text'} bgColor={'sub'} text={'반납 완료'} />,
+              취소: <StateDiv color={'text'} bgColor={'gray-500'} text={'취소된 예약'} />,
             }[history.state]
           }
         </div>
@@ -58,7 +58,7 @@ const List = ({ history }) => {
 function HistoryList({ histories }) {
   return (
     <>
-      <ul className='h-[250px] min-w-[932px] overflow-auto scrollbar'>
+      <ul className='h-[200px] min-w-[932px] overflow-auto scrollbar'>
         {histories.map((history, i) => {
           return (
             <li className='flex justify-center align-center py-1' key={i}>

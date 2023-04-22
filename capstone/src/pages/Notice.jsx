@@ -1,9 +1,9 @@
 import React from 'react';
 import Fade from 'react-reveal';
-import Container from '../../components/Container';
-import SideMenu from '../../components/SideMenu';
-import Table from './Table';
-import Pagination from './Pagination';
+import Container from '../components/Container';
+import SideMenu from '../components/SideMenu';
+import Table from '../components/Table';
+import Pagination from '../components/Pagination';
 
 const BTN_STYLE = 'bg-sub text-text text-sm py-1 px-3 rounded-2xl';
 
@@ -13,7 +13,6 @@ function Notice() {
   return (
     <Fade>
       <Container>
-        <SideMenu />
         <div className='flex flex-col w-full min-w-[932px] px-12'>
           <h3 className='text-primary font-black text-lg'>공지사항</h3>
           <div className='flex flex-col items-center'>

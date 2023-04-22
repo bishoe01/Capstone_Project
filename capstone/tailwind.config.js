@@ -31,6 +31,9 @@ module.exports = withMT({
       width: {
         ...sizeList(20, 5),
       },
+      gridTemplateColumns: {
+        30: 'repeat(30, minmax(0, 1fr))',
+      },
     },
   },
   plugins: [],

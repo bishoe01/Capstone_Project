@@ -11,10 +11,13 @@ import Layout from './layout/Layout';
 import Reserve from './pages/Reserve';
 import TimeSelect from './pages/TimeSelect';
 import Login from './pages/Login';
-import Profile from './pages/profile/Profile';
-import PlaceRental from './pages/reservation/PlaceRental';
-import ReservationDetail from './pages/ReservationDetail';
-import Notice from './pages/notice/Notice';
+import Profile from './pages/Profile';
+import PlaceRental from './pages/ReservationHistory';
+import ReservationHistory from './pages/ReservationDetail';
+import Notice from './pages/Notice';
+import { UserProvider } from './context/UserData';
+
+import Dashboard from './pages/Dashboard';
 
 const router = createBrowserRouter([
   {
@@ -28,9 +31,23 @@ const router = createBrowserRouter([
       },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
-      { path: 'profile', element: <Profile /> },
-      { path: 'placerental', element: <PlaceRental /> },
-      { path: 'notice', element: <Notice /> },
+      {
+        path: 'dashboard',
+        element: (
+          <UserProvider>
+            <Dashboard />
+          </UserProvider>
+        ),
+        children: [
+          {
+            path: 'profile',
+            element: <Profile />,
+          },
+          { path: 'placerental', element: <PlaceRental /> },
+          { path: 'notice', element: <Notice /> },
+        ],
+      },
+
       {
         path: 'login',
         element: (
@@ -42,7 +59,10 @@ const router = createBrowserRouter([
       { path: 'reserve', element: <Reserve /> },
 
       { path: 'reserve/:department', element: <TimeSelect /> },
-      { path: 'reserve/:department/:room', element: <ReservationDetail /> },
+      {
+        path: 'reserve/:department/:room',
+        element: <ReservationHistory />,
+      },
     ],
   },
 ]);
