@@ -13,7 +13,7 @@
   "reservation": [
     {
       "orderId": 1,
-      "date": "2023-04-01",
+      "date": "2023-04-14",
       "state": "정상",
       "name": "홍길동동",
       "startTime": 13.5,
@@ -21,7 +21,7 @@
     },
     {
       "orderId": 2,
-      "date": "2023-04-01",
+      "date": "2023-04-14",
       "state": "정상",
       "name": "홍길동동",
       "startTime": 9.5,

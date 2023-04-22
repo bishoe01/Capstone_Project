@@ -17,16 +17,35 @@ export function RoomContextProvider({ children }) {
         "people": '',
     }]);
     const [reservelist, setReservelist] = useState();
-    useEffect(() => {
-        axios.get(`/api/studyroom/1.json`)
-            .then((res) => {
-                setReservelist(res.data.reservation);
+    const hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+    const url = 'https://port-0-erica-studyroom-6g2llfs1h510.sel3.cloudtype.app';
+    const [jwt, setJwt] = useState("");
 
+    useEffect(() => {
+        axios
+            .post(
+                "https://port-0-erica-studyroom-6g2llfs1h510.sel3.cloudtype.app/api/auth/login",
+                {
+                    username: "test",
+                    password: "test"
+                }
+            )
+            .then(function (response) {
+                setJwt(response.data.jwtToken);
             })
+            .catch(function (error) {
+                console.log(error);
+            });
     }, []);
 
+    useEffect(() => {
+        console.log("jwt 변경 " + jwt);
+    }, [jwt]);
+
+
+
     return (
-        <RoomContext.Provider value={{ roomData, selectData, setSelectData, reservelist }}>
+        <RoomContext.Provider value={{ roomData, selectData, setSelectData, reservelist, jwt, hours, url }}>
             {children}
         </RoomContext.Provider>)
 }

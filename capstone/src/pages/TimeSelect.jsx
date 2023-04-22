@@ -12,11 +12,9 @@ function TimeSelect() {
     const department = roomData[location.pathname.split('/')[2]];
     const [reactionArray, setReactionArray] = useState([]);
     const [nowData, setNowData] = useState();
-    const [targetDate, setTargetDate] = useState(new Date().toLocaleDateString().replace(/\./g, ''));
-    // 
-    const HandleDateChange = (e) => {
-        setTargetDate(e.target.value);
-    }
+    const [targetDate, setTargetDate] = useState();
+
+    const HandleDateChange = (e) => setTargetDate(e.target.value);
     const currentDate = new Date();
     const newReactionArray = [];
     useEffect(() => {
@@ -27,11 +25,12 @@ function TimeSelect() {
             newReactionArray.push({ date: day.toISOString().slice(0, 10) });
         }
         setReactionArray(newReactionArray);
+        setTargetDate(newReactionArray[0].date);
     }, []);
 
     return (
         <Fade className={`${styles.innerWidth}`}>
-            <div className={`flex flex-col ${styles.yPaddings}`}>
+            <div className={`flex flex-col ${styles.yPaddings} ${styles.innerWidth}`}>
                 <Board nowData={nowData} department={location.pathname.split('/')[2]} />
             </div>
             <div className='flex justify-between'>
@@ -67,6 +66,7 @@ function TimeSelect() {
                         department={location.pathname.split('/')[2]}
                         targetDate={targetDate}
                         room={item}
+                        setTargetDate={setTargetDate}
                     />
                 ))}
             </section>

@@ -6,39 +6,63 @@ import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { MdDateRange } from 'react-icons/md';
 import styles from '../styles';
+import { useRoomContext } from '../context/Roomdata';
+import TimeLine from '../components/TimeTable/TimeLine';
 
 function ReservationDetail(props) {
     const navigate = useNavigate();
-    const hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+    const { jwt, hours, url } = useRoomContext();
     const location = useLocation();
+    const { targetDate, setTargetDate, room } = location;
     const [timeRange, setTimeRange] = useState();
-    const [targetDate, setTargetDate] = useState(new Date().toLocaleDateString().replace(/\./g, ''));
+    // const [targetDate, setTargetDate] = useState(new Date().toLocaleDateString().replace(/\./g, ''));
     const [department, roomNumber] = [location.pathname.split('/')[2], location.pathname.split('/')[3]];
     const [reserveInfo, setReserveInfo] = useState({ room: roomNumber, date: targetDate, start: 9, end: 9 });
-    const HandleDateChange = (e) => {
-        setTargetDate(e.target.value);
-    }
+    const HandleDateChange = (e) => setTargetDate(e.target.value);
     const [dateArray, setDateArray] = useState([]);
+    // useEffect(() => {
+    //     const token = `Bearer ${jwt}`;
+    //     axios.get(`${url}/api/studyroom/${room}`, {
+    //         headers: {
+    //             Authorization: token
+    //         }
+    //     })
+    //         .then((res) => res.data.reservation)
+    //         .then((res) => res.filter((item) => item.date === targetDate))
+    //         .then((res) => {
+    //             const start = Math.ceil(res[0]?.startTime * 2) / 2;
+    //             const end = Math.floor(res[0]?.endTime * 2) / 2;
+    //             let tmptime = [];
+    //             for (let i = start; i <= end; i += .5) {
+    //                 tmptime.push(i);
+    //             }
+    //             setTimeRange(tmptime)
+    //         })
+    // }, [targetDate, jwt])
     useEffect(() => {
-        axios.get('/data/currentdatasoftware.json')
-            .then((res) => {
-                setTimeRange(res.data[targetDate][roomNumber]);
-                setDateArray(Object.keys(res.data));
-                setReserveInfo({ ...reserveInfo, date: targetDate });
-            })
+        console.log(room, "room")
     }, [targetDate])
     return (
         <Fade>
             <div className={`flex flex-col ${styles.innerWidth} ${styles.paddings} gap-[24px] mx-auto`}>
                 <Board />
                 <span className='flex gap-4 text-xl leading-[20px] text-primary'><MdDateRange className='text-black' />예약날짜</span>
-                <select onChange={HandleDateChange} className="w-[150px] apperance-none bg-white border border-gray-400 hover:border-gray-500 p-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                    {dateArray && dateArray.map((item, index) => (
+                <select defaultValue={targetDate} onChange={HandleDateChange} className="w-[150px] apperance-none bg-white border border-gray-400 hover:border-gray-500 p-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                    {/* {dateArray && dateArray.map((item, index) => (
                         <option key={index} value={item}>{item}</option>
                     ))}
+                     */}
+                    <option value={targetDate}>{targetDate}</option>
+
                 </select>
                 <div className={`${styles.flexStart} `}>
-                    <CurrentReservation room={roomNumber} timeRange={timeRange} hours={hours} />
+                    <CurrentReservation
+                        room={roomNumber}
+                        timeRange={timeRange}
+                        hours={hours}
+                        targetDate={targetDate}
+                        setTimeRange={setTimeRange}
+                    />
                 </div>
                 <form >
                     <div className='flex flex-col gap-4'>

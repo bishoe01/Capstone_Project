@@ -2,34 +2,30 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useRoomContext } from '../../context/Roomdata';
-function TimeLine({ room, department, targetDate, reservelist }) {
-    const hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+function TimeLine({ room, department, targetDate, reservelist, setTargetDate }) {
     const [timeRange, setTimeRange] = useState([]);
-    let tmptime = [];
     const navigate = useNavigate();
-    // useEffect(() => {
-    //     const start = Math.ceil(reservelist[0]?.startTime * 2) / 2;
-    //     const end = Math.floor(reservelist[0]?.endTime * 2) / 2;
-    //     for (let i = start; i <= end; i += .5) {
-    //         tmptime.push(i);
-    //     }
-    //     setTimeRange(tmptime)
-    // }, [reservelist]);
+    const { jwt, hours, url } = useRoomContext();
+
     useEffect(() => {
-        axios.get(`/api/studyroom/${room}.json`)
+        const token = `Bearer ${jwt}`;
+        axios.get(`${url}/api/studyroom/${room}`, {
+            headers: {
+                Authorization: token
+            }
+        })
             .then((res) => res.data.reservation)
             .then((res) => res.filter((item) => item.date === targetDate))
             .then((res) => {
                 const start = Math.ceil(res[0]?.startTime * 2) / 2;
                 const end = Math.floor(res[0]?.endTime * 2) / 2;
+                let tmptime = [];
                 for (let i = start; i <= end; i += .5) {
                     tmptime.push(i);
                 }
                 setTimeRange(tmptime)
-            }
-            )
-    }, [targetDate])
-
+            })
+    }, [targetDate, jwt])
 
     return (
         <div className={`grid grid-cols-12 text-center w-full border-b-[1px] border-sub items-center py-6 my-2`}>
@@ -48,7 +44,8 @@ function TimeLine({ room, department, targetDate, reservelist }) {
                 ))}
             </div>
             <div className="col-span-1">
-                <button onClick={() => navigate(`/reserve/${department}/${room}`)} className="border-2 p-2 rounded-md border-sub">예약하기</button>
+                <button onClick={() => navigate(`/reserve/${department}/${room}`,
+                    { state: { targetDate: targetDate, setTargetDate: setTargetDate, room: room } })} className="border-2 p-2 rounded-md border-sub">예약하기</button>
             </div>
         </div>
     );
