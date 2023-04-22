@@ -1,0 +1,676 @@
+[
+  {
+    "study_room_id": 1,
+    "building": "학연산클러스터지원센터",
+    "capacity": 4,
+    "location": "5층",
+    "name": "큐브 0",
+    "university": "소프트웨어융합대학"
+  },
+  {
+    "study_room_id": 2,
+    "building": "학연산클러스터지원센터",
+    "capacity": 4,
+    "location": "5층",
+    "name": "큐브 1",
+    "university": "소프트웨어융합대학"
+  },
+  {
+    "study_room_id": 3,
+    "building": "학연산클러스터지원센터",
+    "capacity": 4,
+    "location": "5층",
+    "name": "큐브 2",
+    "university": "소프트웨어융합대학"
+  },
+  {
+    "study_room_id": 4,
+    "building": "학연산클러스터지원센터",
+    "capacity": 4,
+    "location": "5층",
+    "name": "큐브 3",
+    "university": "소프트웨어융합대학"
+  },
+
+  "학연산클러스터 지원센터" :{
+    "study_room_id": 4,
+    "capacity": 4,
+    "location": "5층",
+    "name": "큐브 3",
+    "university": "소프트웨어융합대학"
+  }
+  
+,
+  {
+    "study_room_id": 5,
+    "building": "4공학관",
+    "capacity": 6,
+    "location": "1층 SMaSH",
+    "name": "SMaSH 0",
+    "university": "소프트웨어융합대학"
+  },
+  {
+    "study_room_id": 6,
+    "building": "4공학관",
+    "capacity": 6,
+    "location": "1층 SMaSH",
+    "name": "SMaSH 1",
+    "university": "소프트웨어융합대학"
+  },
+  {
+    "study_room_id": 7,
+    "building": "4공학관",
+    "capacity": 6,
+    "location": "1층 SMaSH",
+    "name": "SMaSH 2",
+    "university": "소프트웨어융합대학"
+  },
+  {
+    "study_room_id": 8,
+    "building": "4공학관",
+    "capacity": 6,
+    "location": "1층 SMaSH",
+    "name": "SMaSH 3",
+    "university": "소프트웨어융합대학"
+  },
+  {
+    "study_room_id": 9,
+    "building": "4공학관",
+    "capacity": 6,
+    "location": "1층 SMaSH",
+    "name": "Alan Turing",
+    "university": "소프트웨어융합대학"
+  },
+  {
+    "study_room_id": 10,
+    "building": "4공학관",
+    "capacity": 6,
+    "location": "1층 SMaSH",
+    "name": "Steve Jobs",
+    "university": "소프트웨어융합대학"
+  },
+  {
+    "study_room_id": 11,
+    "building": "1공학관",
+    "capacity": 60,
+    "location": "1층",
+    "name": "105호",
+    "university": "공학대학"
+  },
+  {
+    "study_room_id": 12,
+    "building": "1공학관",
+    "capacity": 80,
+    "location": "2층",
+    "name": "202호",
+    "university": "공학대학"
+  },
+  {
+    "study_room_id": 13,
+    "building": "1공학관",
+    "capacity": 60,
+    "location": "3층",
+    "name": "301호",
+    "university": "공학대학"
+  },
+  {
+    "study_room_id": 14,
+    "building": "1공학관",
+    "capacity": 80,
+    "location": "4층",
+    "name": "401호",
+    "university": "공학대학"
+  },
+  {
+    "study_room_id": 15,
+    "building": "1공학관",
+    "capacity": 80,
+    "location": "5층",
+    "name": "506호",
+    "university": "공학대학"
+  },
+  {
+    "study_room_id": 16,
+    "building": "2공학관",
+    "capacity": 25,
+    "location": "2층",
+    "name": "114호",
+    "university": "공학대학"
+  },
+  {
+    "study_room_id": 17,
+    "building": "2공학관",
+    "capacity": 60,
+    "location": "2층",
+    "name": "205호",
+    "university": "공학대학"
+  },
+  {
+    "study_room_id": 18,
+    "building": "2공학관",
+    "capacity": 160,
+    "location": "2층",
+    "name": "223호",
+    "university": "공학대학"
+  },
+  {
+    "study_room_id": 19,
+    "building": "2공학관",
+    "capacity": 60,
+    "location": "4층",
+    "name": "419호",
+    "university": "공학대학"
+  },
+  {
+    "study_room_id": 20,
+    "building": "2공학관",
+    "capacity": 80,
+    "location": "4층",
+    "name": "428호",
+    "university": "공학대학"
+  },
+  {
+    "study_room_id": 21,
+    "building": "3공학관",
+    "capacity": 80,
+    "location": "2층",
+    "name": "219호",
+    "university": "공학대학"
+  },
+  {
+    "study_room_id": 22,
+    "building": "약학관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "PBL(근면)",
+    "university": "약학대학"
+  },
+  {
+    "study_room_id": 23,
+    "building": "약학관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "PBL(정직)",
+    "university": "약학대학"
+  },
+  {
+    "study_room_id": 24,
+    "building": "약학관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "PBL(겸손)",
+    "university": "약학대학"
+  },
+  {
+    "study_room_id": 25,
+    "building": "약학관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "PBL(봉사)",
+    "university": "약학대학"
+  },
+  {
+    "study_room_id": 26,
+    "building": "1과학기술관",
+    "capacity": 40,
+    "location": "2층",
+    "name": "208호 IC-PBL 세미나실1",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 27,
+    "building": "1과학기술관",
+    "capacity": 40,
+    "location": "2층",
+    "name": "214호 IC-PBL 캡스톤 디자인실",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 28,
+    "building": "1과학기술관",
+    "capacity": 40,
+    "location": "3층",
+    "name": "308호 IC-PBL 세미나실2",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 29,
+    "building": "1과학기술관",
+    "capacity": 40,
+    "location": "3층",
+    "name": "309호 멀티미디어실",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 30,
+    "building": "1과학기술관",
+    "capacity": 40,
+    "location": "3층",
+    "name": "310호 IC-PBL 세미나실3",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 31,
+    "building": "1과학기술관",
+    "capacity": 40,
+    "location": "4층",
+    "name": "407호 IC-PBL 세미나실4",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 32,
+    "building": "1과학기술관",
+    "capacity": 40,
+    "location": "4층",
+    "name": "417호 IC-PBL 강의실",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 33,
+    "building": "2과학기술관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "105호 IC-PBL ScienceUp Studio",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 34,
+    "building": "2과학기술관",
+    "capacity": 40,
+    "location": "2층",
+    "name": "206호 강의실",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 35,
+    "building": "2과학기술관",
+    "capacity": 40,
+    "location": "2층",
+    "name": "210호 IC-PBL 강의실",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 36,
+    "building": "2과학기술관",
+    "capacity": 80,
+    "location": "3층",
+    "name": "304호 강의실",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 37,
+    "building": "2과학기술관",
+    "capacity": 80,
+    "location": "3층",
+    "name": "305호 강의실",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 38,
+    "building": "2과학기술관",
+    "capacity": 80,
+    "location": "4층",
+    "name": "412호 강의실",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 39,
+    "building": "2과학기술관",
+    "capacity": 80,
+    "location": "4층",
+    "name": "413호 강의실",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 40,
+    "building": "2과학기술관",
+    "capacity": 160,
+    "location": "5층",
+    "name": "511호 계단강의실",
+    "university": "과학기술융합대학"
+  },
+  {
+    "study_room_id": 41,
+    "building": "국제문화관",
+    "capacity": 80,
+    "location": "1층",
+    "name": "IC-PBL 꿈의 둥지(OPEN SPACE)",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 42,
+    "building": "국제문화관",
+    "capacity": 60,
+    "location": "1층",
+    "name": "122호 IC-PBL 강의실",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 43,
+    "building": "국제문화관",
+    "capacity": 60,
+    "location": "2층",
+    "name": "201호 강의실",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 44,
+    "building": "국제문화관",
+    "capacity": 60,
+    "location": "2층",
+    "name": "202호 강의실",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 45,
+    "building": "국제문화관",
+    "capacity": 60,
+    "location": "3층",
+    "name": "304호 강의실",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 46,
+    "building": "국제문화관",
+    "capacity": 60,
+    "location": "3층",
+    "name": "305호 강의실",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 47,
+    "building": "언론정보관",
+    "capacity": 40,
+    "location": "지하1층",
+    "name": "114호 교양강의실 1",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 48,
+    "building": "언론정보관",
+    "capacity": 40,
+    "location": "지하1층",
+    "name": "115호 교양강의실 2",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 49,
+    "building": "언론정보관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "수업행동분석강의실",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 50,
+    "building": "언론정보관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "ALC 1",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 51,
+    "building": "언론정보관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "ALC 2",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 52,
+    "building": "언론정보관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "스마트교육강의실",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 53,
+    "building": "언론정보관",
+    "capacity": 40,
+    "location": "2층",
+    "name": "202호 IC-PBL 강의실",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 54,
+    "building": "언론정보관",
+    "capacity": 40,
+    "location": "2층",
+    "name": "209호 IC-PBL 세미나실",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 55,
+    "building": "언론정보관",
+    "capacity": 20,
+    "location": "2층",
+    "name": "오디오스튜디오",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 56,
+    "building": "언론정보관",
+    "capacity": 20,
+    "location": "2층",
+    "name": "비디오스튜디오",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 57,
+    "building": "언론정보관",
+    "capacity": 5,
+    "location": "3층",
+    "name": "IC-PBL Lab.1 ",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 58,
+    "building": "언론정보관",
+    "capacity": 5,
+    "location": "3층",
+    "name": "IC-PBL Lab.2 ",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 59,
+    "building": "언론정보관",
+    "capacity": 5,
+    "location": "3층",
+    "name": "IC-PBL Lab.3 ",
+    "university": "국제문학대학"
+  },
+  {
+    "study_room_id": 60,
+    "building": "디자인연구관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "110호 영상디자인 1실",
+    "university": "디자인대학"
+  },
+  {
+    "study_room_id": 61,
+    "building": "디자인연구관",
+    "capacity": 20,
+    "location": "1층",
+    "name": "드로잉실",
+    "university": "디자인대학"
+  },
+  {
+    "study_room_id": 62,
+    "building": "디자인연구관",
+    "capacity": 40,
+    "location": "2층",
+    "name": "서피스인테리어 6실",
+    "university": "디자인대학"
+  },
+  {
+    "study_room_id": 63,
+    "building": "디자인연구관",
+    "capacity": 40,
+    "location": "3층",
+    "name": "세미나실",
+    "university": "디자인대학"
+  },
+  {
+    "study_room_id": 64,
+    "building": "디자인교육관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "영상디자인스튜디오3실",
+    "university": "디자인대학"
+  },
+  {
+    "study_room_id": 65,
+    "building": "디자인교육관",
+    "capacity": 40,
+    "location": "1층",
+    "name": "영상디자인2실",
+    "university": "디자인대학"
+  },
+  {
+    "study_room_id": 66,
+    "building": "디자인교육관",
+    "capacity": 40,
+    "location": "2층",
+    "name": "영상디자인편집실",
+    "university": "디자인대학"
+  },
+  {
+    "study_room_id": 67,
+    "building": "디자인교육관",
+    "capacity": 20,
+    "location": "2층",
+    "name": "IT미디어랩",
+    "university": "디자인대학"
+  },
+  {
+    "study_room_id": 68,
+    "building": "디자인문화관",
+    "capacity": 40,
+    "location": "2층",
+    "name": "104호 IC-PBL 강의실2",
+    "university": "디자인대학"
+  },
+  {
+    "study_room_id": 69,
+    "building": "디자인문화관",
+    "capacity": 40,
+    "location": "2층",
+    "name": "106호 IC-PBL 강의실1",
+    "university": "디자인대학"
+  },
+  {
+    "study_room_id": 70,
+    "building": "디자인문화관",
+    "capacity": 40,
+    "location": "2층",
+    "name": "108호 패션디자인실",
+    "university": "디자인대학"
+  },
+  {
+    "study_room_id": 71,
+    "building": "체육관",
+    "capacity": 60,
+    "location": "1층",
+    "name": "101호 ICT실습준비실",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 72,
+    "building": "체육관",
+    "capacity": 60,
+    "location": "1층",
+    "name": "102호 시청각실",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 73,
+    "building": "체육관",
+    "capacity": 60,
+    "location": "1층",
+    "name": "105호 ICT실습준비실",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 74,
+    "building": "체육관",
+    "capacity": 60,
+    "location": "2층",
+    "name": "201호 강의실",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 75,
+    "building": "체육관",
+    "capacity": 60,
+    "location": "2층",
+    "name": "202호 강의실",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 76,
+    "building": "뮤즈홀",
+    "capacity": 4,
+    "location": "2층",
+    "name": "개인연습실 11",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 77,
+    "building": "뮤즈홀",
+    "capacity": 4,
+    "location": "2층",
+    "name": "개인연습실 12",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 78,
+    "building": "뮤즈홀",
+    "capacity": 4,
+    "location": "2층",
+    "name": "개인연습실 13",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 79,
+    "building": "뮤즈홀",
+    "capacity": 4,
+    "location": "2층",
+    "name": "개인연습실 14",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 80,
+    "building": "뮤즈홀",
+    "capacity": 4,
+    "location": "2층",
+    "name": "개인연습실 14",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 81,
+    "building": "뮤즈홀",
+    "capacity": 10,
+    "location": "3층",
+    "name": "소 연습실1",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 82,
+    "building": "뮤즈홀",
+    "capacity": 10,
+    "location": "3층",
+    "name": "소 연습실2",
+    "university": "예체능대학"
+  },
+  {
+    "study_room_id": 83,
+    "building": "뮤즈홀",
+    "capacity": 5,
+    "location": "3층",
+    "name": "녹음 컨트롤실",
+    "university": "예체능대학"
+  }
+]

@@ -4,11 +4,8 @@ import './index.css';
 import App from './App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
-import About from './pages/About';
 import Home from './pages/Home';
-import Contact from './pages/Contact';
 import Layout from './layout/Layout';
-import Reserve from './pages/Reserve';
 import TimeSelect from './pages/TimeSelect';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
@@ -29,8 +26,7 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />,
       },
-      { path: 'about', element: <About /> },
-      { path: 'contact', element: <Contact /> },
+
       {
         path: 'dashboard',
         element: (
@@ -56,8 +52,8 @@ const router = createBrowserRouter([
           </Layout>
         ),
       },
-      { path: 'reserve', element: <Reserve /> },
 
+      { path: 'about', element: <h1>about</h1> },
       { path: 'reserve/:department', element: <TimeSelect /> },
       {
         path: 'reserve/:department/:room',
