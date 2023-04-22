@@ -1,18 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 function RoomData() {
     const [data, setData] = useState([]);
-    function getData(){
+    // useEffect(() => {
+    //     axios.get('/data/room_data.json')
+    //         .then(response => setData(response.data))
+    //         .catch(error => console.error(error));
+    // }, []);
+    const getData = () => {
         axios.get('/data/room_data.json')
             .then(response => setData(response.data))
             .catch(error => console.error(error));
     }
-    
+
     return (
-        
+
         <ul>
-            <button onClick={getData}>
+            <button onClick={() => getData}>
                 데이터 불러오기
             </button>
             {data ? console.log(data.reservation) : ""}
