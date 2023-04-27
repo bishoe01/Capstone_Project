@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Container from '../components/Container';
 import Fade from 'react-reveal/Fade';
-import SideMenu from '../components/SideMenu';
 import ReserveState from '../components/ReserveState';
 import HistoryList from '../components/HistoryList';
 
@@ -16,27 +15,21 @@ function PlaceRental() {
     const URL = 'https://port-0-erica-studyroom-6g2llfs1h510.sel3.cloudtype.app';
 
     const fetchData = async () => {
+      let JWT_TOKEN = localStorage.getItem('JWT');
       await axios
-        .post(`${URL}/api/auth/login`, {
-          username: 'yh2',
-          password: 'yh2',
+        .get(`${URL}/api/user/order`, {
+          headers: { Authorization: `Bearer ${JWT_TOKEN}` },
         })
         .then((res) => {
-          setJWT(res.data.jwtToken);
-          axios
-            .get(`${URL}/api/user/order`, {
-              headers: { Authorization: `Bearer ${res.data.jwtToken}` },
-            })
-            .then((res) => {
-              let data = res.data.sort((a, b) => {
-                if (a.date < b.date) return 1;
-                else if (a.date === b.date) {
-                  return b.startTime - a.startTime;
-                } else return -1;
-              });
-              setHistory(data);
-              setIsExistHistory(data.length);
-            });
+          setJWT(JWT_TOKEN);
+          let data = res.data.sort((a, b) => {
+            if (a.date < b.date) return 1;
+            else if (a.date === b.date) {
+              return b.startTime - a.startTime;
+            } else return -1;
+          });
+          setHistory(data);
+          setIsExistHistory(data.length);
         });
     };
     fetchData();

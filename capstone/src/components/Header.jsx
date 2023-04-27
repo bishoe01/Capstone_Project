@@ -1,9 +1,38 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BsBook } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
-function Header(props) {
-  const [links, setLinks] = useState(['Home', 'About', 'Contact']);
+import { Link, useNavigate } from 'react-router-dom';
+
+function HeaderContantWithLogin() {
   const informationLinks = ['Profile', 'PlaceRental', 'Notice'];
+
+  return informationLinks.map((link, index) => (
+    <li className=' hover:text-emphasize' key={index}>
+      <Link to={`dashboard/${link.toLowerCase()}`}>{link}</Link>
+    </li>
+  ));
+}
+
+function Header() {
+  const [isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate();
+
+  const links = ['Home', 'About', 'Contact'];
+
+  useEffect(() => {
+    if (localStorage.getItem('JWT') !== null) {
+      setIsLogin(true);
+    } else {
+      setIsLogin(false);
+      navigate('/');
+    }
+  }, []);
+
+  const logoutHandler = () => {
+    localStorage.removeItem('JWT');
+    navigate('/');
+    window.location.reload();
+  };
+
   return (
     <header className='flex justify-between items-center p-6 border-b-2 border-sub text-2xl text-primary'>
       <Link to={'/'} className='flex items-center'>
@@ -18,13 +47,24 @@ function Header(props) {
             </li>
           );
         })}
-        {informationLinks.map((link, index) => {
-          return (
-            <li className=' hover:text-emphasize' key={index}>
-              <Link to={`dashboard/${link.toLowerCase()}`}>{link}</Link>
+
+        {isLogin ? (
+          <>
+            <HeaderContantWithLogin />
+            <li className='text-gray-600 hover:cursor-pointer' onClick={logoutHandler}>
+              Log Out
             </li>
-          );
-        })}
+          </>
+        ) : (
+          <>
+            <li className=' hover:text-emphasize'>
+              <Link to={`login`}>Log In</Link>
+            </li>
+            <li className=' hover:text-emphasize'>
+              <Link to={`register`}>Register</Link>
+            </li>
+          </>
+        )}
       </ul>
     </header>
   );

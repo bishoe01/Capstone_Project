@@ -8,6 +8,8 @@ import Home from './pages/Home';
 import Layout from './layout/Layout';
 import TimeSelect from './pages/TimeSelect';
 import Login from './pages/Login';
+import Register from './pages/Register';
+import RegisterSuccess from './pages/RegisterSuccess';
 import Profile from './pages/Profile';
 import PlaceRental from './pages/ReservationHistory';
 import ReservationHistory from './pages/ReservationDetail';
@@ -26,7 +28,18 @@ const router = createBrowserRouter([
         path: '/',
         element: <Home />,
       },
-
+      {
+        path: 'login',
+        element: <Login />,
+      },
+      {
+        path: 'register',
+        element: <Register />,
+      },
+      {
+        path: 'register/registered',
+        element: <RegisterSuccess />,
+      },
       {
         path: 'dashboard',
         element: (
@@ -54,6 +67,7 @@ const router = createBrowserRouter([
       },
 
       { path: 'about', element: <h1>about</h1> },
+      { path: 'Contact', element: <h1>contact</h1> },
       { path: 'reserve/:department', element: <TimeSelect /> },
       {
         path: 'reserve/:department/:room',

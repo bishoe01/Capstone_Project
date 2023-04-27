@@ -27,6 +27,7 @@ module.exports = withMT({
         border: '#BBBBBB',
         textgray: '#9D9D9D',
         accent: '#F07B3F',
+        warning: '#ef5350',
       },
       width: {
         ...sizeList(20, 5),
