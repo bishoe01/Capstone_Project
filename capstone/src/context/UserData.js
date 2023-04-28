@@ -83,19 +83,13 @@ export async function getUser(dispatch) {
 
     const response = async () =>
       await axios
-        .post(`${URL}/api/auth/login`, {
-          username: 'yh2',
-          password: 'yh2',
+        .get(`${URL}/api/user/info`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('JWT')}` },
         })
         .then((res) => {
-          axios
-            .get(`${URL}/api/user/info`, {
-              headers: { Authorization: `Bearer ${res.data.jwtToken}` },
-            })
-            .then((res) => {
-              dispatch({ type: 'GET_USERS_SUCCESS', data: res.data });
-            });
+          dispatch({ type: 'GET_USERS_SUCCESS', data: res.data });
         });
+
     response();
   } catch (e) {
     dispatch({ type: 'GET_USERS_ERROR', error: e });
