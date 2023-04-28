@@ -8,25 +8,14 @@ import Board from '../components/Board';
 import styles from '../styles';
 function TimeSelect() {
     const location = useLocation();
-    const { roomData, reservelist } = useRoomContext();
+    const { roomData, reservelist, reactionArray } = useRoomContext();
     const department = roomData[location.pathname.split('/')[2]];
-    const [reactionArray, setReactionArray] = useState([]);
     const [nowData, setNowData] = useState();
     const [targetDate, setTargetDate] = useState();
-
     const HandleDateChange = (e) => setTargetDate(e.target.value);
-    const currentDate = new Date();
-    const newReactionArray = [];
     useEffect(() => {
-        for (let i = 0; i < 6; i++) {
-            const day = new Date(currentDate);
-            day.setDate(day.getDate() + i);
-            day.setMonth(day.getMonth() + Math.floor(day.getDate() / 31));
-            newReactionArray.push({ date: day.toISOString().slice(0, 10) });
-        }
-        setReactionArray(newReactionArray);
-        setTargetDate(newReactionArray[0].date);
-    }, []);
+        setTargetDate(reactionArray[0]?.date);
+    }, [reactionArray]);
 
     return (
         <Fade className={`${styles.innerWidth}`}>

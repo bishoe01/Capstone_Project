@@ -20,7 +20,17 @@ export function RoomContextProvider({ children }) {
     const hours = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
     const url = 'https://port-0-erica-studyroom-6g2llfs1h510.sel3.cloudtype.app';
     const [jwt, setJwt] = useState("");
-
+    const [reactionArray, setReactionArray] = useState([]); //예약할 수 있는 6일치 날짜
+    const newReactionArray = [];
+    useEffect(() => {
+        for (let i = 0; i < 6; i++) {
+            const day = new Date();
+            day.setDate(day.getDate() + i);
+            day.setMonth(day.getMonth() + Math.floor(day.getDate() / 31));
+            newReactionArray.push({ date: day.toISOString().slice(0, 10) });
+        }
+        setReactionArray(newReactionArray);
+    }, []);
     useEffect(() => {
         axios
             .post(
@@ -45,7 +55,7 @@ export function RoomContextProvider({ children }) {
 
 
     return (
-        <RoomContext.Provider value={{ roomData, selectData, setSelectData, reservelist, jwt, hours, url }}>
+        <RoomContext.Provider value={{ roomData, selectData, setSelectData, reservelist, jwt, hours, url, reactionArray, setReactionArray }}>
             {children}
         </RoomContext.Provider>)
 }
