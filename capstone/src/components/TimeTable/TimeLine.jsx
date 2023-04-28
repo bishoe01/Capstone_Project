@@ -25,6 +25,7 @@ function TimeLine({ room, department, targetDate, reservelist, setTargetDate }) 
                 }
                 setTimeRange(tmptime)
             })
+            .finally(console.log(timeRange))
     }, [targetDate, jwt])
 
     return (
@@ -45,7 +46,7 @@ function TimeLine({ room, department, targetDate, reservelist, setTargetDate }) 
             </div>
             <div className="col-span-1">
                 <button onClick={() => navigate(`/reserve/${department}/${room}`,
-                    { state: { targetDate: targetDate, setTargetDate: setTargetDate, room: room } })} className="border-2 p-2 rounded-md border-sub">예약하기</button>
+                    { state: { targetDate: targetDate, room: room } })} className="border-2 p-2 rounded-md border-sub">예약하기</button>
             </div>
         </div>
     );
