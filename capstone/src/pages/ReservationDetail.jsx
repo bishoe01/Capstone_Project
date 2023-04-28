@@ -22,14 +22,7 @@ function ReservationDetail(props) {
     const [selectedDate, setSelectedDate] = useState((targetDate ? targetDate : reactionArray[0]?.date));
     const [reserveInfo, setReserveInfo] = useState({ room: roomNumber, date: selectedDate, start: 9, end: 9 });
 
-    const handleStartChange = (e) => {
-        const selectedTime = e.target.value;
-        setReserveInfo({ ...reserveInfo, start: selectedTime });
-    }
-    const handleEndChange = (e) => {
-        const selectedTime = e.target.value;
-        setReserveInfo({ ...reserveInfo, end: selectedTime });
-    }
+
     const handleSelectChange = (event) => {
         setSelectedDate(event.target.value);
         setReserveInfo({ ...reserveInfo, date: event.target.value });
@@ -99,8 +92,12 @@ function ReservationDetail(props) {
                                 <label className='text-accent font-bold'>퇴실 시간</label>
                                 <select value={reserveInfo && reserveInfo.end / 1}
                                     onChange={(e) => {
-                                        if (e.target.value === reserveInfo.start && e.target.value > reserveInfo.start / 1 && e.target.value <= reserveInfo.start / 1 + 2) {
+                                        if (e.target.value > reserveInfo.start / 1 && e.target.value <= reserveInfo.start / 1 + 2) {
                                             setReserveInfo({ ...reserveInfo, end: e.target.value });
+                                        }
+                                        else if (e.target.value == reserveInfo.start / 1) {
+                                            alert('최소 1시간 이상 예약 가능합니다.');
+                                            setReserveInfo({ ...reserveInfo, end: reserveInfo.start / 1 + 1 });
                                         }
                                         else {
                                             alert('최대 2시간까지 예약 가능합니다.');
