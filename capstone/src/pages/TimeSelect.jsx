@@ -6,17 +6,47 @@ import TimeLine from '../components/TimeTable/TimeLine';
 import { IoChevronDown } from 'react-icons/io5';
 import Board from '../components/Board';
 import styles from '../styles';
+import axios from 'axios';
 function TimeSelect() {
     const location = useLocation();
-    const { roomData, reservelist, reactionArray } = useRoomContext();
-    const department = roomData[location.pathname.split('/')[2]];
+    const { roomData, reservelist, reactionArray, jwt, url, building } = useRoomContext();
+    const [department, setDepartment] = useState(roomData[location.pathname.split('/')[2]]);
+    const [deptname, setDeptname] = useState(building[location.pathname.split('/')[2]]);
     const [nowData, setNowData] = useState();
+    const [roomInfo, setRoomInfo] = useState();
     const [targetDate, setTargetDate] = useState();
+
     const HandleDateChange = (e) => setTargetDate(e.target.value);
     useEffect(() => {
         setTargetDate(reactionArray[0]?.date);
     }, [reactionArray]);
 
+    // useEffect(() => {
+    //     axios.get(`${url}/api/studyroom?university=${소프트웨어융합대학}`, {)
+
+    //         .then((response) => {
+    //             console.log(response.data);
+    //             setRoomData(response.data);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    // }, []);
+
+    useEffect(() => {
+        const token = `Bearer ${jwt}`;
+        axios.get(`${url}/api/studyroom?university=${deptname}`, {
+            headers: {
+                Authorization: token
+            }
+        })
+            .then((res) => res.data)
+            .then((res) => {
+                setRoomInfo(res);
+                setDepartment(res.map((item) => item.name));
+            })
+    }, [targetDate, jwt])
+    console.log('roomInfo', roomInfo);
     return (
         <Fade className={`${styles.innerWidth}`}>
             <div className={`flex flex-col ${styles.yPaddings} ${styles.innerWidth}`}>
@@ -44,17 +74,18 @@ function TimeSelect() {
             </div>
             <section className='flex flex-col'>
                 <div className="grid grid-cols-12 gap-4 text-center text-lg text-primary w-full border-b-[1px] border-gray-500 py-2 my-2">
-                    <div className="col-span-1">이름</div>
-                    <div className="col-span-1">위치</div>
-                    <div className="col-span-1">수용인원</div>
-                    <div className="col-span-8">예약현황</div>
+                    <div className="col-span-2">팀플실명</div>
+                    <div className="col-span-9">예약현황</div>
                     <div className="col-span-1">예약</div>
                 </div>
-                {department.map((item, index) => (
-                    <TimeLine key={item}
-                        department={location.pathname.split('/')[2]}
+                {roomInfo?.map((item, index) => (
+                    <TimeLine key={item.id}
+                        // department={location.pathname.split('/')[2]}
+                        department={item.name}
                         targetDate={targetDate}
-                        room={item}
+                        id={item.id}
+                        index={index}
+                        deptname={deptname}
                         setTargetDate={setTargetDate}
                     />
                 ))}

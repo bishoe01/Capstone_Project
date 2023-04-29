@@ -20,7 +20,7 @@ function ReservationDetail(props) {
     // const [targetDate, setTargetDate] = useState(new Date().toLocaleDateString().replace(/\./g, ''));
     const [department, roomNumber] = [location.pathname.split('/')[2], location.pathname.split('/')[3]];
     const [selectedDate, setSelectedDate] = useState((targetDate ? targetDate : reactionArray[0]?.date));
-    const [reserveInfo, setReserveInfo] = useState({ room: roomNumber, date: selectedDate, start: 9, end: 9 });
+    const [reserveInfo, setReserveInfo] = useState({ room: roomNumber, date: selectedDate, start: 9, end: 9, bookingCapacity: 2 });
 
 
     const handleSelectChange = (event) => {
@@ -40,7 +40,7 @@ function ReservationDetail(props) {
                 const start = Math.ceil(res[0]?.startTime * 2) / 2;
                 const end = Math.floor(res[0]?.endTime * 2) / 2;
                 let tmptime = [];
-                for (let i = start; i <= end; i += .5) {
+                for (let i = start; i < end; i += .5) {
                     tmptime.push(i);
                 }
                 setTimeRange(tmptime);
@@ -64,7 +64,6 @@ function ReservationDetail(props) {
                     <CurrentReservation
                         room={roomNumber}
                         timeRange={timeRange}
-                        hours={hours}
                         targetDate={selectedDate}
                         setTimeRange={setTimeRange}
                     />
@@ -119,7 +118,9 @@ function ReservationDetail(props) {
                         <div className='flex flex-col gap-2'>
                             <label className='text-accent text-lg font-bold'>예약 내용</label>
                             {/* <textarea className='p-2 w-1/2 h-[100px] leading-3 border-[2px] border-solid rounded-[5px]' type='text' /> */}
-                            <select className={SELECT_STYLE} >
+                            <select className={SELECT_STYLE} onChange={(e) => {
+                                setReserveInfo({ ...reserveInfo, bookingCapacity: e.target.value });
+                            }} >
                                 <option value="2">2인</option>
                                 <option value="3">3인</option>
                                 <option value="4">4인 이상</option>
@@ -133,7 +134,7 @@ function ReservationDetail(props) {
                                     date: reserveInfo.date,
                                     startTime: reserveInfo.start,
                                     endTime: reserveInfo.end,
-                                    bookingCapacity: 3
+                                    bookingCapacity: reserveInfo.bookingCapacity
                                 }, {
                                     headers: {
                                         Authorization: `Bearer ${jwt}`
