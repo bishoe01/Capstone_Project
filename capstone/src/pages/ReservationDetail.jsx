@@ -134,7 +134,7 @@ function ReservationDetail(props) {
                                     date: reserveInfo.date,
                                     startTime: reserveInfo.start,
                                     endTime: reserveInfo.end,
-                                    bookingCapacity: reserveInfo.bookingCapacity
+                                    bookingCapacity: 2
                                 }, {
                                     headers: {
                                         Authorization: `Bearer ${jwt}`
