@@ -8,6 +8,7 @@ import { MdDateRange } from 'react-icons/md';
 import styles from '../styles';
 import { useRoomContext } from '../context/Roomdata';
 import TimeLine from '../components/TimeTable/TimeLine';
+import { type } from '@testing-library/user-event/dist/type';
 
 function ReservationDetail(props) {
     const SELECT_STYLE = 'w-[150px] apperance-none bg-white border border-gray-400 hover:border-gray-500 p-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline'
@@ -20,7 +21,7 @@ function ReservationDetail(props) {
     // const [targetDate, setTargetDate] = useState(new Date().toLocaleDateString().replace(/\./g, ''));
     const [department, roomNumber] = [location.pathname.split('/')[2], location.pathname.split('/')[3]];
     const [selectedDate, setSelectedDate] = useState((targetDate ? targetDate : reactionArray[0]?.date));
-    const [reserveInfo, setReserveInfo] = useState({ room: roomNumber, date: selectedDate, start: 9, end: 9, bookingCapacity: 2 });
+    const [reserveInfo, setReserveInfo] = useState({ "room": roomNumber, "date": selectedDate, "start": 9, "end": 10, "bookingCapacity": 4 });
 
 
     const handleSelectChange = (event) => {
@@ -45,7 +46,6 @@ function ReservationDetail(props) {
                 }
                 setTimeRange(tmptime);
             })
-            .finally(console.log(timeRange))
             .catch((error) => {
                 console.error(error);
             });
@@ -75,7 +75,7 @@ function ReservationDetail(props) {
                                 <label className='text-accent font-bold'>시작 시간</label>
                                 <select onChange={(e) => {
                                     const selectedTime = e.target.value;
-                                    setReserveInfo({ ...reserveInfo, start: selectedTime });
+                                    setReserveInfo({ ...reserveInfo, start: selectedTime / 1 });
                                 }}
                                     className="w-[200px] h-12 max-h-24 overflow-auto bg-white border border-gray-400 hover:border-gray-500 p-3 rounded shadow appearance-none focus:outline-none focus:shadow-outline">
                                     {hours.map((time, index) =>
@@ -92,7 +92,7 @@ function ReservationDetail(props) {
                                 <select value={reserveInfo && reserveInfo.end / 1}
                                     onChange={(e) => {
                                         if (e.target.value > reserveInfo.start / 1 && e.target.value <= reserveInfo.start / 1 + 2) {
-                                            setReserveInfo({ ...reserveInfo, end: e.target.value });
+                                            setReserveInfo({ ...reserveInfo, end: e.target.value / 1 });
                                         }
                                         else if (e.target.value == reserveInfo.start / 1) {
                                             alert('최소 1시간 이상 예약 가능합니다.');
@@ -118,12 +118,16 @@ function ReservationDetail(props) {
                         <div className='flex flex-col gap-2'>
                             <label className='text-accent text-lg font-bold'>예약 내용</label>
                             {/* <textarea className='p-2 w-1/2 h-[100px] leading-3 border-[2px] border-solid rounded-[5px]' type='text' /> */}
-                            <select className={SELECT_STYLE} onChange={(e) => {
-                                setReserveInfo({ ...reserveInfo, bookingCapacity: e.target.value });
-                            }} >
-                                <option value="2">2인</option>
-                                <option value="3">3인</option>
-                                <option value="4">4인 이상</option>
+                            <select className={SELECT_STYLE}
+                                defaultValue={"3" / 1}
+                                onChange={(e) => {
+                                    console.log(typeof (e.target.value / 1));
+                                    setReserveInfo({ ...reserveInfo, bookingCapacity: e.target.value });
+                                }}
+                            >
+                                <option value={2}>2인</option>
+                                <option value={3}>3인</option>
+                                <option value={4}>4인 이상</option>
                             </select>
 
                         </div>
@@ -131,10 +135,10 @@ function ReservationDetail(props) {
                             <button onClick={(e) => {
                                 e.preventDefault();
                                 axios.post(`${url}/api/studyroom/${reserveInfo.room}`, {
-                                    date: reserveInfo.date,
-                                    startTime: reserveInfo.start,
-                                    endTime: reserveInfo.end,
-                                    bookingCapacity: 2
+                                    "date": reserveInfo.date,
+                                    "startTime": reserveInfo.start,
+                                    "endTime": reserveInfo.end,
+                                    "bookingCapacity": reserveInfo.bookingCapacity
                                 }, {
                                     headers: {
                                         Authorization: `Bearer ${jwt}`
@@ -146,7 +150,7 @@ function ReservationDetail(props) {
                                     console.error(error);
                                     alert('Reservation failed. Please try again.');
                                 });
-                                navigate('/about', { state: { reserveInfo } });
+                                navigate('/dashboard/placerental', { state: { reserveInfo } });
                             }} className='bg-primary text-white p-3 basis-1/4 rounded'>예약하기</button>
                             <button onClick={(e) => {
                                 e.preventDefault();
