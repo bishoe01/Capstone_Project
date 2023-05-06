@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useRoomContext } from '../../context/Roomdata';
-function TimeLine({ room, department, targetDate, reservelist, setTargetDate }) {
+function TimeLine({ room, id, department, targetDate, reservelist, setTargetDate }) {
     const [timeRange, setTimeRange] = useState([]);
     const navigate = useNavigate();
+    const deptname = useLocation().pathname.split('/')[2];
     const { jwt, hours, url } = useRoomContext();
-
+    console.log('id', id);
     useEffect(() => {
         const token = `Bearer ${jwt}`;
-        axios.get(`${url}/api/studyroom/${room}`, {
+        axios.get(`${url}/api/studyroom/${id}`, {
             headers: {
                 Authorization: token
             }
@@ -20,20 +21,17 @@ function TimeLine({ room, department, targetDate, reservelist, setTargetDate }) 
                 const start = Math.ceil(res[0]?.startTime * 2) / 2;
                 const end = Math.floor(res[0]?.endTime * 2) / 2;
                 let tmptime = [];
-                for (let i = start; i <= end; i += .5) {
+                for (let i = start; i < end; i += .5) {
                     tmptime.push(i);
                 }
                 setTimeRange(tmptime)
             })
-            .finally(console.log(timeRange))
     }, [targetDate, jwt])
 
     return (
         <div className={`grid grid-cols-12 text-center w-full border-b-[1px] border-sub items-center py-6 my-2`}>
-            <div className="col-span-1">{room}호</div>
-            <div className="col-span-1">1층</div>
-            <div className="col-span-1">2~4인</div>
-            <div className="col-span-8 flex">
+            <div className="col-span-2">{department}</div>
+            <div className="col-span-9 flex">
                 {hours.map((hour, index) => (
                     <div className="flex flex-col" key={hour}>
                         <h1 className="text-sm text-left text-gray-500">{hour}</h1>
@@ -45,8 +43,8 @@ function TimeLine({ room, department, targetDate, reservelist, setTargetDate }) 
                 ))}
             </div>
             <div className="col-span-1">
-                <button onClick={() => navigate(`/reserve/${department}/${room}`,
-                    { state: { targetDate: targetDate, room: room } })} className="border-2 p-2 rounded-md border-sub">예약하기</button>
+                <button onClick={() => navigate(`/reserve/${deptname}/${id}`,
+                    { state: { targetDate: targetDate, department: department } })} className="border-2 p-2 rounded-md border-sub">예약하기</button>
             </div>
         </div>
     );

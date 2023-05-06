@@ -4,6 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 import Radar from '../charts/Radar';
 import Graph from '../charts/Graph';
 import styles from '../styles';
+import ChartLayout from '../charts/ChartLayout';
 
 function Home({ props }) {
   return (
@@ -14,6 +15,7 @@ function Home({ props }) {
             </div> */}
       {/* <Graph />
             <Radar /> */}
+      <ChartLayout />
     </section>
   );
 }
