@@ -14,6 +14,7 @@ function Home({ props }) {
             </div> */}
       {/* <Graph />
             <Radar /> */}
+
     </section>
   );
 }

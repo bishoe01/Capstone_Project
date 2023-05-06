@@ -15,20 +15,22 @@ function ReservationDetail(props) {
     const navigate = useNavigate();
     const { jwt, hours, url, reactionArray } = useRoomContext();
     const location = useLocation();
-    const { targetDate, room } = location;
-
+    const { targetDate, room } = location.state;
     const [timeRange, setTimeRange] = useState();
-    // const [targetDate, setTargetDate] = useState(new Date().toLocaleDateString().replace(/\./g, ''));
     const [department, roomNumber] = [location.pathname.split('/')[2], location.pathname.split('/')[3]];
-    const [selectedDate, setSelectedDate] = useState((targetDate ? targetDate : reactionArray[0]?.date));
+    const [selectedDate, setSelectedDate] = useState(targetDate);
     const [reserveInfo, setReserveInfo] = useState({ "room": roomNumber, "date": selectedDate, "start": 9, "end": 10, "bookingCapacity": 4 });
-
-
+    const [loading, setLoading] = useState(true); // add loading state
     const handleSelectChange = (event) => {
         setSelectedDate(event.target.value);
+
         setReserveInfo({ ...reserveInfo, date: event.target.value });
     };
     useEffect(() => {
+        console.log()
+    }, [])
+    useEffect(() => {
+        setLoading(true);
         const token = `Bearer ${jwt}`;
         axios.get(`${url}/api/studyroom/${reserveInfo.room}`, {
             headers: {
@@ -45,28 +47,35 @@ function ReservationDetail(props) {
                     tmptime.push(i);
                 }
                 setTimeRange(tmptime);
+                console.log(tmptime);
+                setLoading(false); // set loading state
             })
             .catch((error) => {
                 console.error(error);
+                setLoading(false); // set loading state
             });
+        console.log(selectedDate, "selectedDate2");
     }, [selectedDate])
     return (
         <Fade>
             <div className={`flex flex-col ${styles.innerWidth} ${styles.paddings} gap-[24px] mx-auto`}>
                 <Board />
                 <span className='flex gap-4 text-xl leading-[20px] text-primary'><MdDateRange className='text-black' />예약날짜</span>
-                <select defaultValue={location.state.targetDate ? location.state.targetDate : reactionArray[0]?.date} className={SELECT_STYLE} onChange={handleSelectChange}>
-                    {reactionArray && reactionArray?.map((item, index) => (
+                <select defaultValue={selectedDate} className={SELECT_STYLE} onChange={handleSelectChange} value={selectedDate}>
+                    {reactionArray?.map((item, index) => (
                         <option key={index} value={item.date}>{item.date}</option>
                     ))}
                 </select>
+
                 <div className={`${styles.flexStart} `}>
-                    <CurrentReservation
-                        room={roomNumber}
-                        timeRange={timeRange}
-                        targetDate={selectedDate}
-                        setTimeRange={setTimeRange}
-                    />
+                    {loading ? <div className='flex justify-center items-center w-full h-[400px]'>Loading...</div>
+                        : <CurrentReservation
+                            room={roomNumber}
+                            timeRange={timeRange}
+                            targetDate={selectedDate}
+                            setTimeRange={setTimeRange}
+                        />
+                    }
                 </div>
                 <form >
                     <div className='flex flex-col gap-4'>
@@ -78,12 +87,13 @@ function ReservationDetail(props) {
                                     setReserveInfo({ ...reserveInfo, start: selectedTime / 1 });
                                 }}
                                     className="w-[200px] h-12 max-h-24 overflow-auto bg-white border border-gray-400 hover:border-gray-500 p-3 rounded shadow appearance-none focus:outline-none focus:shadow-outline">
-                                    {hours.map((time, index) =>
-                                    (<React.Fragment key={index}>
-                                        <option value={time}>{time}:00</option>
-                                        <option value={`${time}.5`}>{time}:30</option>
-                                    </React.Fragment>)
-                                    )}
+                                    {hours
+                                        .map((time, index) => (
+                                            <React.Fragment key={index}>
+                                                <option value={time}>{time}:00</option>
+                                                <option value={`${time}.5`}>{time}:30</option>
+                                            </React.Fragment>
+                                        ))}
                                 </select>
                             </div>
                             {/* 시작 시간 선택시에 해당된 범위 내만 보여주기- 선택가능 */}
@@ -104,13 +114,13 @@ function ReservationDetail(props) {
                                         }
                                     }} className="w-[200px] h-12 max-h-24 overflow-auto bg-white border border-gray-400 hover:border-gray-500 p-3 rounded shadow appearance-none focus:outline-none focus:shadow-outline">
 
-                                    {hours.map((time, index) => (
-                                        <React.Fragment key={index}>
-                                            <option value={time}>{time}:00</option>
-                                            <option value={`${time}.5`}>{time}:30</option>
-                                        </React.Fragment>
-                                    )
-                                    )}
+                                    {hours
+                                        .map((time, index) => (
+                                            <React.Fragment key={index}>
+                                                <option value={time}>{time}:00</option>
+                                                <option value={`${time}.5`}>{time}:30</option>
+                                            </React.Fragment>
+                                        ))}
                                 </select>
                             </div>
 
