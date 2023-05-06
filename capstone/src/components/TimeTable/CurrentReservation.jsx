@@ -21,9 +21,10 @@ function CurrentReservation({ room, timeRange, targetDate, setTimeRange }) {
                 for (let i = start; i <= end; i += .5) {
                     tmptime.push(i);
                 }
-                setTimeRange(tmptime)
+                setTimeRange(tmptime);
             })
     }, [targetDate, jwt])
+
     return (
         <div className='flex'>
             {hours.map((hour, index) => (
