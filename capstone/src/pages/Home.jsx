@@ -5,6 +5,7 @@ import Radar from '../charts/Radar';
 import Graph from '../charts/Graph';
 import styles from '../styles';
 import ChartLayout from '../charts/ChartLayout';
+import { useCallback } from 'react';
 
 function Home({ props }) {
   return (
@@ -15,7 +16,7 @@ function Home({ props }) {
             </div> */}
       {/* <Graph />
             <Radar /> */}
-      <ChartLayout />
+      {/* <ChartLayout /> */}
     </section>
   );
 }

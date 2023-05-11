@@ -23,8 +23,8 @@ function ReservationDetail(props) {
     const [loading, setLoading] = useState(true); // add loading state
     const handleSelectChange = (event) => {
         setSelectedDate(event.target.value);
-
         setReserveInfo({ ...reserveInfo, date: event.target.value });
+
     };
     useEffect(() => {
         console.log()
@@ -33,9 +33,7 @@ function ReservationDetail(props) {
         setLoading(true);
         const token = `Bearer ${jwt}`;
         axios.get(`${url}/api/studyroom/${reserveInfo.room}`, {
-            headers: {
-                Authorization: token
-            }
+            headers: { Authorization: token }
         })
             .then((res) => res.data.reservation)
             .then((res) => res.filter((item) => item.date === selectedDate))
@@ -55,7 +53,9 @@ function ReservationDetail(props) {
                 setLoading(false); // set loading state
             });
         console.log(selectedDate, "selectedDate2");
+        // console.log(reserveInfo, "reserveInfo");
     }, [selectedDate])
+    console.log(timeRange, "timeRange")
     return (
         <Fade>
             <div className={`flex flex-col ${styles.innerWidth} ${styles.paddings} gap-[24px] mx-auto`}>
@@ -88,6 +88,7 @@ function ReservationDetail(props) {
                                 }}
                                     className="w-[200px] h-12 max-h-24 overflow-auto bg-white border border-gray-400 hover:border-gray-500 p-3 rounded shadow appearance-none focus:outline-none focus:shadow-outline">
                                     {hours
+                                        .filter(time => !timeRange?.includes(time))
                                         .map((time, index) => (
                                             <React.Fragment key={index}>
                                                 <option value={time}>{time}:00</option>
