@@ -47,6 +47,7 @@ function TimeSelect() {
             })
     }, [targetDate, jwt])
     console.log('roomInfo', roomInfo);
+
     return (
         <Fade className={`${styles.innerWidth}`}>
             <div className={`flex flex-col ${styles.yPaddings} ${styles.innerWidth}`}>

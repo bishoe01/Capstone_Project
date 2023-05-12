@@ -11,24 +11,22 @@ import TimeLine from '../components/TimeTable/TimeLine';
 import { type } from '@testing-library/user-event/dist/type';
 
 function ReservationDetail(props) {
-    const SELECT_STYLE = 'w-[150px] apperance-none bg-white border border-gray-400 hover:border-gray-500 p-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline'
+    const SELECT_STYLE = 'w-[150px] bg-white border border-primary hover:border-emphasize p-3 rounded shadow leading-tight focus:outline-none focus:shadow-outline'
+    const TIME_SELECT = "w-[150px] h-12 max-h-24 overflow-auto bg-white border border-primary hover:border-emphasize p-2 py-[2px] rounded shadow focus:outline-none focus:shadow-outline"
     const navigate = useNavigate();
-    const { jwt, hours, url, reactionArray } = useRoomContext();
+    const { jwt, hours, url, reactionArray, filteredHours } = useRoomContext();
     const location = useLocation();
     const { targetDate, room } = location.state;
     const [timeRange, setTimeRange] = useState();
     const [department, roomNumber] = [location.pathname.split('/')[2], location.pathname.split('/')[3]];
     const [selectedDate, setSelectedDate] = useState(targetDate);
-    const [reserveInfo, setReserveInfo] = useState({ "room": roomNumber, "date": selectedDate, "start": 9, "end": 10, "bookingCapacity": 4 });
+    const [reserveInfo, setReserveInfo] = useState({ "room": roomNumber, "date": selectedDate, "start": "9", "end": "10", "bookingCapacity": 4 });
     const [loading, setLoading] = useState(true); // add loading state
     const handleSelectChange = (event) => {
         setSelectedDate(event.target.value);
         setReserveInfo({ ...reserveInfo, date: event.target.value });
-
     };
-    useEffect(() => {
-        console.log()
-    }, [])
+    const [selectchoices, setSelectChoices] = useState([]);
     useEffect(() => {
         setLoading(true);
         const token = `Bearer ${jwt}`;
@@ -36,16 +34,21 @@ function ReservationDetail(props) {
             headers: { Authorization: token }
         })
             .then((res) => res.data.reservation)
-            .then((res) => res.filter((item) => item.date === selectedDate))
-            .then((res) => {
-                const start = Math.ceil(res[0]?.startTime * 2) / 2;
-                const end = Math.floor(res[0]?.endTime * 2) / 2;
-                let tmptime = [];
-                for (let i = start; i < end; i += .5) {
-                    tmptime.push(i);
-                }
-                setTimeRange(tmptime);
-                console.log(tmptime);
+            .then((reservations) => {
+                const filteredReservations = reservations.filter((item) => item.date === selectedDate);
+                const timeRanges = filteredReservations.map((reservation) => {
+                    const start = Math.ceil(reservation.startTime * 2) / 2;
+                    console.log(start, "start");
+                    const end = Math.floor(reservation.endTime * 2) / 2;
+                    console.log(end, "end");
+                    let tmptime = [];
+                    for (let i = start; i < end; i += .5) {
+                        tmptime.push(i);
+                    }
+                    return tmptime;
+                });
+                const flattenedTimeRanges = timeRanges.flat(); // flatten the array of arrays
+                setTimeRange(flattenedTimeRanges);
                 setLoading(false); // set loading state
             })
             .catch((error) => {
@@ -55,13 +58,19 @@ function ReservationDetail(props) {
         console.log(selectedDate, "selectedDate2");
         // console.log(reserveInfo, "reserveInfo");
     }, [selectedDate])
-    console.log(timeRange, "timeRange")
+
+    useEffect(() => {
+        setSelectChoices(filteredHours?.filter(time => !timeRange?.includes(time)));
+        setReserveInfo({ ...reserveInfo, start: selectchoices[0] });
+    }, [selectedDate, timeRange]
+    )
+
     return (
         <Fade>
             <div className={`flex flex-col ${styles.innerWidth} ${styles.paddings} gap-[24px] mx-auto`}>
                 <Board />
-                <span className='flex gap-4 text-xl leading-[20px] text-primary'><MdDateRange className='text-black' />예약날짜</span>
-                <select defaultValue={selectedDate} className={SELECT_STYLE} onChange={handleSelectChange} value={selectedDate}>
+                <span className='flex items-center gap-2 text-[22px] leading-[20px] text-primary'><MdDateRange className='text-primary w-[24px] h-[24px]' />예약날짜</span>
+                <select value={selectedDate} className={SELECT_STYLE} onChange={handleSelectChange} >
                     {reactionArray?.map((item, index) => (
                         <option key={index} value={item.date}>{item.date}</option>
                     ))}
@@ -82,13 +91,14 @@ function ReservationDetail(props) {
                         <div className='flex gap-8'> {/** 예약시간 */}
                             <div className='flex flex-col gap-4 items-stretch'>
                                 <label className='text-accent font-bold'>시작 시간</label>
-                                <select onChange={(e) => {
-                                    const selectedTime = e.target.value;
-                                    setReserveInfo({ ...reserveInfo, start: selectedTime / 1 });
-                                }}
-                                    className="w-[200px] h-12 max-h-24 overflow-auto bg-white border border-gray-400 hover:border-gray-500 p-3 rounded shadow appearance-none focus:outline-none focus:shadow-outline">
-                                    {hours
-                                        .filter(time => !timeRange?.includes(time))
+                                <select
+
+                                    onChange={(e) => {
+                                        setReserveInfo({ ...reserveInfo, start: e.target.value / 1 });
+                                        console.log(e.target.value / 1)
+                                    }}
+                                    className={TIME_SELECT}>
+                                    {selectchoices
                                         .map((time, index) => (
                                             <React.Fragment key={index}>
                                                 <option value={time}>{time}:00</option>
@@ -113,9 +123,9 @@ function ReservationDetail(props) {
                                             alert('최대 2시간까지 예약 가능합니다.');
                                             setReserveInfo({ ...reserveInfo, end: reserveInfo.start / 1 + 2 });
                                         }
-                                    }} className="w-[200px] h-12 max-h-24 overflow-auto bg-white border border-gray-400 hover:border-gray-500 p-3 rounded shadow appearance-none focus:outline-none focus:shadow-outline">
-
-                                    {hours
+                                    }} className={TIME_SELECT}>
+                                    {filteredHours
+                                        .filter(time => !timeRange?.includes(time))
                                         .map((time, index) => (
                                             <React.Fragment key={index}>
                                                 <option value={time}>{time}:00</option>
@@ -129,7 +139,7 @@ function ReservationDetail(props) {
                         <div className='flex flex-col gap-2'>
                             <label className='text-accent text-lg font-bold'>예약 내용</label>
                             {/* <textarea className='p-2 w-1/2 h-[100px] leading-3 border-[2px] border-solid rounded-[5px]' type='text' /> */}
-                            <select className={SELECT_STYLE}
+                            <select className={TIME_SELECT}
                                 defaultValue={"3" / 1}
                                 onChange={(e) => {
                                     console.log(typeof (e.target.value / 1));
@@ -142,7 +152,7 @@ function ReservationDetail(props) {
                             </select>
 
                         </div>
-                        <div className='flex justify-center gap-4'>
+                        <div className='flex gap-4'>
                             <button onClick={(e) => {
                                 e.preventDefault();
                                 axios.post(`${url}/api/studyroom/${reserveInfo.room}`, {
@@ -162,11 +172,13 @@ function ReservationDetail(props) {
                                     alert('Reservation failed. Please try again.');
                                 });
                                 navigate('/dashboard/placerental', { state: { reserveInfo } });
-                            }} className='bg-primary text-white p-3 basis-1/4 rounded'>예약하기</button>
+                            }} className='bg-primary text-xl text-white px-2 basis-1/6 rounded-full shadow-md hover:brightness-125 '>
+                                예약</button>
                             <button onClick={(e) => {
                                 e.preventDefault();
                                 navigate(`/reserve/${department}`, { state: { reserveInfo } });
-                            }} className='bg-sub text-primary p-3 basis-1/4 rounded'>취소</button>
+                            }} className='bg-white border text-xl text-black p-3 basis-1/6 rounded-full shadow-md hover:brightness-75'>
+                                취소</button>
                         </div>
                     </div>
                 </form>
