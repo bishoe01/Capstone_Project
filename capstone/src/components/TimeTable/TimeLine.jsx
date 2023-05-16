@@ -60,7 +60,7 @@ function TimeLine({ room, id, department, targetDate, reservelist, setTargetDate
                         <h1 className="text-sm text-left text-gray-500">{hour}</h1>
                         <div className="flex gap-0.5 mx-0.5">
                             <button
-                                className={`p-3 rounded-sm ${(hour < currentTime) && (currentDate === targetDate)
+                                className={`p-3 rounded-sm ${(hour < currentTime - 0.5) && (currentDate === targetDate)
                                     ? 'bg-gray-600'
                                     : timeRange.indexOf(hour) !== -1
                                         ? 'bg-sub'
@@ -68,21 +68,13 @@ function TimeLine({ room, id, department, targetDate, reservelist, setTargetDate
                                     }`}
                             />
                             <button
-                                className={`p-3 rounded-sm ${(hour + .5 < currentTime) && (currentDate === targetDate)
+                                className={`p-3 rounded-sm ${(hour + .5 < currentTime - 0.5) && (currentDate === targetDate)
                                     ? 'bg-gray-600'
                                     : timeRange.indexOf(hour + .5) !== -1
                                         ? 'bg-sub'
                                         : 'bg-emphasize'
                                     }`}
                             />
-                            {/* <button
-                            className={`p-3 rounded-sm ${hour + 0.5 < currentHour || (hour == currentHour && (1 / 60) * currentMinute > 0.5)
-                                ? 'bg-gray-600'
-                                : timeRange.indexOf(hour + 0.5) !== -1
-                                    ? 'bg-emphasize'
-                                    : 'bg-sub'
-                                }`}
-                        /> */}
                         </div>
                     </div>
                 ))}

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BsBook } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
+import { useRoomContext } from '../context/Roomdata';
+import axios from 'axios';
 
 function HeaderContantWithLogin() {
   const informationLinks = ['Profile', 'PlaceRental', 'Notice'];
@@ -15,9 +17,8 @@ function HeaderContantWithLogin() {
 function Header() {
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
-
-  const links = ['Home', 'About', 'Contact'];
-
+  const links = ['Home', 'Reserve', 'Contact'];
+  const { jwt, hours, url, reactionArray, filteredHours, user, location } = useRoomContext();
   useEffect(() => {
     if (localStorage.getItem('JWT') !== null) {
       setIsLogin(true);
@@ -33,6 +34,7 @@ function Header() {
     window.location.reload();
   };
 
+
   return (
     <header className='flex justify-between items-center p-6 border-b-2 border-sub text-2xl text-primary'>
       <Link to={'/'} className='flex items-center'>
@@ -43,7 +45,7 @@ function Header() {
         {links.map((link, index) => {
           return (
             <li className=' hover:text-emphasize' key={index}>
-              <Link to={`/${link.toLowerCase()}`}>{link}</Link>
+              <Link to={`/${link.toLowerCase()}/${link == 'Reserve' && location[user.university]}`}>{link}</Link>
             </li>
           );
         })}

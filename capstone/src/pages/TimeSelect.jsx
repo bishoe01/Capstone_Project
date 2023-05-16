@@ -33,6 +33,7 @@ function TimeSelect() {
     //         });
     // }, []);
 
+
     useEffect(() => {
         const token = `Bearer ${jwt}`;
         axios.get(`${url}/api/studyroom?university=${deptname}`, {
@@ -47,6 +48,7 @@ function TimeSelect() {
             })
     }, [targetDate, jwt])
     console.log('roomInfo', roomInfo);
+
 
     return (
         <Fade className={`${styles.innerWidth}`}>
