@@ -18,7 +18,7 @@ export function RoomContextProvider({ children }) {
         "design": "디자인대학",
     });
 
-    const [location, setLocation] = useState({
+    const [locationURL, setLocationURL] = useState({
         "경상대학": "bea",
         "국제문화대학": "culture",
         '소프트웨어융합대학': "software",
@@ -68,7 +68,7 @@ export function RoomContextProvider({ children }) {
             .then((res) => setUser(res));
     }, [jwt]);
     return (
-        <RoomContext.Provider value={{ roomData, selectData, location, setSelectData, building, currentDate, reservelist, jwt, hours, url, reactionArray, setReactionArray, filteredHours, user }}>
+        <RoomContext.Provider value={{ roomData, selectData, locationURL, setSelectData, building, currentDate, reservelist, jwt, hours, url, reactionArray, setReactionArray, filteredHours, user }}>
             {children}
         </RoomContext.Provider>)
 }

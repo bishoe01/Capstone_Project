@@ -41,7 +41,7 @@ function TimeLine({ room, id, department, targetDate, reservelist, setTargetDate
         // console.log(reserveInfo, "reserveInfo");
     }, [targetDate])
 
-    console.log('timeRange__', timeRange, department);
+    // console.log('timeRange__', timeRange, department);
     return (
         <div className={`grid grid-cols-12 text-center w-full border-b-[1px] border-sub items-center py-6 my-2`}>
             <div className="col-span-2">{department}</div>

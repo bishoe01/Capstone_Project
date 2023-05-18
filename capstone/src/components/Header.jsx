@@ -18,7 +18,7 @@ function Header() {
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
   const links = ['Home', 'Reserve', 'Contact'];
-  const { jwt, hours, url, reactionArray, filteredHours, user, location } = useRoomContext();
+  const { jwt, hours, url, reactionArray, filteredHours, user, locationURL } = useRoomContext();
   useEffect(() => {
     if (localStorage.getItem('JWT') !== null) {
       setIsLogin(true);
@@ -45,7 +45,9 @@ function Header() {
         {links.map((link, index) => {
           return (
             <li className=' hover:text-emphasize' key={index}>
-              <Link to={`/${link.toLowerCase()}/${link == 'Reserve' && location[user.university]}`}>{link}</Link>
+              {jwt ?
+                <Link to={`/${link.toLowerCase()}/${link === 'Reserve' && locationURL[user?.university]}`}>{link}</Link>
+                : <Link to={`/login`}>{link}</Link>}
             </li>
           );
         })}
