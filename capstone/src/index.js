@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         ),
       },
 
-      { path: 'about', element: <h1>about</h1> },
+      { path: 'home', element: <Home /> },
       { path: 'Contact', element: <h1>contact</h1> },
       { path: 'reserve/:department', element: <TimeSelect /> },
       {
