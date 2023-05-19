@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import '../App.css';
 import styles from '../styles';
 import { VscEye } from 'react-icons/vsc';
-import { FaRegBuilding } from 'react-icons/fa';
+import { FaRegBuilding, FaReact } from 'react-icons/fa';
 import { IoBarChartSharp } from 'react-icons/io5';
 import { BsClipboardData, BsFillChatSquareQuoteFill, BsLightningCharge, BsGrid3X3GapFill } from 'react-icons/bs';
 import { MdOutlineAddchart } from 'react-icons/md'
-import { Fade } from 'react-reveal';
+import { BiGitBranch } from 'react-icons/bi'
+import { TbReportSearch } from 'react-icons/tb'
+import { Fade, Flip, Slide, Zoom } from 'react-reveal';
 function Home({ props }) {
   const [data, setData] = useState([])
   const BANNER_STYLE = `flex justify-center items-center w-[300px] gap-3 text-primary`
-  const FUNCTION_STYLE = `w-full flex flex-col gap-4 justify-center items-center py-8 p-4 border-2 bg-primary rounded-xl`
+  const FUNCTION_STYLE = `w-full flex flex-col gap-4 justify-around items-center py-8 p-2 text-primary`
+  const ICON_URL = ['reactjs', 'tailwindcss', 'springio', 'figma']
   return (
     <section className={`mx-auto w-full flex flex-col  items-center jumbotron gap-5`}>
       <Fade top>
@@ -30,7 +33,7 @@ function Home({ props }) {
         </div>
       </Fade>
       {/* minibanner */}
-      <Fade bottom>
+      <Fade top cascade>
         <div className='flex justify-center items-center gap-[10px] w-[900px] h-[180px] rounded-2xl border-[0.1px] border-sub shadow-xl mt-5'>
           <div className={BANNER_STYLE}>
             <div className='flex flex-col justify-center items-center gap-3'>
@@ -56,55 +59,66 @@ function Home({ props }) {
             <span className='text-emphasize font-bold text-5xl'>12</span>
           </div>
         </div>
-
       </Fade>
-      <div className='flex gap-2 items-center justify-around relative h-[400px] w-full'>
-        <Fade left>
+      <Slide left cascade>
+        <div className='flex gap-2 items-center justify-around relative h-[400px] w-full'>
           <div right className='flex justify-start items-center gap-4 bg-white w-[800px] h-[100px] p-4 px-4 rounded-xl absolute top-[50px] left-0'>
             <BsFillChatSquareQuoteFill className='text-6xl text-emphasize' />
             <h4 className='text-2xl text-primary font-bold'>예약되어 있어서 사용을 못했는데, 아무도 없었던 적이 있었어요</h4>
           </div>
-        </Fade>
-        <Fade right>
           <div className='flex justify-start items-center gap-4 bg-white w-[800px] h-[100px] p-4 px-4 rounded-xl absolute top-[170px] right-[170px]'>
             <BsFillChatSquareQuoteFill className='text-6xl text-emphasize' />
             <h4 className='text-2xl text-primary font-bold'>자리를 맡아서 하루 종일 사용하시는 분들이 많아서 자리가 없어요</h4>
           </div>
-        </Fade>
-        <Fade left>
           <div className='flex justify-start items-center gap-4 bg-white w-[800px] h-[100px] p-4 px-4 rounded-xl absolute top-[290px] right-0'>
             <BsFillChatSquareQuoteFill className='text-6xl text-emphasize' />
             <h4 className='text-2xl text-primary font-bold'>자리를 맡아서 하루 종일 사용하시는 분들이 많아서 자리가 없어요</h4>
           </div>
-        </Fade>
-      </div>
+        </div>
+      </Slide>
       {/* SERVICE 설명 */}
-      <div className='flex flex-col mt-10 gap-4 justify-start py-12 items-center w-full rounded-[50px]'>
-        <h1 className='text-4xl font-bold text-primary'>HY - TOGETHER</h1>
-        <div className='text-primary border-2 border-white p-2 rounded-full px-4'>
-          <span className='text-[22px] mt-[1px]'>대학 내 팀플실을 자유롭게 예약 & 관리</span>
-        </div>
-      </div>
-      <div className='flex flex-col w-full h-[500px] text-2xl'>
-        <div className={`${FUNCTION_STYLE} text-white`}>
-          <MdOutlineAddchart className='text-6xl text-emphasize' />
-          <h1>생산성과 투명성을 위한 팀플실 사용 데이터 제공</h1>
-        </div>
-        <div className='flex text-white gap-[2px]'>
-          <div className={FUNCTION_STYLE}>
-            <h1>단과대학별 팀플실 예약 시스템 통일</h1>
+      <Fade >
+        <div className='flex flex-col mt-24 justify-start items-center w-full'>
+          <h1 className='text-5xl font-bold text-primary tracking-wider'>HY - TOGETHER</h1>
+          <div className='text-primary p-2 rounded-full px-4  mt-[8px]'>
+            <span className='text-[24px] text-textgray'>대학 내 팀플실을 자유롭게 예약 & 관리 시스템</span>
           </div>
+        </div>
+      </Fade>
+      <div className='flex w-full h-[150px] text-2xl items-center justify-center'>
+        <Flip left cascade>
+          <div className={`${FUNCTION_STYLE}`}>
+            <TbReportSearch className='text-6xl text-emphasize' />
+            <h1 className='text-xl'>팀플실 사용 데이터 제공</h1>
+          </div>
+          <div className='w-[4px] h-[100px] rounded-xl bg-sub' />
+          <div className={FUNCTION_STYLE}>
+            <BiGitBranch className='text-6xl text-emphasize' />
+            <h1 className='text-xl'>단과대학별 팀플실 예약 시스템 통일</h1>
+          </div>
+          <div className='w-[4px] h-[100px] rounded-xl bg-sub' />
           <div className={FUNCTION_STYLE}>
             <BsLightningCharge className='text-6xl text-emphasize' />
-            <h1>팀플실 예약 및 취소 간편화</h1>
+            <h1 className='text-xl'>팀플실 예약 및 취소 간편화</h1>
+          </div>
+        </Flip>
+      </div>
+      {/* SKILL STACK */}
+      <Zoom cascade>
+        <div className='flex flex-col justify-center gap-4 items-center w-[600px] h-[200px] rounded-b-none rounded-full bg-primary mt-12 '>
+          <h1 className='text-3xl text-white tracking-wider'>기술 스택</h1>
+          <div className='flex gap-2 w-full justify-center items-center'>
+            {ICON_URL.map((icon, index) => (
+              <div key={index} className=' bg-white shadow-xl rounded-2xl p-4'>
+                <img className='w-[70px] h-[70px]' src={`images/${icon}-icon.svg`} alt="" />
+              </div>))}
           </div>
         </div>
-
-
-      </div>
+      </Zoom>
     </section>
   );
 }
+
 
 
 
