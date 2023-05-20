@@ -1,11 +1,10 @@
 import React from 'react';
 
-function ChartInfo({ chartName, chartDescription }) {
+function ChartInfo({ chartName }) {
   return (
-    <div className='flex flex-col justify-center w-25% h-28 border-y-[3px] border-t-[#004C86] border-b-[#dedede] px-2 mr-6'>
-      <h3 className='text-lg'>{chartName}</h3>
-      <div className='text-lg'>Reservation Status</div>
-      <span className='text-sm text-[#717171]'>{chartDescription}</span>
+    <div className='flex flex-col justify-around w-full h-14'>
+      <div className='border-t-[3px] border-t-[#004C86] w-44' />
+      <h3 className='text-2xl'>{chartName}</h3>
     </div>
   );
 }

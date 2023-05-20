@@ -1,12 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Chart from 'react-apexcharts';
-import ChartInfo from './ChartInfo';
 
-function AngleCircleChart() {
+function AngleCircleChart({ data, colors }) {
+  const [seriesData, setSeries] = useState([]);
+
+  function refineData(input, key) {
+    return input.reduce((result, item) => {
+      const itemKey = item[key];
+      if (!result[itemKey]) {
+        result[itemKey] = 0;
+      }
+      result[itemKey]++;
+      return result;
+    }, {});
+  }
+
+  useEffect(() => {
+    let refined = refineData(data, 'bookingCapacity');
+    let resultChartData = new Array(3).fill(0);
+    let percentage = new Array(3).fill(0);
+    let total = 0;
+    for (let key in refined) {
+      const value = refined[key];
+      const intKey = parseInt(key);
+      if (intKey >= 4) {
+        resultChartData[2] += value;
+      } else {
+        resultChartData[intKey - 2] += value;
+      }
+      total += value;
+    }
+    percentage = resultChartData.map((e) => (((e / total) * 100).toFixed(1) === 'NaN' ? 0 : ((e / total) * 100).toFixed(1)));
+    const totalPercentage = percentage.reduce((acc, cur) => acc + parseFloat(cur), 0);
+
+    if (totalPercentage !== 100) {
+      percentage[percentage.length - 1] = (parseFloat(percentage[percentage.length - 1]) + (100 - totalPercentage)).toFixed(1);
+    }
+    setSeries(percentage);
+  }, [data]);
+
   const options = {
     chart: {
       height: 350,
       type: 'radialBar',
+      fontFamiliy: 'GmarketSansTTFMedium',
     },
     plotOptions: {
       radialBar: {
@@ -22,57 +59,55 @@ function AngleCircleChart() {
           name: {
             show: true,
             offsetY: -10,
-            color: '#e3e3e3',
+            color: '#000',
             fontSize: '12px',
           },
           value: {
             show: true,
-            color: '#111',
-            fontSize: '32px',
+            color: '#000',
+            fontSize: '22px',
+            offsetY: 7,
+            formatter: function (val) {
+              return val + '%';
+            },
           },
           total: {
             show: true,
             label: 'Total',
             color: '#373d3f',
+            fontSize: '22px',
+
             formatter: function (w) {
-              return w.globals.seriesTotals.reduce((a, b) => {
-                return a + b;
-              }, 0);
+              return '100%';
             },
           },
         },
-
-        legend: {
-          show: true,
-          position: 'bottom',
-          offsetY: 0,
-          height: 230,
-        },
       },
     },
+    yaxis: {
+      showAlways: true,
+    },
 
-    colors: ['#417FB3', '#5D8DFF', '#AEDBFF', '#D7EDFF'],
-    labels: ['101호', '102호', '103호', '104호'],
+    colors: colors,
+    labels: ['2인', '3인', '4인 이상'],
     legend: {
       show: true,
       floating: true,
-      fontSize: '14px',
+      fontFamily: 'GmarketSansTTFMedium',
+      fontSize: '12px',
       color: 'black',
       position: 'left',
-      offsetX: 45,
-      offsetY: 7,
+      offsetX: 20,
+      offsetY: 5,
     },
   };
-
-  const series = [40, 25, 20, 15];
-  const [chartData, setChartData] = useState(series);
 
   return (
     <div className='flex justify-between w-full'>
       {/* <ChartInfo graphName={'월별'} graphDescription={'언제 가장 많이 예약했을까요?'} /> */}
-      <div className='w-full border-t-[3px] border-[#cdcdcd]'>
+      <div className='w-full border-t-[3px] border-[#ececec]'>
         <div className='chart'>
-          <Chart options={options} series={chartData} type='radialBar' height='350' />
+          <Chart options={options} series={seriesData} type='radialBar' height='300' />
         </div>
       </div>
     </div>
