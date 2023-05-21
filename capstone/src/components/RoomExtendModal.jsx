@@ -29,14 +29,10 @@ function RoomExtendModal({ setOpenExtendModal, orderId, studyRoomId, date, time,
     getData();
   }, []);
 
-  const click = () => {
-    console.log(time);
-  };
-
   const ExtendRoom = () => {
     axios
       .put(
-        `${URL}/api/order/${orderId}`,
+        `${URL}/api/order/extend/${orderId}`,
         { date: date, startTime: time[0], endTime: extendedTime, bookingCapacity: bookingCapacity },
         {
           headers: { Authorization: `Bearer ${JWT_TOKEN}` },
@@ -55,11 +51,11 @@ function RoomExtendModal({ setOpenExtendModal, orderId, studyRoomId, date, time,
 
   const handleBlockClick = (id) => {
     if (id < recentBlockIdx) {
-      console.log('시간 단축');
+      // console.log('시간 단축');
       setBlocks((prevState) => {
-        console.log(`id: ${id} recent id: ${recentBlockIdx} maxExtendEndIdx: ${maxExtendEndIdx}`);
+        // console.log(`id: ${id} recent id: ${recentBlockIdx} maxExtendEndIdx: ${maxExtendEndIdx}`);
         const newBlocks = prevState.map((block) => (block.id > id && block.id < maxExtendEndIdx ? { ...block, bgColor: 'primary' } : block));
-        console.log(newBlocks);
+        // console.log(newBlocks);
         return newBlocks;
       });
     } else {
@@ -82,7 +78,7 @@ function RoomExtendModal({ setOpenExtendModal, orderId, studyRoomId, date, time,
           const earliestIdx = (timeData[i][0] - 9) * 2;
           const extendTime = earliestIdx - reservedTime[1] > 2 ? reservedTime[1] + 2 : earliestIdx;
           setMaxExtendEndIdx(extendTime);
-          console.log(timeData[i][0]);
+          // console.log(timeData[i][0]);
           return timeData[i][0];
         }
       }
@@ -147,9 +143,7 @@ function RoomExtendModal({ setOpenExtendModal, orderId, studyRoomId, date, time,
         <div className='fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] '>
           <div className='bg-white w-[1100px] rounded-xl'>
             <div className='p-6 text-center'>
-              <h3 className='mb-5 text-2xl  text-black' onClick={click}>
-                이용시간 연장하기
-              </h3>
+              <h3 className='mb-5 text-2xl  text-black'>이용시간 연장하기</h3>
               <div className='text-lg'>현재 예약 시간: {`${timeFormatting(time[0])} ~ ${timeFormatting(time[1])}`}</div>
               <div className='text-lg'>연장 후 시간: {`${timeFormatting(time[0])} ~ ${timeFormatting(extendedTime)}`}</div>
               <div className='py-6'>

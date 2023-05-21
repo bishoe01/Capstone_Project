@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Container from '../components/Container';
 import Fade from 'react-reveal/Fade';
-import SideMenu from '../components/SideMenu';
 import CommonBtn from '../components/CommonBtn';
-import axios from 'axios';
 
 import { useUserState, useUserDispatch, getUser } from '../context/UserData';
 
@@ -21,17 +19,11 @@ function Profile() {
     fetchData();
   }, []);
 
-  const click = () => {
-    console.log(users);
-  };
-
   return (
     <Fade>
       <Container>
         <div className='w-full'>
-          <h3 className='px-24 text-primary font-black text-xl before:align-middle' onClick={click}>
-            프로필 설정
-          </h3>
+          <h3 className='px-24 text-primary font-black text-xl before:align-middle'>프로필 설정</h3>
           <div className='flex flex-col justify-center items-center min-w-[800px]'>
             <div className='w-3/4'>
               <div className='flex border-b border-b-sub py-5 w-full'>

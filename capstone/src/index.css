@@ -12,6 +12,11 @@
   src: url('./fonts/GmarketSansTTFLight.ttf');
 }
 
+@font-face {
+  font-family: 'bold';
+  src: url('./fonts/GmarketSansTTFBold.ttf');
+}
+
 * {
   font-family: 'main';
   margin: 0;

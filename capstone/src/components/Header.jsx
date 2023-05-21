@@ -34,7 +34,7 @@ function Header() {
   };
 
   return (
-    <header className='flex justify-between items-center p-6 border-b-2 border-sub text-2xl text-primary'>
+    <header className='flex justify-between items-center p-6 mb-8 border-b-2 border-sub text-2xl text-primary'>
       <Link to={'/'} className='flex items-center'>
         <BsBook />
         <p className='ml-4 hover:text-emphasize'>HY-TOGETHER</p>

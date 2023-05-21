@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -19,7 +19,6 @@ function Login() {
           window.location.reload();
         })
         .catch((error) => {
-          console.log(error.response.data);
           alert(error.response.data);
         });
     };
