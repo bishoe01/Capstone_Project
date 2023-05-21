@@ -17,7 +17,7 @@ function HeaderContantWithLogin() {
 function Header() {
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
-  const links = ['Home', 'Reserve', 'Contact'];
+  const links = ['Reserve'];
   const { jwt, hours, url, reactionArray, filteredHours, user, locationURL } = useRoomContext();
   useEffect(() => {
     if (localStorage.getItem('JWT') !== null) {
@@ -43,13 +43,24 @@ function Header() {
       </Link>
       <ul className='flex gap-5 text-lg'>
         {links.map((link, index) => {
-          return (
-            <li className=' hover:text-emphasize' key={index}>
-              {jwt ?
-                <Link to={`/${link.toLowerCase()}/${link === 'Reserve' && locationURL[user?.university]}`}>{link}</Link>
-                : <Link to={`/login`}>{link}</Link>}
-            </li>
-          );
+          if (link === "Reserve") {
+            return (
+              <li className=' hover:text-emphasize' key={index}>
+                {jwt ?
+                  <Link to={`/${link.toLowerCase()}/${locationURL[user?.university]}`}>{link}</Link>
+                  : <Link to={`/login`}>{link}</Link>}
+              </li>
+            );
+          }
+          else {
+            return (
+              <li className=' hover:text-emphasize' key={index}>
+                {jwt ?
+                  <Link to={`/${link.toLowerCase()}`}>{link}</Link>
+                  : <Link to={`/login`}>{link}</Link>}
+              </li>
+            );
+          }
         })}
 
         {isLogin ? (
