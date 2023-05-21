@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import styles from '../styles';
 import { VscEye } from 'react-icons/vsc';
@@ -9,7 +9,7 @@ import { MdOutlineAddchart } from 'react-icons/md'
 import { BiGitBranch } from 'react-icons/bi'
 import { TbReportSearch } from 'react-icons/tb'
 import { Fade, Flip, Slide, Zoom } from 'react-reveal';
-function Home({ props }) {
+function MainPage({ props }) {
   const [data, setData] = useState([])
   const BANNER_STYLE = `flex justify-center items-center w-[300px] gap-3 text-primary`
   const FUNCTION_STYLE = `w-full flex flex-col gap-4 justify-around items-center py-8 p-2 text-primary`
@@ -122,4 +122,4 @@ function Home({ props }) {
 
 
 
-export default Home;
+export default MainPage;

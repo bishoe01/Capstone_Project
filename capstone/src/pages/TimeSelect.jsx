@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 import { useRoomContext } from '../context/Roomdata';
 import TimeLine from '../components/TimeTable/TimeLine';
@@ -7,19 +7,30 @@ import { IoChevronDown } from 'react-icons/io5';
 import Board from '../components/Board';
 import styles from '../styles';
 import axios from 'axios';
+import { redirect } from "react-router-dom";
+
 function TimeSelect() {
     const location = useLocation();
-    const { roomData, reservelist, reactionArray, jwt, url, building } = useRoomContext();
-    const [department, setDepartment] = useState(roomData[location.pathname.split('/')[2]]);
+    const navigate = useNavigate();
+    const { roomData, reservelist, reactionArray, jwt, url, building, user, locationURL } = useRoomContext();
     const [deptname, setDeptname] = useState(building[location.pathname.split('/')[2]]);
     const [nowData, setNowData] = useState();
     const [roomInfo, setRoomInfo] = useState();
     const [targetDate, setTargetDate] = useState();
-
     const HandleDateChange = (e) => setTargetDate(e.target.value);
     useEffect(() => {
         setTargetDate(reactionArray[0]?.date);
     }, [reactionArray]);
+    useEffect(() => {
+        if (user) {
+            const location_URL = locationURL[user.university];
+            if (location_URL !== location.pathname.split('/')[2]) {
+                navigate(`/reserve/${location_URL}`);
+                setDeptname(building[location_URL]);
+            }
+        }
+    }, [user]);
+
 
     // useEffect(() => {
     //     axios.get(`${url}/api/studyroom?university=${소프트웨어융합대학}`, {)
@@ -43,12 +54,13 @@ function TimeSelect() {
             .then((res) => res.data)
             .then((res) => {
                 setRoomInfo(res);
-                setDepartment(res.map((item) => item.name));
             })
-    }, [targetDate, jwt])
-    console.log('roomInfo', roomInfo);
+    }, [targetDate, jwt, deptname]);
+
+
     return (
         <Fade className={`${styles.innerWidth}`}>
+
             <div className={`flex flex-col ${styles.yPaddings} ${styles.innerWidth}`}>
                 <Board nowData={nowData} department={location.pathname.split('/')[2]} />
             </div>

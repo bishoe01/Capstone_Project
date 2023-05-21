@@ -130,3 +130,8 @@ li {
   background: #65c4fa;
   filter: blur(150px);
 }
+
+#bolder {
+  font-family: 'bold';
+  font-weight: 600;
+}
