@@ -16,21 +16,26 @@ function PlaceRental() {
 
     const fetchData = async () => {
       let JWT_TOKEN = localStorage.getItem('JWT');
-      await axios
-        .get(`${URL}/api/user/order`, {
-          headers: { Authorization: `Bearer ${JWT_TOKEN}` },
-        })
-        .then((res) => {
-          setJWT(JWT_TOKEN);
-          let data = res.data.sort((a, b) => {
-            if (a.date < b.date) return 1;
-            else if (a.date === b.date) {
-              return b.startTime - a.startTime;
-            } else return -1;
+      try {
+        await axios
+          .get(`${URL}/api/user/order`, {
+            headers: { Authorization: `Bearer ${JWT_TOKEN}` },
+          })
+          .then((res) => {
+            setJWT(JWT_TOKEN);
+            let data = res.data.sort((a, b) => {
+              if (a.date < b.date) return 1;
+              else if (a.date === b.date) {
+                return b.startTime - a.startTime;
+              } else return -1;
+            });
+            setHistory(data);
+            setIsExistHistory(true);
           });
-          setHistory(data);
-          setIsExistHistory(data.length);
-        });
+      } catch (err) {
+        console.log(err);
+        setIsExistHistory(false);
+      }
     };
     fetchData();
   }, []);

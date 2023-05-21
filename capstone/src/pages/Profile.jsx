@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Container from '../components/Container';
 import Fade from 'react-reveal/Fade';
-import SideMenu from '../components/SideMenu';
 import CommonBtn from '../components/CommonBtn';
-import axios from 'axios';
 
 import { useUserState, useUserDispatch, getUser } from '../context/UserData';
 
@@ -22,7 +20,6 @@ function Profile() {
     fetchData();
     console.log(users);
   }, []);
-
 
   return (
     <Fade top>
@@ -49,7 +46,6 @@ function Profile() {
             <div className='flex flex-col'>
               <h1>이름</h1>
               <input type='text' className='border-2 border-sub rounded-md' />
-
             </div>
           </div>
         </div>

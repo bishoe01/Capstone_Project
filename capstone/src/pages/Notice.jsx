@@ -1,7 +1,6 @@
 import React from 'react';
 import Fade from 'react-reveal';
 import Container from '../components/Container';
-import SideMenu from '../components/SideMenu';
 import Table from '../components/Table';
 import Pagination from '../components/Pagination';
 

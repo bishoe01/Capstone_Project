@@ -1,22 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useForm, Controller } from 'react-hook-form';
 import axios from 'axios';
 
 function Register() {
   const INPUT_STYLE = 'p-2 text-base leading-4 border-[1px] border-sub rounded placeholder:text-gray-500 placeholder:text-sm';
+  const SELECT_STYLE = 'p-2.5 w-[230px] leading-4 border-[1px] border-sub rounded text-gray-500 text-sm ';
+  const OPTION_STYLE = 'p-2.5 w-[230px] leading-4 border-[1px] border-sub rounded text-black-500 text-sm';
   const WARNING_STYLE = 'text-warning text-sm pt-1 pl-0.5';
-  // const [id, setId] = useState();
-  // const [pw, setPw] = useState('');
-  // const [pwcheck, setPwcheck] = useState('');
+
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors },
   } = useForm({ mode: 'onChange' });
-
+  const check = watch('university');
   const onSubmit = (data) => {
     // e.preventDefault();
     const register = async () => {
@@ -34,7 +35,7 @@ function Register() {
           department: data.department,
         })
         .then((res) => {
-          navigate('register/registered');
+          navigate('/register/registered');
         })
         .catch((error) => {
           alert(error.response.data);
@@ -64,7 +65,13 @@ function Register() {
   return (
     <div className='flex justify-center items-center w-full'>
       <div className='flex flex-col items-center justify-center gap-8 border-sub border rounded-xl  min-w-96 p-6 mt-40 shadow-lg'>
-        <h1 className='text-2xl text-primary'>회원가입</h1>
+        <h1
+          className='text-2xl text-primary'
+          onClick={() => {
+            console.log(check);
+          }}>
+          회원가입
+        </h1>
         <form onSubmit={handleSubmit(onSubmit, onError)}>
           <div className='flex flex-col items-center gap-4'>
             <div className='w-full'>
@@ -199,7 +206,7 @@ function Register() {
             <div className='flex gap-2'>
               <div className=''>
                 <h3>단과대학</h3>
-                <input
+                {/* <input
                   className={INPUT_STYLE}
                   type='text'
                   placeholder='한글로 작성해주세요'
@@ -207,7 +214,48 @@ function Register() {
                     required: true,
                   })}
                 />
-                {errors.university && errors.university.type === 'required' && <h3 className={WARNING_STYLE}>단과대학을 입력해주세요</h3>}
+                {errors.university && errors.university.type === 'required' && <h3 className={WARNING_STYLE}>단과대학을 입력해주세요</h3>} */}
+                <Controller
+                  control={control}
+                  name='university'
+                  defaultValue=''
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <select {...field} className={SELECT_STYLE}>
+                      <option className={OPTION_STYLE} value=''>
+                        단과대학을 선택해주세요
+                      </option>
+                      <option className={OPTION_STYLE} value='공학대학'>
+                        공학대학
+                      </option>
+                      <option className={OPTION_STYLE} value='경상대학'>
+                        경상대학
+                      </option>
+                      <option className={OPTION_STYLE} value='국제문화대학'>
+                        국제문화대학
+                      </option>
+                      <option className={OPTION_STYLE} value='과학기술융합대학'>
+                        과학기술융합대학
+                      </option>
+                      <option className={OPTION_STYLE} value='디자인대학'>
+                        디자인대학
+                      </option>
+                      <option className={OPTION_STYLE} value='약학대학'>
+                        약학대학
+                      </option>
+                      <option className={OPTION_STYLE} value='언론정보대학'>
+                        언론정보대학
+                      </option>
+                      <option className={OPTION_STYLE} value='예체능대학'>
+                        예체능대학
+                      </option>
+                      <option className={OPTION_STYLE} value='소프트웨어융합대학'>
+                        소프트웨어융합대학
+                      </option>
+                    </select>
+                  )}
+                />
+                {errors.university && errors.university.type === 'required' && <h3 className={WARNING_STYLE}>단과대학을 선택해주세요</h3>}
               </div>
               <div className=''>
                 <h3>학과</h3>
