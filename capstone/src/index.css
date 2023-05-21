@@ -12,6 +12,11 @@
   src: url('./fonts/GmarketSansTTFLight.ttf');
 }
 
+@font-face {
+  font-family: 'bold';
+  src: url('./fonts/GmarketSansTTFBold.ttf');
+}
+
 * {
   font-family: 'main';
   margin: 0;
@@ -124,4 +129,9 @@ li {
 
   background: #65c4fa;
   filter: blur(150px);
+}
+
+#bolder {
+  font-family: 'bold';
+  font-weight: 600;
 }

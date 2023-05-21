@@ -36,7 +36,7 @@ function RoomExtendModal({ setOpenExtendModal, orderId, studyRoomId, date, time,
   const ExtendRoom = () => {
     axios
       .put(
-        `${URL}/api/order/${orderId}`,
+        `${URL}/api/order/extend/${orderId}`,
         { date: date, startTime: time[0], endTime: extendedTime, bookingCapacity: bookingCapacity },
         {
           headers: { Authorization: `Bearer ${JWT_TOKEN}` },

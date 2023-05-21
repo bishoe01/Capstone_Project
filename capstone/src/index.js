@@ -17,6 +17,7 @@ import Notice from './pages/Notice';
 import { UserProvider } from './context/UserData';
 
 import Dashboard from './pages/Dashboard';
+import MainPage from './pages/Main';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       {
         index: true,
         path: '/',
-        element: <Home />,
+        element: <MainPage />,
       },
       {
         path: 'login',
@@ -48,15 +49,20 @@ const router = createBrowserRouter([
           </UserProvider>
         ),
         children: [
-          {
-            path: 'profile',
-            element: <Profile />,
-          },
+
           { path: 'placerental', element: <PlaceRental /> },
           { path: 'notice', element: <Notice /> },
         ],
       },
 
+      {
+        path: 'profile',
+        element:
+          <UserProvider>
+            <Profile />
+          </UserProvider>
+      }
+      ,
       {
         path: 'login',
         element: (
@@ -66,7 +72,7 @@ const router = createBrowserRouter([
         ),
       },
 
-      { path: 'about', element: <h1>about</h1> },
+      { path: 'home', element: <Home /> },
       { path: 'Contact', element: <h1>contact</h1> },
       { path: 'reserve/:department', element: <TimeSelect /> },
       {

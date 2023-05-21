@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { BsBook } from 'react-icons/bs';
 import { Link, useNavigate } from 'react-router-dom';
+import { useRoomContext } from '../context/Roomdata';
+import axios from 'axios';
 
 function HeaderContantWithLogin() {
   const informationLinks = ['Profile', 'PlaceRental', 'Notice'];
@@ -15,9 +17,8 @@ function HeaderContantWithLogin() {
 function Header() {
   const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
-
-  const links = ['Home', 'About', 'Contact'];
-
+  const links = ['Reserve'];
+  const { jwt, hours, url, reactionArray, filteredHours, user, locationURL } = useRoomContext();
   useEffect(() => {
     if (localStorage.getItem('JWT') !== null) {
       setIsLogin(true);
@@ -33,19 +34,33 @@ function Header() {
     window.location.reload();
   };
 
+
   return (
-    <header className='flex justify-between items-center p-6 border-b-2 border-sub text-2xl text-primary'>
+    <header className='flex justify-between items-center p-6 text-2xl text-primary shadow-xl rounded-xl'>
       <Link to={'/'} className='flex items-center'>
-        <BsBook />
+        <BsBook className='text-emphasize text-bold' />
         <p className='ml-4 hover:text-emphasize'>HY-TOGETHER</p>
       </Link>
       <ul className='flex gap-5 text-lg'>
         {links.map((link, index) => {
-          return (
-            <li className=' hover:text-emphasize' key={index}>
-              <Link to={`/${link.toLowerCase()}`}>{link}</Link>
-            </li>
-          );
+          if (link === "Reserve") {
+            return (
+              <li className=' hover:text-emphasize' key={index}>
+                {jwt ?
+                  <Link to={`/${link.toLowerCase()}/${locationURL[user?.university]}`}>{link}</Link>
+                  : <Link to={`/login`}>{link}</Link>}
+              </li>
+            );
+          }
+          else {
+            return (
+              <li className=' hover:text-emphasize' key={index}>
+                {jwt ?
+                  <Link to={`/${link.toLowerCase()}`}>{link}</Link>
+                  : <Link to={`/login`}>{link}</Link>}
+              </li>
+            );
+          }
         })}
 
         {isLogin ? (
