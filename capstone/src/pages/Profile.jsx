@@ -4,6 +4,7 @@ import Fade from 'react-reveal/Fade';
 import CommonBtn from '../components/CommonBtn';
 import { AiFillCamera } from 'react-icons/ai';
 import { useUserState, useUserDispatch, getUser } from '../context/UserData';
+import { Slide } from 'react-reveal';
 
 function Profile() {
   //context이용
@@ -22,7 +23,7 @@ function Profile() {
   }, []);
 
   return (
-    <Fade top>
+    <Slide left>
       <div className='mt-10 flex flex-col justify-center relative'>
         <img src={`/images/하냥이_소프트웨어융합대학.png`} alt='profile'
           className='border-4 border-primary rounded-xl w-[250px] h-[250px] object-contain' />
@@ -108,7 +109,7 @@ function Profile() {
         </div>
       </div> */}
 
-    </Fade>
+    </Slide>
   );
 }
 
