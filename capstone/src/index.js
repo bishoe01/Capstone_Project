@@ -18,6 +18,7 @@ import { UserProvider } from './context/UserData';
 
 import Dashboard from './pages/Dashboard';
 import MainPage from './pages/Main';
+import ChartLayout from './charts/ChartLayout';
 
 const router = createBrowserRouter([
   {
@@ -72,7 +73,7 @@ const router = createBrowserRouter([
         ),
       },
 
-      { path: 'home', element: <Home /> },
+      { path: 'data', element: <ChartLayout /> },
       { path: 'Contact', element: <h1>contact</h1> },
       { path: 'reserve/:department', element: <TimeSelect /> },
       {
