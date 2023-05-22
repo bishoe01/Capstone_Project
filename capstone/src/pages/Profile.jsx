@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Container from '../components/Container';
 import Fade from 'react-reveal/Fade';
 import CommonBtn from '../components/CommonBtn';
-
+import { AiFillCamera } from 'react-icons/ai';
 import { useUserState, useUserDispatch, getUser } from '../context/UserData';
 
 function Profile() {
@@ -23,12 +23,17 @@ function Profile() {
 
   return (
     <Fade top>
+      <div className='mt-10 flex flex-col justify-center relative'>
+        <img src={`/images/하냥이_소프트웨어융합대학.png`} alt='profile'
+          className='border-4 border-primary rounded-xl w-[250px] h-[250px] object-contain' />
+        <div className='absolute flex justify-center items-center bg-black w-[250px] h-[50px] p-4 bottom-0 opacity-75'>
+          <AiFillCamera className='text-white text-4xl' />
+        </div>
+      </div>
       <div className='flex flex-col h-[600px] gap-4 border-4 border-sub mt-10 rounded-2xl p-8'>
         <h1 className='text-3xl font-bold text-primary tracking-wider'>Profile Settings</h1>
         <div className='flex'>
           <div className='flex flex-col justify-center items-center gap-2 py-2'>
-            <img src={`/images/하냥이_소프트웨어융합대학.png`} alt='profile' className='border-4 border-primary rounded-xl w-[250px] h-[250px] object-contain' />
-            <h2 className='text-2xl text-primary'>프로필 변경</h2>
           </div>
           <div className='grid grid-cols-2 gap-4 w-[600px] ml-10'>
             <div className='flex flex-col bg-sub rounded-xl h-[100px] p-4 justify-center items-start'>
