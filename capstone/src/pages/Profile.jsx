@@ -27,7 +27,7 @@ function Profile() {
       <div className='mt-10 flex flex-col justify-center relative'>
         <img src={`/images/하냥이_소프트웨어융합대학.png`} alt='profile'
           className='border-4 border-primary rounded-xl w-[250px] h-[250px] object-contain' />
-        <div className='absolute flex justify-center items-center bg-black w-[250px] h-[50px] p-4 bottom-0 opacity-75'>
+        <div className='absolute flex justify-center items-center bg-black w-[250px] h-[40px] p-4 bottom-0 opacity-75'>
           <AiFillCamera className='text-white text-4xl' />
         </div>
       </div>
