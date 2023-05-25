@@ -25,7 +25,7 @@ function Rank({ categories }) {
   return (
     <>
       <div className='flex justify-center mt-4 ml-5 w-[790px]'>
-        <div className=' w-[790px] max-w-[790px] h-36 bg-center bg-no-repeat bg-contain relative' style={{ backgroundImage: "url('/images/ranking.png')" }}>
+        <div className=' w-[790px] max-w-[790px] h-32 bg-center bg-no-repeat bg-contain relative' style={{ backgroundImage: "url('/images/ranking.png')" }}>
           <div className='absolute top-12 left-12'>
             <span className='block text-2xl'>{rank[0] && rank[0][0]}</span>
             <span className='block text-2xl'>{rank[0] && rank[0][1]}</span>
@@ -165,9 +165,9 @@ function BarGraph() {
 
   return (
     <>
-      {!loading && chartData.length > 0 ? (
-        <>
-          <div className='flex flex-col justify-between w-full'>
+      <div className='flex flex-col justify-between w-full'>
+        {!loading && chartData.length > 0 ? (
+          <>
             <ChartInfo chartName={'팀플실 예약 현황'} />
             <div className='w-full border-t-[3px] border-[#ececec]'>
               <Rank categories={chartData[0]} />
@@ -175,21 +175,22 @@ function BarGraph() {
                 <Chart options={options} series={series} type='bar' height='260' />
               </div>
             </div>
-          </div>
-          <div className='flex flex-col justify-between'>
-            <UserCount />
-          </div>
-        </>
-      ) : (
-        <>
-          <Loading w={'792px'} h={'494px'} />
-          <div className='flex flex-col justify-between'>
-            <Loading w={'256px'} h={'163px'} />
-            <Loading w={'256px'} h={'163px'} />
-            <Loading w={'256px'} h={'163px'} />
-          </div>
-        </>
-      )}
+          </>
+        ) : (
+          <>
+            <div className='flex flex-col justify-around w-full h-14'>
+              <div className='border-t-[3px] border-t-[#004C86] w-44' />
+              <Loading w={'176px'} h={'32px'} />
+            </div>
+            <div className='w-full border-t-[3px] border-[#ececec]'>
+              <Loading w={'852px'} h={'420px'} />
+            </div>
+          </>
+        )}
+      </div>
+      <div className='flex flex-col justify-center gap-4'>
+        <UserCount />
+      </div>
     </>
   );
 }

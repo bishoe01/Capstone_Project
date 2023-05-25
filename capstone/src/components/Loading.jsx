@@ -3,7 +3,7 @@ import 'react-loading-skeleton/dist/skeleton.css';
 
 function Loading({ w, h }) {
   return (
-    <div className={`flex flex-col justify-between w-full h-full`}>
+    <div className={`flex flex-col`}>
       <Skeleton style={{ width: w, height: h }} />
     </div>
   );

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Login() {
   const INPUT_STYLE = 'p-2 text-base leading-4 border-[1px] border-sub rounded  placeholder:text-gray-300';
   const [id, setId] = useState();
   const [pw, setPw] = useState();
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const getJWT = async () => {
@@ -42,7 +43,7 @@ function Login() {
             </div>
             <div className='text-right  p-2'>
               <h1 className='text-sm text-gray-500'>
-                아직 회원이 아니신가요?{' '}
+                아직 회원이 아니신가요?
                 <span className='text-primary hover:cursor-pointer'>
                   <Link to='/register'>회원가입</Link>
                 </span>

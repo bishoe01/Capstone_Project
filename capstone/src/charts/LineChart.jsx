@@ -79,18 +79,28 @@ function LineGraph({ univ }) {
 
   return (
     <>
-      {!loading ? (
-        <div className='flex flex-col justify-between w-full'>
-          <ChartInfo chartName={'월별 예약 현황'} />
-          <div className='w-full border-t-[3px] border-[#ececec]'>
-            <div className='chart'>
-              <Chart options={options} series={series} type='line' height='270' />
+      <div className='flex flex-col justify-between w-full'>
+        {!loading ? (
+          <>
+            <ChartInfo chartName={'월별 예약 현황'} />
+            <div className='w-full border-t-[3px] border-[#ececec]'>
+              <div className='chart'>
+                <Chart options={options} series={series} type='line' height='270' />
+              </div>
             </div>
-          </div>
-        </div>
-      ) : (
-        <Loading w={'524px'} h={'344px'} />
-      )}
+          </>
+        ) : (
+          <>
+            <div className='flex flex-col justify-around w-full h-14'>
+              <div className='border-t-[3px] border-t-[#004C86] w-44' />
+              <Loading w={'150px'} h={'32px'} />
+            </div>
+            <div className='w-full border-t-[3px] border-[#ececec] mb-[50px]'>
+              <Loading w={'554px'} h={'230px'} />
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 }
