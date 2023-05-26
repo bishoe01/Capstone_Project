@@ -5,20 +5,19 @@ import ReserveState from '../components/ReserveState';
 import HistoryList from '../components/HistoryList';
 
 import axios from 'axios';
+import { useRoomContext } from '../context/Roomdata';
 
 function PlaceRental() {
   const [history, setHistory] = useState([]);
   const [isExistHistory, setIsExistHistory] = useState(false);
   const [JWT, setJWT] = useState('');
-
+  const { url } = useRoomContext();
   useEffect(() => {
-    const URL = 'https://port-0-erica-studyroom-6g2llfs1h510.sel3.cloudtype.app';
-
     const fetchData = async () => {
       let JWT_TOKEN = localStorage.getItem('JWT');
       try {
         await axios
-          .get(`${URL}/api/user/order`, {
+          .get(`${url}/api/user/order`, {
             headers: { Authorization: `Bearer ${JWT_TOKEN}` },
           })
           .then((res) => {
@@ -39,7 +38,7 @@ function PlaceRental() {
     };
     fetchData();
   }, []);
-
+  console.log(history);
   return (
     <Fade>
       <Container>

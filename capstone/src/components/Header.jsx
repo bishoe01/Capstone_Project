@@ -9,7 +9,7 @@ function HeaderContantWithLogin() {
 
   return informationLinks.map((link, index) => (
     <li className=' hover:text-emphasize' key={index}>
-      <Link to={`dashboard/${link.toLowerCase()}`}>{link}</Link>
+      <Link to={`/${link.toLowerCase()}`}>{link}</Link>
     </li>
   ));
 }
