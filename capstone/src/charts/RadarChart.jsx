@@ -71,7 +71,7 @@ function RadarChart({ data }) {
   return (
     <>
       <div className='flex flex-col items-center w-full py-4'>
-        <h3 className='text-lg relative top-[20px]'>요일별 이용 횟수</h3>
+        <h3 className='text-3xl text-primary relative top-[20px]'>요일별 이용 횟수</h3>
         <div className='chart w-full'>
           <Chart options={options} series={series} type='radar' height='450' />
         </div>

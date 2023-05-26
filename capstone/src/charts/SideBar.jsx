@@ -7,7 +7,7 @@ function SideBar({ onSelection }) {
   };
 
   return (
-    <div className={`${isOpen ? 'translate-x-0' : '-translate-x-[80%]'} fixed top-1/2 left-0 translate-y-[-50%] w-44 h-48 px-4 py-2 border-2 border-[#ececec] rounded-r-2xl overflow-hidden transition-transform duration-500 ease-in-out`}>
+    <div className={`${isOpen ? 'translate-x-0' : '-translate-x-[80%]'} fixed top-1/2 left-0 translate-y-[-30%] w-44 h-48 px-4 py-2 border-2 border-[#ececec] rounded-r-2xl overflow-hidden transition-transform duration-500 ease-in-out`}>
       {isOpen ? (
         <>
           <h1 className='text-lg text-primary'>예약 현황</h1>

@@ -75,7 +75,7 @@ function TreemapChart({ univ }) {
         {!loading ? (
           <>
             <ChartInfo chartName={'단과대 팀플실별 이용 점유율'} />
-            <div className='w-full border-t-[3px] border-[#ececec] mb-[50px]'>
+            <div className='w-full border-t-[0px] border-[#ececec] mb-[50px]'>
               <div className='chart'>
                 <Chart options={options} series={series} type='treemap' height='300' />
               </div>

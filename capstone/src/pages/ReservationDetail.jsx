@@ -171,7 +171,7 @@ function ReservationDetail(props) {
                                     console.error(error);
                                     alert('Reservation failed. Please try again.');
                                 });
-                                navigate('/dashboard/placerental', { state: { reserveInfo } });
+                                navigate('/placerental', { state: { reserveInfo } });
                             }} className='bg-primary text-xl text-white px-2 basis-1/6 rounded-full shadow-md hover:brightness-125 '>
                                 예약</button>
                             <button onClick={(e) => {

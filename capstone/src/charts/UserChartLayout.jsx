@@ -45,10 +45,12 @@ function UserChartLayout({ name }) {
           </>
         ) : (
           <>
-            <ChartInfo chartName={`${name}님의 지난달 예약 정보`} />
-            <div className='flex justify-center items-center gap-8 w-full border-t-[3px] border-[#ececec]'>
+            <div className='flex flex-col justify-center w-full h-14 relative items-center'>
+              <h3 className='text-3xl text-primary p-4 py-[8px] rounded-full border-primary border-4'>{name}님의 지난달 예약 정보</h3>
+            </div>
+            <div className='flex justify-center items-center gap-8 w-full '>
               <RadarChart data={lastMonthData} />
-              <div className='h-[340px] mb-[10px] border border-[#ececec] ' />
+              <div className='h-[300px] mb-[10px] border-[1px] border-sub ' />
               <PieChart data={lastMonthData} />
             </div>
           </>

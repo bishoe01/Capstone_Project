@@ -55,7 +55,7 @@ function PieChart({ data }) {
   return (
     <>
       <div className='flex flex-col items-center w-full py-4'>
-        <h3 className='text-lg relative top-[-15px]'>팀플실별 예약율</h3>
+        <h3 className='text-3xl text-primary relative top-[-15px]'>팀플실별 예약율</h3>
         <div className='chart w-full pb-[60px]'>
           <Chart options={options} series={chartData[1]} type='pie' height='370' />
         </div>

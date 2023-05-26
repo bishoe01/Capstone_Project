@@ -44,7 +44,7 @@ function ChartLayout() {
     <>
       {Object.keys(userInfo).length > 0 ? (
         <>
-          <div className='w-full mt-10'>
+          <div className='w-full mt-10 relative'>
             <div className='flex justify-between gap-8 w-full mb-10' ref={componentRefs.Bar_Count}>
               <BarChart />
             </div>
@@ -63,7 +63,7 @@ function ChartLayout() {
               <UserChartLayout name={userInfo.name} />
             </div>
           </div>
-          <SideBar onSelection={scrollToComponent} />
+          {/* <SideBar onSelection={scrollToComponent} /> */}
         </>
       ) : null}
     </>

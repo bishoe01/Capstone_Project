@@ -105,7 +105,7 @@ function AngleCircleChart({ data, colors }) {
   return (
     <div className='flex justify-between w-full'>
       {/* <ChartInfo graphName={'월별'} graphDescription={'언제 가장 많이 예약했을까요?'} /> */}
-      <div className='w-full border-t-[3px] border-[#ececec]'>
+      <div className='w-full '>
         <div className='chart'>
           <Chart options={options} series={seriesData} type='radialBar' height='300' />
         </div>

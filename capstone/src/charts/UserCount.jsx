@@ -36,21 +36,14 @@ function UserCount() {
     <>
       {visitors >= 0 && monthly >= 0 && daily >= 0 ? (
         <>
-          {/* <div className='w-64 border-2 border-[#ececec] px-5 py-4'>
-            <h3 className='text-xl w-32 text-center border-t-[3px] border-primary font-[main]'>전체 방문자 수</h3>
-            <div className='flex items-center mt-2'>
-              <img src='images/profile.png' alt='' className='w-16 h-16 font-extrabold' />
-              <div className='text-4xl mx-auto pt-3 font-[bold] text-center'>{visitors}</div>
-            </div>
-          </div> */}
-          <div className=' w-64 border-2 border-[#ececec] px-5 py-4'>
+          <div className=' w-64 border-[3px] border-sub px-5 py-4 shadow-md rounded-xl'>
             <h3 className='text-xl w-32 text-center border-t-[3px] border-primary font-[main]'>이달 예약자 수</h3>
             <div className='flex  items-center mt-2'>
               <img src='images/profile.png' alt='' className='w-16 h-16 font-extrabold' />
               <div className='text-4xl mx-auto pt-3 font-[bold] text-center'>{monthly}</div>
             </div>
           </div>
-          <div className=' w-64 border-2 border-[#ececec] px-5 py-4'>
+          <div className=' w-64 border-[3px] border-sub rounded-xl shadow-md px-5 py-4'>
             <h3 className='text-xl w-32 text-center border-t-[3px] border-primary font-[main]'>오늘 예약자 수</h3>
             <div className='flex items-center mt-2'>
               <img src='images/profile.png' alt='' className='w-16 h-16 font-extrabold' />

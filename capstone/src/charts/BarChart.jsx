@@ -169,7 +169,7 @@ function BarGraph() {
         {!loading && chartData.length > 0 ? (
           <>
             <ChartInfo chartName={'팀플실 예약 현황'} />
-            <div className='w-full border-t-[3px] border-[#ececec]'>
+            <div className='w-full '>
               <Rank categories={chartData[0]} />
               <div className='chart w-[825px] '>
                 <Chart options={options} series={series} type='bar' height='260' />
@@ -182,7 +182,7 @@ function BarGraph() {
               <div className='border-t-[3px] border-t-[#004C86] w-44' />
               <Loading w={'176px'} h={'32px'} />
             </div>
-            <div className='w-full border-t-[3px] border-[#ececec]'>
+            <div className='w-full border-t-[3px] border-sub'>
               <Loading w={'852px'} h={'420px'} />
             </div>
           </>

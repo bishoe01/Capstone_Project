@@ -26,12 +26,12 @@ function AngleChartLayout({ univ }) {
           <ChartInfo chartName={'인원별 예약 현황'} />
           <div className='flex flex-col items-center max-w-[524px]'>
             <div className='flex items-center w-full'>
-              <AngleCircleChart data={univData} colors={['#335BFF', '#99C7FF', '#CCE3FF']} />
-              <AngleCircleChart data={allData} colors={['#4D4DFF', '#A6BCFF', '#D3DEFF']} />
+              <AngleCircleChart data={univData} colors={['#112D4E', '#3F72AF', '#3FC1C9']} />
+              <AngleCircleChart data={allData} colors={['#112D4E', '#3F72AF', '#3FC1C9']} />
             </div>
             <div className='flex justify-around items-center w-full'>
-              <span className='text-lg mt-[-20px]'>단과대 현황</span>
-              <span className='text-lg mt-[-20px]'>전체 현황</span>
+              <span className='text-2xl text-primary mt-[-10px]'>단과대 현황</span>
+              <span className='text-2xl text-primary  mt-[-10px]'>전체 현황</span>
             </div>
           </div>
         </>

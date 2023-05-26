@@ -48,11 +48,11 @@ function TimeSelect() {
     return (
         <Fade className={`${styles.innerWidth}`}>
 
-            <div className={`flex flex-col ${styles.yPaddings} ${styles.innerWidth}`}>
+            {/* <div className={`flex flex-col ${styles.yPaddings} ${styles.innerWidth}`}>
                 <Board nowData={nowData} department={location.pathname.split('/')[2]} />
-            </div>
-            <div className='flex justify-between'>
-                <h1 className='border-l-4 px-2 m-4 border-primary'>예약현황</h1>
+            </div> */}
+            <div className='flex justify-between mt-10'>
+                <h1 className='text-2xl border-l-4 px-2 m-4 border-primary'>예약현황</h1>
                 <form onSubmit={(e) => {
                     e.preventDefault();
                     console.log('submit');
@@ -73,9 +73,9 @@ function TimeSelect() {
             </div>
             <section className='flex flex-col'>
                 <div className="grid grid-cols-12 gap-4 text-center text-lg text-primary w-full border-b-[1px] border-gray-500 py-2 my-2">
-                    <div className="col-span-2">팀플실명</div>
-                    <div className="col-span-9">예약현황</div>
-                    <div className="col-span-1">예약</div>
+                    <div className="text-2xl col-span-2">이름</div>
+                    <div className="text-2xl col-span-9">예약현황</div>
+                    <div className="text-2xl col-span-1">예약</div>
                 </div>
                 {roomInfo?.map((item, index) => (
                     <TimeLine key={item.id}
