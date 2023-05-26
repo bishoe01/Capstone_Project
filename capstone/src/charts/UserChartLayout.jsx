@@ -10,9 +10,10 @@ function UserChartLayout({ name }) {
   const dispatch = useDispatch();
   const { loading, userData } = useSelector((state) => state.userData);
   const [lastMonthData, setLastMonthData] = useState([]);
+  const [isData, setData] = useState(false);
 
   useEffect(() => {
-    if (lastMonthData.length > 0) return;
+    if (isData) return;
     let JWT_TOKEN = localStorage.getItem('JWT');
 
     if (JWT_TOKEN !== null) {
@@ -30,13 +31,14 @@ function UserChartLayout({ name }) {
         const result = userData.filter((data) => data.date.includes(`${year}-${lastMonthNumber}`));
         setLastMonthData(result);
       }
+      setData(true);
     }
-  }, [dispatch, userData, lastMonthData.length]);
+  }, [dispatch, userData, isData]);
 
   return (
     <>
       {!loading ? (
-        userData.length <= 0 ? (
+        lastMonthData.length <= 0 ? (
           <>
             <ChartInfo chartName={`${name}님의 지난달 예약 정보`} />
             <div className='w-full h-32 text-center leading-[128px]'>
@@ -46,7 +48,7 @@ function UserChartLayout({ name }) {
         ) : (
           <>
             <div className='flex flex-col justify-center w-full h-14 relative items-center'>
-              <h3 className='text-3xl text-primary p-4 py-[8px] rounded-full border-primary border-4'>{name}님의 지난달 예약 정보</h3>
+              <h3 className='text-3xl text-primary p-4 py- rounded-full border-primary border-4'>{name}님의 지난달 예약 정보</h3>
             </div>
             <div className='flex justify-center items-center gap-8 w-full '>
               <RadarChart data={lastMonthData} />
