@@ -4414,6 +4414,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "capstone@workspace:."
   dependencies:
+    "@babel/plugin-proposal-private-property-in-object": ^7.21.0
     "@material-tailwind/html": ^2.0.0
     "@reduxjs/toolkit": ^1.9.5
     "@testing-library/jest-dom": ^5.14.1

@@ -7,8 +7,6 @@ import AngleChartLayout from './AngleChartLayout';
 import TreemapChart from './TreemapChart';
 import AreaChart from './AreaChart';
 import UserChartLayout from './UserChartLayout';
-import SideBar from './SideBar';
-
 function ChartLayout() {
   const [userInfo, setUserInfo] = useState({});
 
@@ -63,7 +61,6 @@ function ChartLayout() {
               <UserChartLayout name={userInfo.name} />
             </div>
           </div>
-          {/* <SideBar onSelection={scrollToComponent} /> */}
         </>
       ) : null}
     </>
