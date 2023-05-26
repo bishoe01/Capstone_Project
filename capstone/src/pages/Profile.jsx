@@ -10,15 +10,12 @@ import axios from 'axios';
 const INPUT_STYLE = "border-2 border-sub rounded-2xl w-[100%] px-4 py-4 mt-[4px] text-2xl";
 
 function Infomation({ title, content, setUsername }) {
-  const handleUsername = (e) => {
-    setUsername(e.target.value);
-  }
 
   return (
     <div className='flex flex-col rounded-xl h-[100px] p-4 justify-center items-start'>
       <h1 className='text-2xl text-primary font-bold'>{title}</h1>
       {title === "Username"
-        ? <input className={`${INPUT_STYLE} `} value={content} onChange={handleUsername} />
+        ? <input className={`${INPUT_STYLE} `} value={content} />
         : <span className={`${INPUT_STYLE} `}>
           {content}
         </span>
