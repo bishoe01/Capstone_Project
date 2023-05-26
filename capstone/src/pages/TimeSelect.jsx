@@ -8,7 +8,6 @@ import Board from '../components/Board';
 import styles from '../styles';
 import axios from 'axios';
 import { redirect } from "react-router-dom";
-
 function TimeSelect() {
     const location = useLocation();
     const navigate = useNavigate();
@@ -31,18 +30,6 @@ function TimeSelect() {
         }
     }, [user]);
 
-
-    // useEffect(() => {
-    //     axios.get(`${url}/api/studyroom?university=${소프트웨어융합대학}`, {)
-
-    //         .then((response) => {
-    //             console.log(response.data);
-    //             setRoomData(response.data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error);
-    //         });
-    // }, []);
 
     useEffect(() => {
         const token = `Bearer ${jwt}`;

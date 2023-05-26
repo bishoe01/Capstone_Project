@@ -51,10 +51,10 @@ const router = createBrowserRouter([
         ),
         children: [
 
-          { path: 'placerental', element: <PlaceRental /> },
           { path: 'notice', element: <Notice /> },
         ],
       },
+      { path: 'placerental', element: <PlaceRental /> },
 
       {
         path: 'profile',

@@ -8,8 +8,9 @@ function HeaderContantWithLogin() {
   const informationLinks = ['Profile', 'PlaceRental', 'Notice'];
 
   return informationLinks.map((link, index) => (
-    <li className='hover:text-emphasize' key={index}>
-      <Link to={`dashboard/${link.toLowerCase()}`}>{link}</Link>
+
+    <li className=' hover:text-emphasize' key={index}>
+      <Link to={`/${link.toLowerCase()}`}>{link}</Link>
     </li>
   ));
 }
