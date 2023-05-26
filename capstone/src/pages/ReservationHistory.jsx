@@ -36,8 +36,16 @@ function PlaceRental() {
         setIsExistHistory(false);
       }
     };
+
     fetchData();
+
+    const timeout = setTimeout(() => {
+      fetchData();
+    }, 1000);
+
+    return () => clearTimeout(timeout);
   }, []);
+
   console.log(history);
   return (
     <Fade>
@@ -45,15 +53,15 @@ function PlaceRental() {
         <div className='w-full'>
           <div className='pb-8'>
             <div className='flex justify-between items-center'>
-              <h3 className='pl-24 text-primary font-black text-2xl'>예약현황</h3>
-              <span className=' text-gray-500 pr-16 text-sm'>시간연장, 퇴실은 이용중에만 가능합니다.</span>
+              <h3 className='px-10 mb-4 text-primary font-black text-3xl'>예약현황</h3>
+              <span className=' text-gray-500 pr-16 text-xl'>시간연장, 퇴실은 이용중에만 가능합니다</span>
             </div>
             {history.slice(0, 2).map((data, i) => {
               return <ReserveState {...data} JWT_TOKEN={JWT} key={i} />;
             })}
           </div>
-          <div className='w-full'>
-            <h3 className='px-24 text-primary font-black text-2xl'>예약내역</h3>
+          <div className='w-full h-[500px]'>
+            <h3 className='px-10 text-primary font-black text-3xl mb-4'>예약내역</h3>
             <HistoryList histories={history} />
           </div>
         </div>

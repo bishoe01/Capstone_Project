@@ -1,19 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from '../components/Container';
 import Fade from 'react-reveal/Fade';
 import CommonBtn from '../components/CommonBtn';
 import { AiFillCamera } from 'react-icons/ai';
 import { useUserState, useUserDispatch, getUser } from '../context/UserData';
 import { Slide } from 'react-reveal';
+import { useRoomContext } from '../context/Roomdata';
+import axios from 'axios';
 const INPUT_STYLE = "border-2 border-sub rounded-2xl w-[100%] px-4 py-4 mt-[4px] text-2xl";
 
-function Infomation({ title, content }) {
+function Infomation({ title, content, setUsername }) {
+  const handleUsername = (e) => {
+    setUsername(e.target.value);
+  }
+
   return (
     <div className='flex flex-col rounded-xl h-[100px] p-4 justify-center items-start'>
       <h1 className='text-2xl text-primary font-bold'>{title}</h1>
-      <span className={`${INPUT_STYLE} `}>
-        {content}
-      </span>
+      {title === "Username"
+        ? <input className={`${INPUT_STYLE} `} value={content} onChange={handleUsername} />
+        : <span className={`${INPUT_STYLE} `}>
+          {content}
+        </span>
+      }
+
+
     </div>
   )
 
@@ -25,17 +36,29 @@ function Profile() {
   const CATEGORY_TITLE = "text-2xl font-bold text-emphasize";
   const state = useUserState();
   const dispatch = useUserDispatch();
-
+  const { user, url, jwt } = useRoomContext();
+  const [username, setUsername] = useState(user?.username);
   const { data: users } = state.users;
   const fetchData = async () => {
     await getUser(dispatch);
   };
+
 
   useEffect(() => {
     fetchData();
     console.log(users);
   }, []);
 
+  const HandleUsername = () => {
+    const token = `Bearer ${jwt}`;
+    axios.put(`${url}/api/user/modify`,
+      { ...user, "username": username }
+      , {
+        headers: {
+          Authorization: token
+        }
+      })
+  }
 
   return (
     <Fade top>
@@ -48,13 +71,13 @@ function Profile() {
             <AiFillCamera className='text-white text-4xl' />
           </div>
         </div>
-        <div className='flex flex-col h-[750px] gap-4 border-[0.5px] border-[#e1e2e4] mt-5 rounded-3xl p-8 shadow-xl'>
+        <div className='flex flex-col h-[650px] gap-4 border-[0.5px] border-[#e1e2e4] mt-5 rounded-3xl p-8 shadow-xl'>
           <h1 className='text-4xl text-emphasize font-bold ml-4 mb-4'>Profile Settings</h1>
           <div className='flex'>
             <div className='grid grid-cols-2 gap-[24px] w-full'>
               <Infomation title='Name' content={users?.name} />
-              <Infomation title="Username" content={users?.username} />
-              <Infomation title="단과대학" content={users?.university} />
+              <Infomation title='Username' content={users?.username} />
+              <Infomation title="단과대학" content={users?.university} setUsername={setUsername} />
               <Infomation title="학년" content={users?.grade} />
               <Infomation title="학번" content={users?.studentNumber} />
               <Infomation title="Email" content={users?.email} />
@@ -62,7 +85,7 @@ function Profile() {
             </div>
 
           </div>
-          <button className='p-5 w-[25%] ml-4 bg-primary rounded-full text-white text-2xl font-bold mt-4'>Edit</button>
+          {/* <button onClick={HandleUsername} className='p-5 w-[25%] ml-4 bg-primary rounded-full text-white text-2xl font-bold mt-4'>Edit</button> */}
         </div>
       </div>
     </Fade>

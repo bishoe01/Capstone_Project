@@ -16,6 +16,9 @@ export function RoomContextProvider({ children }) {
         "info": "언론정보대학",
         "engineer": "공학대학",
         "design": "디자인대학",
+        "pharmacy": "약학대학",
+        "sciencetech": "과학기술융합대학",
+        "artsports": "예체능대학"
     });
 
     const [locationURL, setLocationURL] = useState({
@@ -25,6 +28,10 @@ export function RoomContextProvider({ children }) {
         "언론정보대학": "info",
         "공학대학": "engineer",
         "디자인대학": "design",
+        "약학대학": "pharmacy",
+        "과학기술융합대학": "sciencetech",
+        "예체능대학": "artsports"
+
     });
 
     const [selectData, setSelectData] = useState([{
@@ -58,6 +65,7 @@ export function RoomContextProvider({ children }) {
         setReactionArray(newReactionArray);
     }, []);
     useEffect(() => {
+        if (!jwt) return;
         const token = `Bearer ${jwt}`;
         axios.get(`${url}/api/user/info`, {
             headers: {

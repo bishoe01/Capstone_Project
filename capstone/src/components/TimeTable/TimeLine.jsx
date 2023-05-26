@@ -81,7 +81,7 @@ function TimeLine({ room, id, department, targetDate, reservelist, setTargetDate
             </div>
             <div className="col-span-1">
                 <button onClick={() => navigate(`/reserve/${deptname}/${id}`,
-                    { state: { targetDate: targetDate, department: department } })} className="border-2 p-2 rounded-md border-sub">예약하기</button>
+                    { state: { targetDate: targetDate, department: department } })} className="border-2 p-2 rounded-md border-primary text-primary">예약하기</button>
             </div>
         </div>
     );

@@ -5,7 +5,7 @@ import { useRoomContext } from '../context/Roomdata';
 import axios from 'axios';
 
 function HeaderContantWithLogin() {
-  const informationLinks = ['Profile', 'PlaceRental', 'Notice'];
+  const informationLinks = ['Profile', 'PlaceRental'];
 
   return informationLinks.map((link, index) => (
 

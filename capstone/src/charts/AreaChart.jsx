@@ -75,7 +75,7 @@ function AreaChart() {
         {!loading ? (
           <>
             <ChartInfo chartName={'특정 요일의 시간대별 점유율'} />
-            <div className='w-full border-t-[3px] border-[#ececec] mb-[20px]'>
+            <div className='w-full border-t-[0px] border-[#ececec] mb-[20px]'>
               <div className='chart'>
                 <Chart options={options} series={series} type='area' height='330' />
               </div>

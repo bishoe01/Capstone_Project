@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import './scrollBar.css';
 import CommonBtn from './CommonBtn';
 
-const TITLE_STYLE = 'w-full text-left text-base text-textgray';
-const CONTENT_STYLE = 'text-base text-primary text-center';
+const TITLE_STYLE = 'w-full text-left text-xl text-textgray';
+const CONTENT_STYLE = 'text-[22px] text-primary text-center';
 const VERTICAL_LINE = 'border border-r border-sub h-6 m-auto';
 
 const StateDiv = ({ color, bgColor, text }) => {
-  return <div className={`w-24 h-7 text-${color} text-base text-center bg-${bgColor} rounded-md py-1 mx-2 tracking-wide`}>{text}</div>;
+  return <div className={`w-[150px] h-[55px] text-${color} leading-[55px] text-2xl text-center bg-${bgColor} rounded-xl  mx-2 tracking-wide`}>{text}</div>;
 };
 
 const List = ({ history }) => {
@@ -26,12 +26,12 @@ const List = ({ history }) => {
           <span className={CONTENT_STYLE}>{`${history.building} ${history.location} ${history.studyRoomName}`}</span>
         </div>
         <div className={VERTICAL_LINE} />
-        <div className='flex flex-col px-3 w-20%'>
+        <div className='flex flex-col px-3 w-25%'>
           <h3 className={TITLE_STYLE}>이용시간</h3>
           <span className={CONTENT_STYLE}>{timeCast(history.startTime, history.endTime)}</span>
         </div>
         <div className={VERTICAL_LINE} />
-        <div className='flex flex-col px-3 w-15%'>
+        <div className='flex flex-col px-3 w-25%'>
           <h3 className={TITLE_STYLE}>예약일자</h3>
           <span className={CONTENT_STYLE}>{history.date}</span>
         </div>
@@ -58,7 +58,7 @@ const List = ({ history }) => {
 function HistoryList({ histories }) {
   return (
     <>
-      <ul className='h-[200px] min-w-[932px] overflow-auto scrollbar'>
+      <ul className='h-[400px] min-w-[932px] overflow-auto scrollbar'>
         {histories.map((history, i) => {
           return (
             <li className='flex justify-center align-center py-1' key={i}>

@@ -83,7 +83,7 @@ function LineGraph({ univ }) {
         {!loading ? (
           <>
             <ChartInfo chartName={'월별 예약 현황'} />
-            <div className='w-full border-t-[3px] border-[#ececec]'>
+            <div className='w-full '>
               <div className='chart'>
                 <Chart options={options} series={series} type='line' height='270' />
               </div>
