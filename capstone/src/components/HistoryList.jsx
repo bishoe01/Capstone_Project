@@ -4,7 +4,7 @@ import './scrollBar.css';
 import CommonBtn from './CommonBtn';
 
 const TITLE_STYLE = 'w-full text-left text-xl text-textgray';
-const CONTENT_STYLE = 'text-[22px] text-primary text-center';
+const CONTENT_STYLE = 'text-[20px] text-primary text-center';
 const VERTICAL_LINE = 'border border-r border-sub h-6 m-auto';
 
 const StateDiv = ({ color, bgColor, text }) => {
@@ -21,12 +21,12 @@ const List = ({ history }) => {
   return (
     <>
       <div className='flex flex-row justify-around align-center border border-primary rounded-lg py-1 basis-11/12'>
-        <div className='flex flex-col px-3 w-40%'>
+        <div className='flex flex-col px-3 w-45%'>
           <h3 className={TITLE_STYLE}>팀플실</h3>
           <span className={CONTENT_STYLE}>{`${history.building} ${history.location} ${history.studyRoomName}`}</span>
         </div>
         <div className={VERTICAL_LINE} />
-        <div className='flex flex-col px-3 w-25%'>
+        <div className='flex flex-col px-3 w-20%'>
           <h3 className={TITLE_STYLE}>이용시간</h3>
           <span className={CONTENT_STYLE}>{timeCast(history.startTime, history.endTime)}</span>
         </div>
