@@ -71,18 +71,30 @@ function AreaChart() {
 
   return (
     <>
-      {!loading ? (
-        <div className='flex flex-col justify-between w-full'>
-          <ChartInfo chartName={'특정 요일의 시간대별 점유율'} />
-          <div className='w-full border-t-[3px] border-[#ececec] mb-[20px]'>
-            <div className='chart'>
-              <Chart options={options} series={series} type='area' height='330' />
+      <div className='flex flex-col justify-between w-full'>
+        {!loading ? (
+          <>
+            <ChartInfo chartName={'특정 요일의 시간대별 점유율'} />
+            <div className='w-full border-t-[3px] border-[#ececec] mb-[20px]'>
+              <div className='chart'>
+                <Chart options={options} series={series} type='area' height='330' />
+              </div>
             </div>
-          </div>
-        </div>
-      ) : (
-        <Loading w={'524px'} h={'424px'} />
-      )}
+          </>
+        ) : (
+          <>
+            <div className='flex flex-col justify-around w-full h-14'>
+              <div className='border-t-[3px] border-t-[#004C86] w-44' />
+              <Loading w={'264px'} h={'32px'} />
+            </div>
+            <div className='w-full border-t-[3px] border-[#ececec] mb-[20px]'>
+              <Loading w={'544px'} h={'330px'} />
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* <Loading w={'524px'} h={'424px'} /> */}
     </>
   );
 }

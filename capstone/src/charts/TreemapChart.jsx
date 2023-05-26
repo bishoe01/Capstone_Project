@@ -71,18 +71,28 @@ function TreemapChart({ univ }) {
 
   return (
     <>
-      {!loading ? (
-        <div className='flex flex-col justify-between w-full'>
-          <ChartInfo chartName={'단과대 팀플실별 이용 점유율'} />
-          <div className='w-full border-t-[3px] border-[#ececec] mb-[50px]'>
-            <div className='chart'>
-              <Chart options={options} series={series} type='treemap' height='300' />
+      <div className='flex flex-col justify-between w-full'>
+        {!loading ? (
+          <>
+            <ChartInfo chartName={'단과대 팀플실별 이용 점유율'} />
+            <div className='w-full border-t-[3px] border-[#ececec] mb-[50px]'>
+              <div className='chart'>
+                <Chart options={options} series={series} type='treemap' height='300' />
+              </div>
             </div>
-          </div>
-        </div>
-      ) : (
-        <Loading w={'524px'} h={'424px'} />
-      )}
+          </>
+        ) : (
+          <>
+            <div className='flex flex-col justify-around w-full h-14'>
+              <div className='border-t-[3px] border-t-[#004C86] w-44' />
+              <Loading w={'264px'} h={'32px'} />
+            </div>
+            <div className='w-full border-t-[3px] border-[#ececec] mb-[50px]'>
+              <Loading w={'554px'} h={'315px'} />
+            </div>
+          </>
+        )}
+      </div>
     </>
   );
 }
