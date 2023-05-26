@@ -9,12 +9,13 @@ import { MdOutlineAddchart } from 'react-icons/md';
 import { BiGitBranch } from 'react-icons/bi';
 import { TbReportSearch } from 'react-icons/tb';
 import { Fade, Flip, Slide, Zoom } from 'react-reveal';
-
+import { useNavigate } from 'react-router-dom';
 function MainPage({ props }) {
-  const [data, setData] = useState([]);
-  const BANNER_STYLE = `flex justify-center items-center w-[300px] gap-3 text-primary`;
-  const FUNCTION_STYLE = `w-full flex flex-col gap-4 justify-around items-center py-8 p-2 text-primary`;
-  const ICON_URL = ['reactjs', 'tailwindcss', 'springio', 'figma'];
+  const [data, setData] = useState([])
+  const BANNER_STYLE = `flex justify-center items-center w-[300px] gap-3 text-primary`
+  const FUNCTION_STYLE = `w-full flex flex-col gap-4 justify-around items-center py-8 p-2 text-primary`
+  const ICON_URL = ['reactjs', 'tailwindcss', 'springio', 'figma']
+  const navigate = useNavigate();
   return (
     <section className={`mx-auto w-full flex flex-col  items-center jumbotron gap-5`}>
       <Fade top>
@@ -28,7 +29,9 @@ function MainPage({ props }) {
             <span className='text-sub brightness-75 text-xl'>한양대학교 ERICA 팀플실 예약 플랫폼</span>
             <div className='flex justify-center items-center gap-4 text-xl'>
               <button className='p-4 px-6 mt-5 border-[4px] border-emphasize rounded-full text-emphasize'>예약하러 가기</button>
-              <button className='p-4 px-4 mt-5 border-[4px] border-primary rounded-full text-primary'>데이터 보기</button>
+              <button
+                onClick={() => navigate('/data')}
+                className='p-4 px-4 mt-5 border-[4px] border-primary rounded-full text-primary'>데이터 보기</button>
             </div>
           </div>
           {/* IMAGE BOX */}
