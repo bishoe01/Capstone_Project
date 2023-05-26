@@ -24,12 +24,7 @@ function AngleChartLayout({ univ }) {
       {!loadingAll && !loadingUniv ? (
         <>
           <ChartInfo chartName={'인원별 예약 현황'} />
-          <div
-            className='flex flex-col items-center max-w-[524px]'
-            onClick={() => {
-              console.log(allData);
-              console.log(univData);
-            }}>
+          <div className='flex flex-col items-center max-w-[524px]'>
             <div className='flex items-center w-full'>
               <AngleCircleChart data={univData} colors={['#335BFF', '#99C7FF', '#CCE3FF']} />
               <AngleCircleChart data={allData} colors={['#4D4DFF', '#A6BCFF', '#D3DEFF']} />
@@ -41,7 +36,19 @@ function AngleChartLayout({ univ }) {
           </div>
         </>
       ) : (
-        <Loading w={'524px'} h={'346px'} />
+        <>
+          <Loading w={'176px'} h={'32px'} />
+          <div className='flex flex-col items-center max-w-[524px]'>
+            <div className='flex items-center w-full'>
+              <Loading w={'262px'} h={'278px'} />
+              <Loading w={'262px'} h={'278px'} />
+            </div>
+            <div className='flex justify-around items-center w-full'>
+              <span className='text-lg mt-[-20px]'>단과대 현황</span>
+              <span className='text-lg mt-[-20px]'>전체 현황</span>
+            </div>
+          </div>
+        </>
       )}
     </>
   );

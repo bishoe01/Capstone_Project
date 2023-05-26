@@ -8,6 +8,7 @@ function HeaderContantWithLogin() {
   const informationLinks = ['Profile', 'PlaceRental', 'Notice'];
 
   return informationLinks.map((link, index) => (
+
     <li className=' hover:text-emphasize' key={index}>
       <Link to={`/${link.toLowerCase()}`}>{link}</Link>
     </li>
@@ -34,7 +35,6 @@ function Header() {
     window.location.reload();
   };
 
-
   return (
     <header className='flex justify-between items-center p-6 text-2xl text-primary shadow-xl rounded-xl'>
       <Link to={'/'} className='flex items-center'>
@@ -43,21 +43,16 @@ function Header() {
       </Link>
       <ul className='flex gap-5 text-lg'>
         {links.map((link, index) => {
-          if (link === "Reserve") {
+          if (link === 'Reserve') {
             return (
               <li className=' hover:text-emphasize' key={index}>
-                {jwt ?
-                  <Link to={`/${link.toLowerCase()}/${locationURL[user?.university]}`}>{link}</Link>
-                  : <Link to={`/login`}>{link}</Link>}
+                {jwt ? <Link to={`/${link.toLowerCase()}/${locationURL[user?.university]}`}>{link}</Link> : <Link to={`/login`}>{link}</Link>}
               </li>
             );
-          }
-          else {
+          } else {
             return (
               <li className=' hover:text-emphasize' key={index}>
-                {jwt ?
-                  <Link to={`/${link.toLowerCase()}`}>{link}</Link>
-                  : <Link to={`/login`}>{link}</Link>}
+                {jwt ? <Link to={`/${link.toLowerCase()}`}>{link}</Link> : <Link to={`/login`}>{link}</Link>}
               </li>
             );
           }

@@ -3,6 +3,7 @@ import Chart from 'react-apexcharts';
 
 function RadarChart({ data }) {
   const [chartData, setData] = useState([]);
+  const [maxVal, setMaxVal] = useState(10);
 
   useEffect(() => {
     const ordersByWeekday = [
@@ -23,6 +24,7 @@ function RadarChart({ data }) {
     let countArr = [];
     ordersByWeekday.map((arr) => countArr.push(arr.length));
     setData(countArr);
+    setMaxVal(Math.max(countArr));
   }, [data]);
 
   const options = {
@@ -48,6 +50,11 @@ function RadarChart({ data }) {
           colors: ['#7c7c7c', '#7c7c7c', '#7c7c7c', '#7c7c7c', '#7c7c7c', '#7c7c7c', '#7c7c7c'],
         },
       },
+    },
+    yaxis: {
+      max: 20,
+      min: 0,
+      tickAmount: 5,
     },
 
     colors: ['#004bf1'],

@@ -5,9 +5,9 @@ import { VscEye } from 'react-icons/vsc';
 import { FaRegBuilding, FaReact } from 'react-icons/fa';
 import { IoBarChartSharp } from 'react-icons/io5';
 import { BsClipboardData, BsFillChatSquareQuoteFill, BsLightningCharge, BsGrid3X3GapFill } from 'react-icons/bs';
-import { MdOutlineAddchart } from 'react-icons/md'
-import { BiGitBranch } from 'react-icons/bi'
-import { TbReportSearch } from 'react-icons/tb'
+import { MdOutlineAddchart } from 'react-icons/md';
+import { BiGitBranch } from 'react-icons/bi';
+import { TbReportSearch } from 'react-icons/tb';
 import { Fade, Flip, Slide, Zoom } from 'react-reveal';
 import { useNavigate } from 'react-router-dom';
 function MainPage({ props }) {
@@ -23,7 +23,9 @@ function MainPage({ props }) {
           {/* TEXT BOX */}
           <div className='text-primary flex justify-center items-start flex-col w-[600px] gap-4'>
             <p id='bolder' className='flex flex-col items-start gap-6 text-5xl tracking-wider border-b-[2px] py-3 border-emphasize'>
-              <span>HY</span><span>TOGETHER</span></p>
+              <span>HY</span>
+              <span>TOGETHER</span>
+            </p>
             <span className='text-sub brightness-75 text-xl'>한양대학교 ERICA 팀플실 예약 플랫폼</span>
             <div className='flex justify-center items-center gap-4 text-xl'>
               <button className='p-4 px-6 mt-5 border-[4px] border-emphasize rounded-full text-emphasize'>예약하러 가기</button>
@@ -33,7 +35,7 @@ function MainPage({ props }) {
             </div>
           </div>
           {/* IMAGE BOX */}
-          <img className='z-2 w-[600px] object-contain rounded-2xl mt-20' src="images/Hero_image.png" alt="" />
+          <img className='z-2 w-[600px] object-contain rounded-2xl mt-20' src='images/Hero_image.png' alt='' />
         </div>
       </Fade>
       {/* minibanner */}
@@ -81,7 +83,7 @@ function MainPage({ props }) {
         </div>
       </Slide>
       {/* SERVICE 설명 */}
-      <Fade >
+      <Fade>
         <div className='flex flex-col mt-24 justify-start items-center w-full'>
           <h1 className='text-5xl font-bold text-primary tracking-wider'>HY - TOGETHER</h1>
           <div className='text-primary p-2 rounded-full px-4  mt-[8px]'>
@@ -114,16 +116,14 @@ function MainPage({ props }) {
           <div className='flex gap-2 w-full justify-center items-center'>
             {ICON_URL.map((icon, index) => (
               <div key={index} className=' bg-white shadow-xl rounded-2xl p-4'>
-                <img className='w-[70px] h-[70px]' src={`images/${icon}-icon.svg`} alt="" />
-              </div>))}
+                <img className='w-[70px] h-[70px]' src={`images/${icon}-icon.svg`} alt='' />
+              </div>
+            ))}
           </div>
         </div>
       </Zoom>
     </section>
   );
 }
-
-
-
 
 export default MainPage;
