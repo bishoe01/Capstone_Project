@@ -110,7 +110,7 @@ function MainPage({ props }) {
         </Flip>
       </div>
       {/* SKILL STACK */}
-      <Zoom cascade>
+      {/* <Zoom cascade>
         <div className='flex flex-col justify-center gap-4 items-center w-[600px] h-[200px] rounded-b-none rounded-full bg-primary mt-12 '>
           <h1 className='text-3xl text-white tracking-wider'>기술 스택</h1>
           <div className='flex gap-2 w-full justify-center items-center'>
@@ -121,7 +121,7 @@ function MainPage({ props }) {
             ))}
           </div>
         </div>
-      </Zoom>
+      </Zoom> */}
     </section>
   );
 }
