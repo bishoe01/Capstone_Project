@@ -1,14 +1,9 @@
-import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import axios from "axios";
 const RoomContext = createContext();
 export function RoomContextProvider({ children }) {
-    const [roomData, setRoomData] = useState(
-        {
-            "bea": [101, 102, 103, 104, 105, 106],
-            "culture": [101, 102, 103],
-            'software': [1, 2, 3, 4, 5, 6]
-        }
-    );
+
+
     const [building, setBuilding] = useState({
         "bea": "경상대학",
         "culture": "국제문화대학",
@@ -76,7 +71,7 @@ export function RoomContextProvider({ children }) {
             .then((res) => setUser(res));
     }, [jwt]);
     return (
-        <RoomContext.Provider value={{ roomData, selectData, locationURL, setSelectData, building, currentDate, reservelist, jwt, hours, url, reactionArray, setReactionArray, filteredHours, user }}>
+        <RoomContext.Provider value={{ selectData, locationURL, setSelectData, building, currentDate, reservelist, jwt, hours, url, reactionArray, setReactionArray, filteredHours, user }}>
             {children}
         </RoomContext.Provider>)
 }
