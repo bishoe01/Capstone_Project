@@ -11,9 +11,8 @@ import { redirect } from "react-router-dom";
 function TimeSelect() {
     const location = useLocation();
     const navigate = useNavigate();
-    const { roomData, reservelist, reactionArray, jwt, url, building, user, locationURL } = useRoomContext();
+    const { reactionArray, jwt, url, building, user, locationURL } = useRoomContext();
     const [deptname, setDeptname] = useState(building[location.pathname.split('/')[2]]);
-    const [nowData, setNowData] = useState();
     const [roomInfo, setRoomInfo] = useState();
     const [targetDate, setTargetDate] = useState();
     const HandleDateChange = (e) => setTargetDate(e.target.value);
@@ -47,10 +46,6 @@ function TimeSelect() {
 
     return (
         <Fade className={`${styles.innerWidth}`}>
-
-            {/* <div className={`flex flex-col ${styles.yPaddings} ${styles.innerWidth}`}>
-                <Board nowData={nowData} department={location.pathname.split('/')[2]} />
-            </div> */}
             <div className='flex justify-between mt-10'>
                 <h1 className='text-2xl border-l-4 px-2 m-4 border-primary'>예약현황</h1>
                 <form onSubmit={(e) => {
@@ -79,7 +74,6 @@ function TimeSelect() {
                 </div>
                 {roomInfo?.map((item, index) => (
                     <TimeLine key={item.id}
-                        // department={location.pathname.split('/')[2]}
                         department={item.name}
                         targetDate={targetDate}
                         id={item.id}
