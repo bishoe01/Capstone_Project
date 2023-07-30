@@ -26,3 +26,4 @@ ID : test
 PW : test
 ```
 <img width="829" alt="스크린샷 2023-07-30 오후 10 43 22" src="https://github.com/bishoe01/Capstone_Project/assets/50870343/b20a568f-1615-45e5-9c3a-da1c623158a9">
+<img width="797" alt="스크린샷 2023-07-30 오후 10 44 31" src="https://github.com/bishoe01/Capstone_Project/assets/50870343/8961f7bb-ba3e-4989-a335-b7d32a05002c">
